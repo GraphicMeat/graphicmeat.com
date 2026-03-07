@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Meat - Well done isn't a requirement</title>
+    <meta name="description" content="Graphic Meat - Well done isn't a requirement. Coming soon.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0c0c0f;
+            --red: #cc1028;
+            --red-bright: #e8192e;
+            --orange: #e8601e;
+            --silver: #b8bcc8;
+            --silver-dim: #6a6e7a;
+            --white: #eeeef0;
+            --white-dim: rgba(238, 238, 240, 0.5);
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(200, 16, 40, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 16, 40, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Noise texture */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: 2;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .scene {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 2rem;
+        }
+
+        /* Logo */
+        .logo-wrap {
+            width: clamp(200px, 40vw, 380px);
+            opacity: 0;
+            animation: logoIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .logo-wrap img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(200, 16, 40, 0.25));
+            transition: filter 0.4s;
+        }
+
+        .logo-wrap:hover img {
+            filter: drop-shadow(0 0 60px rgba(200, 16, 40, 0.4));
+        }
+
+        @keyframes logoIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.85) translateY(20px);
+                filter: blur(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Tagline */
+        .tagline {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 600;
+            font-size: clamp(0.7rem, 1.8vw, 1rem);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+        }
+
+        .tagline .dash {
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--red);
+            vertical-align: middle;
+            margin: 0 0.6em;
+        }
+
+        /* Status bar */
+        .status {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--silver-dim);
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+        }
+
+        .status .pulse {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red-bright);
+            box-shadow: 0 0 8px var(--red);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating pixel particles */
+        .pixel {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            pointer-events: none;
+            z-index: 5;
+            animation: pixelFloat linear infinite;
+        }
+
+        @keyframes pixelFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Bottom corner info */
+        .corner-info {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--silver-dim);
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+            z-index: 10;
+        }
+
+        .corner-info--left { left: 24px; }
+        .corner-info--right { right: 24px; }
+
+        /* Corner brackets */
+        .bracket {
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            border-color: var(--red);
+            border-style: solid;
+            opacity: 0;
+            animation: fadeUp 0.5s 1.4s forwards;
+            z-index: 10;
+        }
+
+        .bracket--tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+        .bracket--tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+        .bracket--bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+        .bracket--br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+        /* Cursor glow */
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 16, 40, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 3;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        @media (max-width: 600px) {
+            .bracket { display: none; }
+            .corner-info { display: none; }
+            .logo-wrap { width: clamp(180px, 65vw, 300px); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="scene">
+        <div class="logo-wrap">
+            <img src="logo.png" alt="Graphic Meat logo">
+        </div>
+
+        <div class="tagline">
+            <span class="dash"></span>
+            Well done isn't a requirement
+            <span class="dash"></span>
+        </div>
+
+        <div class="status">
+            <span class="pulse"></span>
+            <span>Coming Soon</span>
+        </div>
+    </div>
+
+    <div class="corner-info corner-info--left">graphicmeat.com</div>
+    <div class="corner-info corner-info--right">est. 2013</div>
+
+    <script>
+        // Cursor glow
+        const glow = document.getElementById('glow');
+        let glowOn = false;
+
+        document.addEventListener('mousemove', (e) => {
+            if (!glowOn) { glow.style.opacity = '1'; glowOn = true; }
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+            glowOn = false;
+        });
+
+        // Floating pixel particles (matching the logo's pixel dissolve effect)
+        function createPixels() {
+            const colors = ['#cc1028', '#e8192e', '#e8601e', '#f08030', '#b8bcc8'];
+            const count = Math.min(15, Math.floor(window.innerWidth / 100));
+
+            for (let i = 0; i < count; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                const size = 3 + Math.random() * 4;
+                pixel.style.width = size + 'px';
+                pixel.style.height = size + 'px';
+                pixel.style.left = Math.random() * 100 + 'vw';
+                pixel.style.bottom = '-10px';
+                pixel.style.background = colors[Math.floor(Math.random() * colors.length)];
+                pixel.style.animationDuration = (6 + Math.random() * 10) + 's';
+                pixel.style.animationDelay = (Math.random() * 12) + 's';
+                pixel.style.opacity = '0';
+                document.body.appendChild(pixel);
+            }
+        }
+
+        createPixels();
+
+        // Circuit-trace canvas background
+        const canvas = document.getElementById('bg');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            draw();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Seeded random for consistency
+            let seed = 77;
+            function rng() {
+                seed = (seed * 16807) % 2147483647;
+                return seed / 2147483647;
+            }
+
+            ctx.strokeStyle = 'rgba(200, 16, 40, 0.04)';
+            ctx.lineWidth = 1;
+
+            // Draw circuit-like traces
+            const traceCount = Math.floor((canvas.width * canvas.height) / 50000);
+
+            for (let i = 0; i < traceCount; i++) {
+                let x = rng() * canvas.width;
+                let y = rng() * canvas.height;
+                const segments = 3 + Math.floor(rng() * 5);
+
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+
+                for (let s = 0; s < segments; s++) {
+                    const dir = Math.floor(rng() * 4);
+                    const len = 20 + rng() * 60;
+
+                    if (dir === 0) x += len;
+                    else if (dir === 1) x -= len;
+                    else if (dir === 2) y += len;
+                    else y -= len;
+
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.stroke();
+
+                // Circuit node dots
+                if (rng() > 0.5) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(200, 16, 40, 0.06)';
+                    ctx.fill();
+                }
+            }
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+    </script>
+</body>
+</html>
