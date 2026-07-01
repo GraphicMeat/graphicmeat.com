@@ -51,6 +51,51 @@
     });
 })();
 
+// ===== Newsletter signup (no-ops on pages without the form) =====
+(function () {
+    const form = document.getElementById('newsletter-form');
+    const statusEl = document.getElementById('newsletter-status');
+    if (!form || !statusEl) return;
+
+    const startedEl = document.getElementById('nl-started');
+    const submitBtn = document.getElementById('nl-submit');
+    if (startedEl) startedEl.value = Date.now();
+
+    function setStatus(msg, kind) {
+        statusEl.textContent = msg;
+        statusEl.className = 'newsletter-status' + (kind ? ' ' + kind : '');
+    }
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        setStatus('Sending…', '');
+        if (submitBtn) submitBtn.disabled = true;
+        try {
+            const res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'fetch'
+                },
+                body: new URLSearchParams(new FormData(form)).toString()
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data.ok) {
+                setStatus(data.message || 'Almost there — check your email to confirm.', 'ok');
+                form.reset();
+                if (startedEl) startedEl.value = Date.now();
+            } else {
+                setStatus(data.error || 'Something went wrong. Please try again.', 'err');
+            }
+        } catch (_) {
+            setStatus('Network error. Please try again.', 'err');
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+        }
+    });
+})();
+
 // ===== Cursor glow =====
 (function () {
     const glow = document.getElementById('glow');

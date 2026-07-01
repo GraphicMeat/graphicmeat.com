@@ -324,6 +324,36 @@ section { margin-top: 24px; }
 .form-status.ok { color: var(--green); }
 .form-status.err { color: var(--red-bright); }
 
+/* ===== NEWSLETTER (footer) ===== */
+.newsletter {
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+.newsletter-title {
+    font-family: 'Chakra Petch', sans-serif; font-weight: 600;
+    font-size: 0.95rem; letter-spacing: 0.03em; color: var(--white); margin-bottom: 12px;
+}
+.newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; max-width: 520px; }
+.newsletter-form input[type="email"] {
+    flex: 1 1 220px; min-width: 0;
+    background: var(--surface-2); color: var(--white);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+    padding: 11px 14px; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.newsletter-form input[type="email"]:focus {
+    outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(200,16,40,0.15);
+}
+.newsletter-form input::placeholder { color: var(--silver-dim); }
+.newsletter-status { margin-top: 10px; font-size: 0.82rem; min-height: 1.1em; }
+.newsletter-status.ok { color: var(--green); }
+.newsletter-status.err { color: var(--red-bright); }
+.newsletter-note { margin-top: 8px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--silver-dim); }
+
+/* result page lede (subscribed.html) */
+.result-lede { margin: 3.5rem 0 2rem; }
+
 /* ===== FOOTER ===== */
 .footer {
     margin-top: 70px; padding-top: 22px;
