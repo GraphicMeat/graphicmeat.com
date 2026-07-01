@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Graphic Meat</title>
+    <meta name="description" content="Get in touch with Graphic Meat. Building something, or want to work with us? Send a message and we'll get back to you.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="canonical" href="https://graphicmeat.com/contact">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Contact — Graphic Meat">
+    <meta property="og:description" content="Building something, or want to work with us? Send Graphic Meat a message.">
+    <meta property="og:url" content="https://graphicmeat.com/contact">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact — Graphic Meat">
+    <meta name="twitter:description" content="Building something, or want to work with us? Send Graphic Meat a message.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact — Graphic Meat",
+      "url": "https://graphicmeat.com/contact",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Graphic Meat",
+        "url": "https://graphicmeat.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="page">
+        <!-- TOP BAR -->
+        <nav class="topbar" aria-label="Primary">
+            <a class="home" href="/">
+                <img src="logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <a class="back" href="/">&#8592; Back to home</a>
+        </nav>
+
+        <!-- CONTACT -->
+        <main>
+            <div class="contact-lede">
+                <h1 class="contact-h1"><span class="mark">//</span> Get in touch</h1>
+                <p class="contact-intro">Building something, or want to work with us? Drop us a message — we'll get back to you. No newsletters, no noise.</p>
+            </div>
+
+            <form id="contact-form" class="contact-form" action="/api/contact" method="post" novalidate>
+                <div class="field">
+                    <label for="cf-name">Name</label>
+                    <input id="cf-name" name="name" type="text" maxlength="100" required autocomplete="name" placeholder="Your name">
+                </div>
+                <div class="field">
+                    <label for="cf-email">Email</label>
+                    <input id="cf-email" name="email" type="email" maxlength="200" required autocomplete="email" placeholder="you@example.com">
+                </div>
+                <div class="field">
+                    <label for="cf-message">Message</label>
+                    <textarea id="cf-message" name="message" rows="6" maxlength="5000" required placeholder="What's on your mind?"></textarea>
+                </div>
+                <!-- honeypot: leave empty -->
+                <div class="hp" aria-hidden="true">
+                    <label for="cf-website">Website</label>
+                    <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" name="started" id="cf-started" value="">
+                <button type="submit" class="cta" id="cf-submit">Send message <span class="arrow">&#8594;</span></button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>graphicmeat.com</span>
+            <a href="/">Home</a>
+            <span>Est. 2013</span>
+        </footer>
+    </div>
+
+    <script src="site.js" defer></script>
+</body>
+</html>

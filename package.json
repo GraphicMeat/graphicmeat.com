@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "indexnow": "node scripts/indexnow.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   },
   "homepage": "https://github.com/GraphicMeat/graphicmeat.com#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^16.4.7",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.5.0",
+    "nodemailer": "^6.9.16"
   }
 }
