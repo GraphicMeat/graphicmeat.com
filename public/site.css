@@ -364,6 +364,24 @@ section { margin-top: 24px; }
 .footer a { color: var(--silver-dim); text-decoration: none; transition: color 0.3s; }
 .footer a:hover { color: var(--red-bright); }
 
+/* Sizzle credit */
+.footer-sizzle {
+    flex-basis: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-transform: none; letter-spacing: 0.02em; font-size: 0.7rem;
+    color: var(--silver-dim);
+}
+.footer-sizzle .sizzle-text { white-space: nowrap; }
+.footer-sizzle .sizzle-text b { color: var(--red-bright); font-weight: 600; }
+.footer-sizzle img {
+    height: 40px; width: auto; display: block;
+    filter: drop-shadow(0 0 8px rgba(255,60,40,0.45));
+    transition: transform 0.3s ease;
+}
+.footer-sizzle a:hover img { transform: scale(1.1) rotate(-4deg); }
+
 /* Floating pixel particles */
 .pixel { position: fixed; width: 4px; height: 4px; pointer-events: none; z-index: 5; animation: pixelFloat linear infinite; }
 @keyframes pixelFloat {
