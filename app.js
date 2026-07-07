@@ -14,6 +14,11 @@ app.set('trust proxy', 1); // behind nginx reverse proxy (Hetzner) — needed fo
 app.use(express.urlencoded({ extended: false, limit: '32kb' }));
 app.use(express.json({ limit: '32kb' }));
 
+// Send as grill@graphicmeat.com via its Purelymail app password.
+// Secret is stored under GRILL_EMAIL_SMTP_APP_PASSWORD; map to the SMTP_* names the code uses.
+process.env.SMTP_USER ||= 'grill@graphicmeat.com';
+process.env.SMTP_PASS ||= process.env.GRILL_EMAIL_SMTP_APP_PASSWORD;
+
 // ---- Shared config ----
 const CONTACT_TO = process.env.CONTACT_TO || 'prime@graphicmeat.com';
 const CONTACT_FROM = process.env.CONTACT_FROM || process.env.SMTP_USER || CONTACT_TO;
@@ -223,6 +228,34 @@ app.get('/contact', (req, res) => {
 
 app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
+});
+
+// ---- Download: always redirect to the latest PhotoBooks .dmg ----
+// Release asset filenames carry the version (PhotoBooks-x.y.z.dmg), so there's no
+// stable GitHub URL — resolve the newest via the API and 302 to it.
+const PB_REPO = 'GraphicMeat/PhotoBooks';
+const PB_RELEASES = `https://github.com/${PB_REPO}/releases/latest`;
+let pbCache = { url: null, at: 0 }; // ponytail: in-memory cache, fine for one process; add shared cache only if multi-instance
+
+async function latestPhotoBooksDmg() {
+    if (pbCache.url && Date.now() - pbCache.at < 15 * 60 * 1000) return pbCache.url;
+    const r = await fetch(`https://api.github.com/repos/${PB_REPO}/releases/latest`, {
+        headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'graphicmeat.com' },
+    });
+    if (!r.ok) throw new Error(`GitHub API ${r.status}`);
+    const dmg = ((await r.json()).assets || []).find((a) => a.name.endsWith('.dmg'));
+    if (!dmg) throw new Error('no .dmg asset in latest release');
+    pbCache = { url: dmg.browser_download_url, at: Date.now() };
+    return pbCache.url;
+}
+
+app.get('/download/photobooks', async (req, res) => {
+    try {
+        res.redirect(302, await latestPhotoBooksDmg());
+    } catch (err) {
+        console.error('PhotoBooks download redirect failed:', err.message);
+        res.redirect(302, PB_RELEASES); // fall back to the releases page — user still gets the latest
+    }
 });
 
 app.get('/subscribed', (req, res) => {

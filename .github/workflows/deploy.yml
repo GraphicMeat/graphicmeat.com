@@ -1,0 +1,77 @@
+name: Deploy
+
+# Deploys graphicmeat.com (Express app) to Hetzner sda-prod, mirroring mail-vault-app.
+# CI SSHes in as root (DEPLOY_SSH_KEY) — no sudo prompt. It runs deploy/standup.sh,
+# which is idempotent: first run bootstraps the graphicmeat system user, /opt/graphicmeat,
+# MariaDB db+user, systemd unit, and flips the Caddy block file_server -> reverse_proxy :3002;
+# later runs just resync code + restart. Secrets come from GH Actions, never from the box.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   DEPLOY_SSH_KEY                  base64 of a private key in the box's /root/.ssh/authorized_keys
+#   DEPLOY_HOST                     178.104.231.107
+#   DEPLOY_USER                     root
+#   DEPLOY_KNOWN_HOSTS             output of: ssh-keyscan -t ed25519,rsa 178.104.231.107
+#   GRILL_EMAIL_SMTP_APP_PASSWORD  Purelymail app password for grill@graphicmeat.com
+#   DB_PASS                        random 32+ char string (MariaDB graphicmeat user)
+#   IP_SALT                        random 32+ char string
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-graphicmeat
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" | base64 -d > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Rsync source to staging dir on box
+        run: |
+          rsync -avz --delete \
+            --exclude='.git/' \
+            --exclude='node_modules/' \
+            --exclude='.env' \
+            --exclude='docs/superpowers/' \
+            -e "ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            ./ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/root/graphicmeat-deploy/
+
+      - name: Run standup (bootstrap + deploy) as root
+        env:
+          GRILL_EMAIL_SMTP_APP_PASSWORD: ${{ secrets.GRILL_EMAIL_SMTP_APP_PASSWORD }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          IP_SALT: ${{ secrets.IP_SALT }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "GRILL_EMAIL_SMTP_APP_PASSWORD='${GRILL_EMAIL_SMTP_APP_PASSWORD}' \
+             DB_PASS='${DB_PASS}' \
+             IP_SALT='${IP_SALT}' \
+             bash /root/graphicmeat-deploy/deploy/standup.sh"
+
+      - name: Verify via Cloudflare (public)
+        run: |
+          curl -sS -f --max-time 15 -o /dev/null -w "homepage: %{http_code}\n" https://graphicmeat.com/
+          curl -sS -f --max-time 15 -X POST https://graphicmeat.com/api/subscribe \
+            -H 'Content-Type: application/json' -H 'X-Requested-With: fetch' \
+            -d '{"email":""}' -o /dev/null -w "subscribe reachable: %{http_code}\n" || true
+
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

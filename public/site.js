@@ -96,6 +96,20 @@
     });
 })();
 
+// ===== GitHub star counts (progressive enhancement) =====
+(function () {
+    const badges = document.querySelectorAll('.gh-stars[data-repo]');
+    badges.forEach(async (el) => {
+        try {
+            const r = await fetch('https://api.github.com/repos/' + el.dataset.repo);
+            if (!r.ok) return;
+            const n = (await r.json()).stargazers_count;
+            const c = el.querySelector('.count');
+            if (c && Number.isFinite(n)) { c.textContent = n; c.hidden = false; }
+        } catch (_) { /* offline / rate-limited — link + label still shown */ }
+    });
+})();
+
 // ===== Cursor glow =====
 (function () {
     const glow = document.getElementById('glow');

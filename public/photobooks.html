@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhotoBooks — Beautiful photobooks, automatically | Graphic Meat</title>
-    <meta name="description" content="PhotoBooks is a native Apple photobook app for iPhone, iPad and Mac. Import from Apple Photos, auto-arrange pages with a smart layout engine, and export print-ready PDFs. Coming soon from Graphic Meat.">
+    <title>PhotoBooks for Mac — Beautiful photobooks, automatically | Graphic Meat</title>
+    <meta name="description" content="Download PhotoBooks free for macOS. Import from Apple Photos, let the smart layout engine arrange your pages, and export a print-ready PDF — all on your Mac. No account, photos never leave your machine.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0c0c0f">
     <link rel="canonical" href="https://graphicmeat.com/photobooks">
@@ -13,15 +13,15 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Graphic Meat">
-    <meta property="og:title" content="PhotoBooks — Beautiful photobooks, automatically">
-    <meta property="og:description" content="Native Apple photobook app. Import from Apple Photos, auto-arrange pages, export print-ready PDFs. Coming soon.">
+    <meta property="og:title" content="PhotoBooks for Mac — Beautiful photobooks, automatically">
+    <meta property="og:description" content="Free native Mac app. Import from Apple Photos, auto-arrange pages, export print-ready PDFs. Photos never leave your Mac.">
     <meta property="og:url" content="https://graphicmeat.com/photobooks">
     <meta property="og:image" content="https://graphicmeat.com/photobooks.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PhotoBooks — Beautiful photobooks, automatically">
-    <meta name="twitter:description" content="Native Apple photobook app. Import from Apple Photos, auto-arrange pages, export print-ready PDFs. Coming soon.">
+    <meta name="twitter:title" content="PhotoBooks for Mac — Beautiful photobooks, automatically">
+    <meta name="twitter:description" content="Free native Mac app. Import from Apple Photos, auto-arrange pages, export print-ready PDFs. Photos never leave your Mac.">
     <meta name="twitter:image" content="https://graphicmeat.com/photobooks.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,8 +37,11 @@
       "name": "PhotoBooks",
       "url": "https://graphicmeat.com/photobooks",
       "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "iOS 18, iPadOS 18, macOS 15",
-      "description": "Native Apple photobook app. Import from Apple Photos or the filesystem, auto-arrange photos into album page layouts with a hybrid layout engine, and export print-ready PDFs plus a shareable digital PDF.",
+      "operatingSystem": "macOS 15",
+      "description": "Native macOS photobook app. Import photos from Apple Photos or the filesystem, auto-arrange them into album page layouts with a hybrid layout engine, and export print-ready PDFs plus a shareable digital PDF. Runs fully on-device.",
+      "downloadUrl": "https://graphicmeat.com/download/photobooks",
+      "softwareVersion": "0.2.0",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "publisher": { "@type": "Organization", "name": "Graphic Meat", "url": "https://graphicmeat.com" }
     }
     </script>
@@ -65,54 +68,93 @@
         <main>
             <!-- HERO -->
             <header class="page-hero">
-                <span class="badge soon">Coming soon</span>
+                <span class="badge beta">Free for macOS</span>
                 <h1 class="page-h1">PhotoBooks</h1>
                 <p class="page-tagline">Beautiful photobooks, automatically.</p>
-                <p class="prose">PhotoBooks is a native app for iPhone, iPad and Mac that turns your photo library into a print-ready album. Pull in photos from Apple Photos or your files, let the layout engine arrange them into clean album pages, tweak anything you like, then export a PDF ready for print or sharing.</p>
+                <p class="prose">Point PhotoBooks at your Apple Photos library, and a smart layout engine arranges a whole book of balanced spreads in seconds. Nudge anything you like, then export a print-ready PDF — or a digital one to share. It's a native Mac app: fast, offline, and your photos never leave your machine.</p>
+
+                <div class="dl-row">
+                    <a class="cta cta--lg" href="/download/photobooks" rel="nofollow">Download for macOS <span class="arrow">&#8595;</span></a>
+                    <a class="cta cta--ghost" href="https://github.com/GraphicMeat/PhotoBooks/releases/latest" target="_blank" rel="noopener noreferrer">All releases &amp; source <span class="arrow">&#8594;</span></a>
+                    <a class="gh-stars" href="https://github.com/GraphicMeat/PhotoBooks/stargazers" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/PhotoBooks">
+                        <span class="star" aria-hidden="true">&#9733;</span>
+                        <span>Star on GitHub</span>
+                        <span class="count" hidden></span>
+                    </a>
+                </div>
+                <p class="dl-meta">Latest .dmg · macOS 15 Sequoia or later · Free · No account · Auto-updates</p>
             </header>
 
-            <!-- FEATURES -->
-            <section aria-labelledby="features-h">
-                <h2 id="features-h" class="section-label"><span class="mark">//</span> What it does</h2>
+            <!-- DEMO -->
+            <section aria-labelledby="demo-h">
+                <h2 id="demo-h" class="section-label"><span class="mark">//</span> See it flip</h2>
+                <figure class="demo-figure">
+                    <div class="demo-frame">
+                        <video src="photobooks-demo.mp4" poster="photobooks-demo-poster.jpg"
+                               width="1080" height="1080"
+                               autoplay muted loop playsinline preload="metadata"
+                               aria-label="A finished PhotoBooks album flipping through its pages"></video>
+                    </div>
+                    <figcaption class="demo-cap">A real book, auto-laid-out from a photo library. <a href="photobooks-sample.pdf" target="_blank" rel="noopener">Open the sample PDF &#8594;</a></figcaption>
+                </figure>
+            </section>
+
+            <!-- SCREENSHOTS -->
+            <section aria-labelledby="shots-h">
+                <h2 id="shots-h" class="section-label"><span class="mark">//</span> Inside the app</h2>
+                <ul class="shots">
+                    <li class="shot"><img src="photobooks-shots/screenshot-layout-editor.png" alt="PhotoBooks editor showing a spread of auto-arranged photos with the page sidebar and layout template picker" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-spread-preview.png" alt="A full two-page spread previewed in the PhotoBooks editor" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-clapperboard-spread.png" alt="Four-photo spread laid out edge to edge in PhotoBooks" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-film-reels-spread.png" alt="Mixed-orientation spread with the layout template tray in PhotoBooks" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-kodak-portra-spread.png" alt="Colourful photo spread arranged automatically in the PhotoBooks editor" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-page-sidebar.png" alt="PhotoBooks editor with the page thumbnail sidebar open next to a photo spread" width="3098" height="2058" loading="lazy"></li>
+                    <li class="shot"><img src="photobooks-shots/screenshot-camera-collage-spread.png" alt="Six-photo collage spread of cameras and film in PhotoBooks" width="3098" height="2058" loading="lazy"></li>
+                </ul>
+            </section>
+
+            <!-- WHY -->
+            <section aria-labelledby="why-h">
+                <h2 id="why-h" class="section-label"><span class="mark">//</span> Why you'll want it</h2>
                 <ul class="feature-grid">
                     <li class="feature">
-                        <h3>Smart auto-layout</h3>
-                        <p>A hybrid engine (templates + generative page partitioning, unified by a scorer) arranges your photos into balanced spreads.</p>
+                        <h3>A whole book in seconds</h3>
+                        <p>The layout engine (templates + generative page partitioning, unified by a scorer) fills every spread for you — no dragging photos into boxes one by one.</p>
                     </li>
                     <li class="feature">
-                        <h3>Import from Apple Photos</h3>
-                        <p>Bring photos straight from your Apple Photos library or from files on disk — no manual wrangling.</p>
+                        <h3>Your photos stay on your Mac</h3>
+                        <p>Everything runs on-device. No upload, no cloud account, no one else's servers touching your memories.</p>
+                    </li>
+                    <li class="feature">
+                        <h3>Free — just download it</h3>
+                        <p>No sign-up, no trial timer, no watermark on your export. Grab the .dmg and open it.</p>
                     </li>
                     <li class="feature">
                         <h3>Print-ready PDF export</h3>
-                        <p>Export a PDF built for Blurb PDF-to-Book or generic print services — sized and bled correctly.</p>
+                        <p>Export sized and bled correctly for Blurb PDF-to-Book or any generic print service — send it straight off.</p>
                     </li>
                     <li class="feature">
-                        <h3>Shareable digital PDF</h3>
-                        <p>Prefer screens? Export a lightweight digital PDF to share your album with anyone.</p>
+                        <h3>What you see is what prints</h3>
+                        <p>The same layout math drives the screen preview and the PDF, so there are no surprises on paper.</p>
                     </li>
                     <li class="feature">
-                        <h3>WYSIWYG editing</h3>
-                        <p>What you see on screen is what prints — the same layout math drives both preview and PDF.</p>
-                    </li>
-                    <li class="feature">
-                        <h3>Native on iOS &amp; macOS</h3>
-                        <p>Built in SwiftUI for iOS 18+ and macOS 15+ — a real Apple-ecosystem app, not a web wrapper.</p>
+                        <h3>Native, and it stays current</h3>
+                        <p>Built in SwiftUI for macOS — not a web wrapper — and it updates itself in the background as new versions ship.</p>
                     </li>
                 </ul>
             </section>
 
             <!-- HOW IT WORKS -->
             <section aria-labelledby="how-h">
-                <h2 id="how-h" class="section-label"><span class="mark">//</span> How it works</h2>
+                <h2 id="how-h" class="section-label"><span class="mark">//</span> Three steps to a book</h2>
                 <ol class="steps">
                     <li class="step">
                         <h3>Import</h3>
-                        <p>Choose photos from Apple Photos or the filesystem.</p>
+                        <p>Pull photos from Apple Photos or pick files on disk.</p>
                     </li>
                     <li class="step">
                         <h3>Auto-arrange</h3>
-                        <p>The layout engine builds album pages you can fine-tune.</p>
+                        <p>The engine builds album pages you can fine-tune.</p>
                     </li>
                     <li class="step">
                         <h3>Export</h3>
@@ -121,12 +163,12 @@
                 </ol>
             </section>
 
-            <!-- CTA -->
-            <section id="early-access" aria-labelledby="cta-h">
-                <h2 id="cta-h" class="section-label"><span class="mark">//</span> Early access</h2>
+            <!-- DOWNLOAD CTA -->
+            <section id="download" aria-labelledby="cta-h">
+                <h2 id="cta-h" class="section-label"><span class="mark">//</span> Get PhotoBooks</h2>
                 <div class="contact-cta">
-                    <p><strong>PhotoBooks launches with its app.</strong> Want a heads-up when it ships, or to help test it? Get in touch.</p>
-                    <a class="cta" href="/contact">Get in touch <span class="arrow">&#8594;</span></a>
+                    <p><strong>Free for macOS 15 and later.</strong> Download the latest build, open the .dmg, and make your first book tonight. iPhone and iPad versions are on the way.</p>
+                    <a class="cta cta--lg" href="/download/photobooks" rel="nofollow">Download for macOS <span class="arrow">&#8595;</span></a>
                 </div>
             </section>
         </main>
