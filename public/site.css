@@ -370,7 +370,6 @@ section { margin-top: 24px; }
     text-decoration: none; transition: color 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 .social-link:hover { color: var(--white); border-color: var(--red); box-shadow: 0 0 0 3px rgba(200,16,40,0.15); }
-.twitter-timeline { max-width: 520px; }
 
 /* result page lede (subscribed.html) */
 .result-lede { margin: 3.5rem 0 2rem; }
