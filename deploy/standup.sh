@@ -61,8 +61,9 @@ PORT=$PORT
 CONTACT_TO=prime@graphicmeat.com
 NEWSLETTER_NOTIFY=prime@graphicmeat.com
 SMTP_HOST=smtp.purelymail.com
-SMTP_PORT=465
-SMTP_SECURE=true
+# Port 465 is blocked outbound on this box — use 587 STARTTLS (same as mailvault-api).
+SMTP_PORT=587
+SMTP_SECURE=false
 SMTP_USER=grill@graphicmeat.com
 DB_HOST=127.0.0.1
 DB_PORT=3306
