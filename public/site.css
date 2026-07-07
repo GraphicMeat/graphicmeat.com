@@ -488,8 +488,43 @@ section { margin-top: 24px; }
     border: 1px solid rgba(200,16,40,0.22); border-radius: 10px;
     overflow: hidden; background: var(--surface);
     box-shadow: 0 0 24px rgba(0,0,0,0.4);
+    cursor: zoom-in; transition: border-color .3s, box-shadow .3s;
 }
+.shot:hover, .shot:focus-visible { border-color: var(--red); box-shadow: 0 0 24px rgba(200,16,40,0.3); outline: none; }
 .shot img { display: block; width: 100%; height: auto; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(4,4,6,0.92); backdrop-filter: blur(4px);
+    padding: clamp(12px, 4vw, 48px);
+}
+.lightbox.is-open { display: flex; }
+.lightbox-figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.lightbox-figure img {
+    display: block; max-width: 100%; max-height: 82vh; width: auto; height: auto;
+    border: 1px solid rgba(200,16,40,0.35); border-radius: 8px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+}
+.lightbox-cap { font-size: 0.8rem; color: var(--silver-dim); text-align: center; max-width: 60ch; }
+.lightbox-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; font-size: 1.6rem; line-height: 1;
+    color: var(--white); background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 50%;
+    cursor: pointer; transition: border-color .3s, background .3s, color .3s;
+}
+.lightbox-btn:hover { border-color: var(--red); color: var(--red-bright); background: var(--surface); }
+.lightbox-prev { left: clamp(8px, 3vw, 32px); }
+.lightbox-next { right: clamp(8px, 3vw, 32px); }
+.lightbox-close { top: clamp(8px, 3vw, 28px); right: clamp(8px, 3vw, 28px); transform: none; width: 44px; height: 44px; font-size: 1.3rem; }
+.lightbox-count { position: absolute; top: clamp(10px, 3vw, 30px); left: clamp(12px, 3vw, 32px); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver-dim); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+    .lightbox-btn { width: 42px; height: 42px; font-size: 1.3rem; }
+    .lightbox-figure img { max-height: 74vh; }
+}
 
 /* ===== FEATURE GRID ===== */
 .feature-grid {

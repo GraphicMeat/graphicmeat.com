@@ -110,6 +110,74 @@
     });
 })();
 
+// ===== Screenshot lightbox (progressive enhancement) =====
+(function () {
+    const shots = Array.from(document.querySelectorAll('.shots .shot img'));
+    if (!shots.length) return;
+
+    let index = 0, lastFocus = null;
+
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Screenshot viewer');
+    box.innerHTML =
+        '<span class="lightbox-count" aria-hidden="true"></span>' +
+        '<button class="lightbox-btn lightbox-close" type="button" aria-label="Close">&times;</button>' +
+        '<button class="lightbox-btn lightbox-prev" type="button" aria-label="Previous screenshot">&#8249;</button>' +
+        '<button class="lightbox-btn lightbox-next" type="button" aria-label="Next screenshot">&#8250;</button>' +
+        '<figure class="lightbox-figure"><img alt=""><figcaption class="lightbox-cap"></figcaption></figure>';
+    document.body.appendChild(box);
+
+    const imgEl = box.querySelector('.lightbox-figure img');
+    const capEl = box.querySelector('.lightbox-cap');
+    const countEl = box.querySelector('.lightbox-count');
+
+    function show(i) {
+        index = (i + shots.length) % shots.length;
+        const src = shots[index];
+        imgEl.src = src.currentSrc || src.src;
+        imgEl.alt = src.alt || '';
+        capEl.textContent = src.alt || '';
+        countEl.textContent = (index + 1) + ' / ' + shots.length;
+    }
+    function open(i) {
+        lastFocus = document.activeElement;
+        show(i);
+        box.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        box.querySelector('.lightbox-close').focus();
+    }
+    function close() {
+        box.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+    }
+
+    shots.forEach((img, i) => {
+        const li = img.closest('.shot');
+        li.tabIndex = 0;
+        li.setAttribute('role', 'button');
+        li.setAttribute('aria-label', 'View screenshot: ' + (img.alt || 'screenshot'));
+        li.addEventListener('click', () => open(i));
+        li.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+        });
+    });
+
+    box.querySelector('.lightbox-close').addEventListener('click', close);
+    box.querySelector('.lightbox-prev').addEventListener('click', () => show(index - 1));
+    box.querySelector('.lightbox-next').addEventListener('click', () => show(index + 1));
+    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+    document.addEventListener('keydown', (e) => {
+        if (!box.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(index - 1);
+        else if (e.key === 'ArrowRight') show(index + 1);
+    });
+})();
+
 // ===== Cursor glow =====
 (function () {
     const glow = document.getElementById('glow');
