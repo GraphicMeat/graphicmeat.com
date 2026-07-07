@@ -32,13 +32,17 @@ npm ci --omit=dev
 
 echo "==> 4/8 env files in $ENV_DIR"
 mkdir -p "$ENV_DIR"
-# secrets.env holds DB_PASS + IP_SALT + the grill SMTP app password. Generated once, reused on re-run.
+# secrets.env holds DB_PASS + IP_SALT + the grill SMTP app password.
+# Env vars passed to this script (e.g. from CI) WIN over the existing file; the file is
+# only a fallback so values generated on a prior run survive a re-run.
+IN_DB_PASS="${DB_PASS:-}"; IN_IP_SALT="${IP_SALT:-}"; IN_GRILL="${GRILL_EMAIL_SMTP_APP_PASSWORD:-}"
 if [[ -f "$ENV_DIR/secrets.env" ]]; then
     # shellcheck disable=SC1091
     source "$ENV_DIR/secrets.env"
 fi
-DB_PASS="${DB_PASS:-$(openssl rand -hex 24)}"
-IP_SALT="${IP_SALT:-$(openssl rand -hex 24)}"
+DB_PASS="${IN_DB_PASS:-${DB_PASS:-$(openssl rand -hex 24)}}"
+IP_SALT="${IN_IP_SALT:-${IP_SALT:-$(openssl rand -hex 24)}}"
+GRILL_EMAIL_SMTP_APP_PASSWORD="${IN_GRILL:-${GRILL_EMAIL_SMTP_APP_PASSWORD:-}}"
 if [[ -z "${GRILL_EMAIL_SMTP_APP_PASSWORD:-}" ]]; then
     if [[ -t 0 ]]; then
         read -rs -p "Purelymail app password for grill@graphicmeat.com: " GRILL_EMAIL_SMTP_APP_PASSWORD
