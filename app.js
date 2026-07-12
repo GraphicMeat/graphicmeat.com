@@ -230,6 +230,14 @@ app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
 });
 
+app.get('/blog', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'blog.html'));
+});
+
+app.get('/blog/automatic-masonry-layouts-photobooks', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'blog-automatic-masonry-layouts-photobooks.html'));
+});
+
 // ---- Download: always redirect to the latest PhotoBooks .dmg ----
 // Release asset filenames carry the version (PhotoBooks-x.y.z.dmg), so there's no
 // stable GitHub URL — resolve the newest via the API and 302 to it.

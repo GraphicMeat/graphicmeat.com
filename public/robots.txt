@@ -3,3 +3,17 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://graphicmeat.com/sitemap.xml
+
+# Product and editorial discovery for AI assistants and other agents.
+# Public pages may be crawled; form/API endpoints remain excluded.
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/

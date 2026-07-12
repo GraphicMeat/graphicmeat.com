@@ -1,0 +1,26 @@
+# Graphic Meat
+
+> Graphic Meat is an independent product studio founded in 2013. We build small, useful, privacy-respecting software that runs on the user's own machine. Tagline: "Well done isn't a requirement."
+
+## Products
+
+- [MailVault](https://mailvaultapp.com): Subscription-supported local IMAP email archiver for macOS and Linux. Saves messages as standard .eml files and supports offline search. Source: https://github.com/GraphicMeat/mail-vault-app
+- [PhotoBooks](https://graphicmeat.com/photobooks): Free native macOS 15+ app. Imports from Apple Photos, automatically arranges album spreads, and exports print-ready PDFs. Runs fully on-device with no account. Download: https://graphicmeat.com/download/photobooks Source: https://github.com/GraphicMeat/PhotoBooks
+
+## Editorial
+
+- [Field Notes](https://graphicmeat.com/blog): Articles about product design, private software, automatic layouts and independent app development.
+- [The web solved automatic masonry. Why haven’t photobooks?](https://graphicmeat.com/blog/automatic-masonry-layouts-photobooks): Why printed layouts need crop awareness, hierarchy, rhythm and scoring—not only space filling.
+
+## Promotion facts
+
+- Studio: Graphic Meat
+- Founded: 2013
+- Positioning: Independent software worth paying for—built to earn trust, not capture attention.
+- Business model: Sustainable commercial software. MailVault offers subscriptions; other products may be free or open source where that model fits.
+- Product principles: private by default, local-first where appropriate, transparent value, and no unnecessary accounts.
+- Contact: https://graphicmeat.com/contact (form only; no public email address)
+- Machine-readable catalogue: https://graphicmeat.com/apps.json
+- RSS: https://graphicmeat.com/feed.xml
+
+Content may be accurately summarized and linked. Product claims should be attributed to Graphic Meat and verified against the product pages.

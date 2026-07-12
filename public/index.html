@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=4">
+    <link rel="stylesheet" href="site.css?v=5">
 
     <!-- Structured data -->
     <script type="application/ld+json">
@@ -61,7 +61,7 @@
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "macOS, Linux",
             "description": "Archive your IMAP emails locally as standard .eml files — free up server storage, keep everything searchable offline.",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            "offers": { "@type": "Offer", "url": "https://mailvaultapp.com", "description": "Subscription plans are available from MailVault." }
           }
         },
         {
@@ -91,6 +91,14 @@
     <div class="bracket bracket--br"></div>
 
     <div class="page">
+        <nav class="site-nav" aria-label="Primary">
+            <a class="site-nav__brand" href="/" aria-current="page">Graphic<span>Meat</span></a>
+            <div class="site-nav__links">
+                <a href="#products">Products</a>
+                <a href="/blog">Field Notes</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </nav>
         <!-- HERO -->
         <header class="hero">
             <h1 class="logo-wrap">
@@ -102,7 +110,8 @@
                 Well done isn't a requirement
                 <span class="dash"></span>
             </p>
-            <p class="studio-line">Independent product studio &nbsp;·&nbsp; Est. 2013</p>
+            <p class="hero-kicker">Independent software worth paying for—built to earn trust, not capture attention.</p>
+            <p class="studio-line">Private by default &nbsp;·&nbsp; Sustainable by design &nbsp;·&nbsp; Est. 2013</p>
             <a href="#products" class="scroll-hint">&#8595; What we're building</a>
         </header>
 
@@ -125,7 +134,7 @@
                         <li class="chip">Local .eml archive</li>
                         <li class="chip">Offline search</li>
                         <li class="chip">Multi-account IMAP</li>
-                        <li class="chip">Free &amp; open source</li>
+                        <li class="chip">Subscription plans</li>
                     </ul>
                     <a class="gh-stars" href="https://github.com/GraphicMeat/mail-vault-app" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/mail-vault-app">
                         <span class="star" aria-hidden="true">&#9733;</span>
@@ -166,10 +175,26 @@
             </div>
         </section>
 
+        <!-- FIELD NOTES -->
+        <section id="field-notes" aria-labelledby="field-notes-h">
+            <div class="section-headline">
+                <h2 id="field-notes-h" class="section-label"><span class="mark">//</span> Field Notes</h2>
+                <a href="/blog">View all notes <span aria-hidden="true">&#8594;</span></a>
+            </div>
+            <article class="story-card story-card--featured">
+                <div>
+                    <p class="story-meta"><time datetime="2026-07-12">12 July 2026</time> · Design systems · 8 min read</p>
+                    <h3><a href="/blog/automatic-masonry-layouts-photobooks">The web solved automatic masonry. Why haven’t photobooks?</a></h3>
+                    <p>Web browsers have flowed uneven content into balanced grids for years. Printed albums still ask people to drag every photograph into a box. The missing piece isn’t layout—it’s judgement.</p>
+                </div>
+                <a class="story-arrow" href="/blog/automatic-masonry-layouts-photobooks" aria-label="Read The web solved automatic masonry. Why haven’t photobooks?">&#8599;</a>
+            </article>
+        </section>
+
         <!-- ABOUT -->
         <section id="about" aria-labelledby="about-h">
             <h2 id="about-h" class="section-label"><span class="mark">//</span> Who we are</h2>
-            <p class="prose">Graphic Meat is an independent product studio, running since 2013. We build small, sharp tools that respect your data and do one thing well — most of them free, many open source, all made to run on your own machine rather than someone else's server. No dashboards to babysit, no accounts you didn't ask for. Well done isn't a requirement.</p>
+            <p class="prose">Graphic Meat is an independent product studio, running since 2013. We build small, sharp tools that respect your data and do one thing well. Some are paid by subscription, some are free and open source—the model follows the product, while the goal stays the same: useful software and a studio that can keep making it. Well done isn't a requirement.</p>
         </section>
 
         <!-- HOW WE BUILD -->
@@ -252,6 +277,7 @@
         <!-- FOOTER -->
         <footer class="footer">
             <span>graphicmeat.com</span>
+            <a href="/blog">Field Notes</a>
             <a href="/contact">Contact</a>
             <span>Est. 2013</span>
             <div class="footer-sizzle">
