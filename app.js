@@ -270,6 +270,14 @@ app.get('/subscribed', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'subscribed.html'));
 });
 
+// Hidden internal download-stats dashboard. Not linked, not in sitemap; noindex
+// header + meta keep it out of search/AI crawlers. Stats fetched client-side from
+// the GitHub public API, so no server work here.
+app.get('/downloads', (req, res) => {
+    res.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+    res.sendFile(path.join(__dirname, 'public', 'downloads.html'));
+});
+
 app.get('/{*splat}', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

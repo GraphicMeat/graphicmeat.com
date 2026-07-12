@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download stats — internal</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="theme-color" content="#0c0c0f">
+    <meta name="referrer" content="no-referrer">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=4">
+
+    <style>
+        .dash { position: relative; z-index: 10; max-width: 960px; margin: 0 auto; padding: 90px 24px 80px; }
+        .dash-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+        .dash h1 { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: -.03em; }
+        .dash h1 b { color: var(--red); }
+        .fetched { color: var(--silver-dim); font-size: .8rem; margin-top: 6px; }
+        .refresh { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: .9rem;
+            display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+            background: var(--surface-2); color: var(--white); border: 1px solid var(--silver-dim);
+            padding: 10px 16px; border-radius: 6px; transition: border-color .2s, color .2s; }
+        .refresh:hover { border-color: var(--red); color: var(--red-bright); }
+        .refresh[disabled] { opacity: .5; cursor: wait; }
+        .refresh svg { width: 15px; height: 15px; }
+        .spin { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .status { color: var(--silver); padding: 40px 0; }
+        .status.err { color: var(--red-bright); }
+
+        .product { margin-top: 40px; border: 1px solid rgba(184,188,200,.14); border-radius: 10px;
+            background: var(--surface); overflow: hidden; }
+        .product-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+            flex-wrap: wrap; padding: 18px 22px; border-bottom: 1px solid rgba(184,188,200,.12); }
+        .product-head h2 { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 1.35rem; }
+        .product-head a { color: var(--silver-dim); font-size: .8rem; text-decoration: none; }
+        .product-head a:hover { color: var(--red-bright); }
+        .total { text-align: right; }
+        .total .n { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 1.9rem; color: var(--orange); line-height: 1; }
+        .total .l { color: var(--silver-dim); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+
+        table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+        th, td { padding: 12px 22px; text-align: left; }
+        thead th { color: var(--silver-dim); font-weight: 400; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+        tbody tr { border-top: 1px solid rgba(184,188,200,.08); }
+        td.ver { font-weight: 600; color: var(--white); white-space: nowrap; }
+        td.date { color: var(--silver-dim); white-space: nowrap; }
+        td.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .bar { position: relative; height: 6px; margin-top: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+        .bar > span { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--red), var(--orange)); border-radius: 3px; transition: width .5s ease-out; }
+        .pre { font-size: .68rem; color: var(--amber); border: 1px solid var(--amber); border-radius: 3px; padding: 0 5px; margin-left: 6px; }
+        .muted { color: var(--silver-dim); }
+    </style>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <main class="dash">
+        <div class="dash-head">
+            <div>
+                <h1>Download <b>stats</b></h1>
+                <p class="fetched" id="fetched"></p>
+            </div>
+            <button class="refresh" id="refresh" onclick="load()">
+                <svg id="refresh-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Refresh
+            </button>
+        </div>
+
+        <div class="status" id="status">Loading…</div>
+        <div id="products"></div>
+    </main>
+
+    <script>
+        // Real installer downloads only: .dmg (macOS) + .deb (Linux, MailVault).
+        // Excludes appcast (appcast.xml, latest.json), Sparkle sigs/deltas, tarballs,
+        // and source .zip archives.
+        const INSTALLER_RE = /\.(dmg|deb)$/i;
+
+        const PRODUCTS = [
+            { name: 'PhotoBooks', repo: 'GraphicMeat/PhotoBooks' },
+            { name: 'MailVault',  repo: 'GraphicMeat/mail-vault-app' },
+        ];
+
+        async function fetchReleases(repo) {
+            let all = [], page = 1;
+            while (true) {
+                const res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`,
+                    { headers: { Accept: 'application/vnd.github+json' } });
+                if (!res.ok) throw new Error(`${repo}: GitHub ${res.status} ${res.statusText}`);
+                const batch = await res.json();
+                all = all.concat(batch);
+                if (batch.length < 100) break;
+                page++;
+            }
+            return all;
+        }
+
+        function summarize(releases) {
+            const rows = releases
+                .filter(r => !r.draft)
+                .map(r => {
+                    let downloads = 0;
+                    for (const a of r.assets || []) if (INSTALLER_RE.test(a.name)) downloads += a.download_count;
+                    return { tag: r.tag_name, date: r.published_at, prerelease: r.prerelease, downloads };
+                })
+                .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+            const total = rows.reduce((s, r) => s + r.downloads, 0);
+            return { rows, total };
+        }
+
+        function renderProduct(p, data) {
+            const recent = data.rows.slice(0, 3);              // last 3 versions
+            const max = Math.max(1, ...recent.map(r => r.downloads));
+            const fmt = n => n.toLocaleString();
+            const rowsHtml = recent.length ? recent.map(r => `
+                <tr>
+                    <td class="ver">${r.tag}${r.prerelease ? '<span class="pre">pre</span>' : ''}</td>
+                    <td class="date">${r.date ? new Date(r.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '—'}</td>
+                    <td class="num">
+                        ${fmt(r.downloads)}
+                        <div class="bar"><span style="width:${(r.downloads / max * 100).toFixed(1)}%"></span></div>
+                    </td>
+                </tr>`).join('') : '<tr><td colspan="3" class="muted">No releases found</td></tr>';
+
+            return `
+                <section class="product">
+                    <div class="product-head">
+                        <div>
+                            <h2>${p.name}</h2>
+                            <a href="https://github.com/${p.repo}/releases" target="_blank" rel="noopener noreferrer">${p.repo} ↗</a>
+                        </div>
+                        <div class="total">
+                            <div class="n">${fmt(data.total)}</div>
+                            <div class="l">Total · ${data.rows.length} release${data.rows.length === 1 ? '' : 's'}</div>
+                        </div>
+                    </div>
+                    <table>
+                        <thead><tr><th>Latest 3 versions</th><th>Date</th><th style="text-align:right">Downloads</th></tr></thead>
+                        <tbody>${rowsHtml}</tbody>
+                    </table>
+                </section>`;
+        }
+
+        async function load() {
+            const btn = document.getElementById('refresh');
+            const icon = document.getElementById('refresh-icon');
+            const status = document.getElementById('status');
+            const products = document.getElementById('products');
+            btn.disabled = true; icon.classList.add('spin');
+            status.className = 'status'; status.textContent = 'Fetching release data from GitHub…';
+            status.style.display = '';
+
+            try {
+                const results = await Promise.all(PRODUCTS.map(async p => renderProduct(p, summarize(await fetchReleases(p.repo)))));
+                products.innerHTML = results.join('');
+                status.style.display = 'none';
+                document.getElementById('fetched').textContent = 'Last fetched: ' + new Date().toLocaleString();
+            } catch (err) {
+                status.className = 'status err';
+                status.textContent = err.message + ' (GitHub allows 60 unauthenticated requests/hour per IP.)';
+                status.style.display = '';
+            } finally {
+                btn.disabled = false; icon.classList.remove('spin');
+            }
+        }
+
+        load();
+    </script>
+    <script src="site.js?v=4"></script>
+</body>
+</html>
