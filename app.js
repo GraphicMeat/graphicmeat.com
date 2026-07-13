@@ -239,6 +239,13 @@ app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
 });
 
+const PHOTOBOOK_LOCALES = ['de', 'fr', 'es', 'it', 'ja', 'ko', 'zh-hans', 'pt-br'];
+for (const locale of PHOTOBOOK_LOCALES) {
+    app.get(`/${locale}/photobooks`, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', `photobooks-${locale}.html`));
+    });
+}
+
 app.get('/blog', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'blog.html'));
 });

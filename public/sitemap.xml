@@ -10,6 +10,14 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://graphicmeat.com/de/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/fr/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/es/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/it/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/ja/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/ko/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/zh-hans/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/pt-br/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://graphicmeat.com/contact</loc>
     <changefreq>monthly</changefreq>

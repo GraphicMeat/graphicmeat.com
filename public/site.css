@@ -695,6 +695,22 @@ section { margin-top: 24px; }
 }
 .pb-topbar { min-height: 84px; padding: 0; border-bottom: 1px solid var(--pb-line); }
 .pb-nav-links { display: flex; align-items: center; gap: 28px; }
+.pb-language-switcher { position: relative; color: var(--silver-dim); font: .68rem/1 'Share Tech Mono', monospace; }
+.pb-language-switcher summary {
+    display: flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 9px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.12); border-radius: 6px; color: var(--white); list-style: none;
+}
+.pb-language-switcher summary::-webkit-details-marker { display: none; }
+.pb-language-switcher summary::after { content: '▾'; color: var(--silver-dim); font-size: .58rem; }
+.pb-language-switcher[open] summary::after { transform: rotate(180deg); }
+.pb-language-switcher ul {
+    position: absolute; z-index: 20; top: calc(100% + 8px); right: 0; width: 190px; margin: 0; padding: 7px;
+    list-style: none; border: 1px solid rgba(255,255,255,.14); border-radius: 7px; background: rgba(12,12,15,.98);
+    box-shadow: 0 18px 45px rgba(0,0,0,.45);
+}
+.pb-language-switcher li { margin: 0; }
+.pb-language-switcher li a { display: block; padding: 9px 10px; border-radius: 4px; color: var(--silver-dim); text-transform: none; letter-spacing: .02em; }
+.pb-language-switcher li a:hover, .pb-language-switcher li a[aria-current="page"] { color: var(--white); background: rgba(255,255,255,.07); }
 .pb-nav-links a {
     color: var(--silver-dim); font-family: 'Share Tech Mono', monospace; font-size: .68rem;
     letter-spacing: .13em; text-transform: uppercase; text-decoration: none; transition: color .25s;
@@ -932,6 +948,8 @@ section { margin-top: 24px; }
 @media (max-width: 760px) {
     .pb-shell { width: min(100% - 36px, 1240px); padding-bottom: 96px; }
     .pb-topbar { min-height: 70px; }.pb-nav-links > a:not(.pb-nav-download) { display: none; }.pb-nav-links .pb-nav-download { padding: 9px 11px; }
+    .pb-language-switcher summary { font-size: 0; gap: 4px; }
+    .pb-language-switcher summary span { font-size: .95rem; }
     .pb-hero { min-height: auto; grid-template-columns: 1fr; gap: 42px; padding: 70px 0 58px; }
     .pb-hero h1 { font-size: clamp(2.75rem, 13vw, 4.5rem); }.pb-hero h1 em { margin-top: 7px; }
     .pb-lede { font-size: 1rem; }.pb-actions .pb-button--primary { display: none; }.pb-button--text { min-height: 42px; }

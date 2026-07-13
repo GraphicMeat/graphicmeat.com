@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac 版 PhotoBooks — 将您的照片变成一本精美的书 | Graphic Meat</title>
+    <meta name="description" content="使用 Mac 版 PhotoBooks 在几分钟内将 Apple 照片变成精美的相册。自动排列每个跨页、编辑任何内容并导出可打印的 PDF。免费、私密且完全在设备上。">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="canonical" href="https://graphicmeat.com/zh-hans/photobooks">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/photobooks">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/photobooks">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/photobooks">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/photobooks">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/photobooks">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/photobooks">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/photobooks">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/photobooks">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/photobooks">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/photobooks">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="你的照片已经讲述了一个故事。 PhotoBooks 将其变成一本书。">
+    <meta property="og:description" content="一款免费的私人 Mac 应用程序，可自动将您的照片整理成精美、可打印的相册。">
+    <meta property="og:url" content="https://graphicmeat.com/zh-hans/photobooks">
+    <meta property="og:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="PhotoBooks 应用程序图标，显示已完成的相册集合">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="你的照片已经讲述了一个故事。 PhotoBooks 将其变成一本书。">
+    <meta name="twitter:description" content="在 Mac 上自动排列精美的相册。免费、私密且可打印。">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta name="twitter:image:alt" content="PhotoBooks 应用程序图标，显示已完成的相册集合">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=8">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://graphicmeat.com/#organization",
+          "name": "Graphic Meat",
+          "url": "https://graphicmeat.com",
+          "logo": "https://graphicmeat.com/logo.png"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "PhotoBooks",
+          "url": "https://graphicmeat.com/zh-hans/photobooks",
+          "image": "https://graphicmeat.com/assets/photobooks/images/icon.png",
+          "screenshot": "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "macOS 15 or later",
+          "description": "一款原生 macOS 应用程序，可从 Apple Photos 或文件导入照片，自动将它们排列到可编辑的跨页相册中，并完全在设备上导出可打印或可共享的 PDF。",
+          "downloadUrl": "https://graphicmeat.com/download/photobooks",
+          "featureList": "自动页面布局、Apple Photos 导入、设备上处理、可编辑跨页、可打印的 PDF 导出、数字 PDF 导出",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Mac 版照片书制作工具 — 自动布局和 PDF 导出",
+          "description": "30 秒的 Mac 版 PhotoBooks 演示，展示照片导入、自动页面布局、编辑和可打印的 PDF 导出。",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ooB3PwKoN5E/maxresdefault.jpg",
+          "uploadDate": "2026-07-13",
+          "duration": "PT30S",
+          "contentUrl": "https://www.youtube.com/watch?v=ooB3PwKoN5E",
+          "embedUrl": "https://www.youtube-nocookie.com/embed/ooB3PwKoN5E",
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="photobooks-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell">
+        <nav class="topbar pb-topbar" aria-label="基本的">
+            <a class="home" href="/">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#how-it-works">它是如何运作的</a>
+                <a href="#privacy">隐私</a>
+                <details class="pb-language-switcher">
+                    <summary><span aria-hidden="true">🇨🇳</span> 简体中文</summary>
+                    <ul>
+                            <li><a href="/photobooks" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li>
+                            <li><a href="/de/photobooks" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li>
+                            <li><a href="/fr/photobooks" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li>
+                            <li><a href="/es/photobooks" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li>
+                            <li><a href="/it/photobooks" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li>
+                            <li><a href="/ja/photobooks" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li>
+                            <li><a href="/ko/photobooks" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li>
+                            <li><a href="/zh-hans/photobooks" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans" aria-current="page"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li>
+                            <li><a href="/pt-br/photobooks" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li>
+                    </ul>
+                </details>
+                <a class="pb-nav-download" href="/download/photobooks" rel="nofollow">免费下载</a>
+            </div>
+        </nav>
+
+        <main>
+            <header class="pb-hero">
+                <div class="pb-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> macOS 免费</p>
+                    <h1>你的照片已经讲述了一个故事。 <em>PhotoBooks 将其变成一本书。</em></h1>
+                    <p class="pb-lede">从 Apple 照片导入。只需几秒钟即可获得一本精美的相册。调整任何内容，然后完全在您的 Mac 上私密地导出可打印的 PDF。</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">
+                            创作我的第一本书 <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="pb-button pb-button--text" href="#watch-the-film">
+                            观看 30 秒影片 <span aria-hidden="true">↘</span>
+                        </a>
+                    </div>
+                    <p class="pb-download-note">macOS 15+ · 无帐户 · 无水印 · 照片从未上传</p>
+                </div>
+
+                <figure class="pb-hero-art">
+                    <div class="pb-orbit pb-orbit--one" aria-hidden="true"></div>
+                    <div class="pb-orbit pb-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/photobooks/images/icon.png" alt="PhotoBooks 应用程序图标，显示已完成的相册集合" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag pb-proof-tag--private">
+                        <span aria-hidden="true">●</span>
+                        100% 在设备上
+                    </span>
+                    <span class="pb-proof-tag pb-proof-tag--print">
+                        可打印的 PDF <span aria-hidden="true">↗</span>
+                    </span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="照片书的好处">
+                <p><strong>本机 Mac 应用程序</strong><span>快速、熟悉、内置 SwiftUI</span></p>
+                <p><strong>私人设计</strong><span>您的图书馆永远不会离开您的 Mac</span></p>
+                <p><strong>免费完成</strong><span>无试用计时器或导出水印</span></p>
+                <p><strong>印刷制作</strong><span>导出并处理尺寸和出血</span></p>
+            </aside>
+
+            <section class="pb-app-proof" aria-labelledby="app-proof-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">是的，这是一个真正的 Mac 应用程序</p>
+                        <h2 id="app-proof-heading">一本完整的书。<br>一个专注的工作空间。</h2>
+                    </div>
+                    <p>导航每个页面，微调所选照片，探索替代布局，并将未使用的图像直接拉入故事中，而无需离开画布。</p>
+                </div>
+                <figure class="pb-app-window">
+                    <a href="/assets/photobooks/images/app-workspace.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 PhotoBooks 应用程序屏幕截图">
+                        <img src="/assets/photobooks/images/app-workspace.webp" alt="在 macOS 上运行的相册，包含九个书页、可编辑的两页跨页、可用照片和可见的布局选项" width="2766" height="1794" loading="lazy">
+                    </a>
+                    <figcaption>
+                        <span>macOS 上的相册·当前版本</span>
+                        <span>页面导航·直接编辑·实时布局替代方案</span>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-transform" aria-labelledby="transform-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">从相机胶卷到咖啡桌</p>
+                    <h2 id="transform-heading">少排序。更加铭记。</h2>
+                    <p>你最好的照片已经在那里了。 PhotoBooks 找到了它们之间的视觉节奏并构建了初稿，这样您就可以花时间塑造故事 - 而不是将图像拖入空盒子中。</p>
+                </div>
+
+                <div class="pb-transform-stage" aria-label="将松散照片的文件夹变成成品相册">
+                    <div class="pb-photo-source">
+                        <span class="pb-source-label">苹果照片</span>
+                        <div class="pb-photo-stack" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <p><strong>你的整个图书馆</strong><span>旅行、家庭、普通魔法</span></p>
+                    </div>
+                    <div class="pb-flow" aria-hidden="true">
+                        <span></span><span></span><span></span><b>安排</b>
+                    </div>
+                    <div class="pb-book-result">
+                        <span class="pb-result-label">初稿</span>
+                        <div class="pb-mini-book" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <p><strong>一本完整的书</strong><span>平衡、可编辑、可导出</span></p>
+                    </div>
+                </div>
+                <p class="pb-photo-credits">摄影：
+                    <a href="https://unsplash.com/photos/family-enjoys-a-day-at-the-beach-yJMB6Wnwfs0?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">赫克托·奥康纳</a>,
+                    <a href="https://unsplash.com/photos/JzhVIQ_NeUw?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">艾米莉·巴内特</a>,
+                    <a href="https://unsplash.com/photos/Zdg33BPekGg?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">里德·盖革</a>,
+                    <a href="https://unsplash.com/photos/ONokxQ0unMc?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">托比亚斯·赖希</a>， 和
+                    <a href="https://unsplash.com/photos/QopwOEmQvcs?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">卡斯滕·怀恩格特</a> 在 Unsplash 上。
+                </p>
+            </section>
+
+            <section class="pb-film" id="watch-the-film" aria-labelledby="film-heading">
+                <div class="pb-film-heading">
+                    <div>
+                        <p class="pb-kicker">查看整个工作流程</p>
+                        <h2 id="film-heading">30 秒内从照片库到可打印的书籍。</h2>
+                    </div>
+                    <p>选择您的照片、设置格式、让 PhotoBooks 排列每一页并导出完成的 PDF — 所有这些都在一个集中的工作流程中完成。</p>
+                </div>
+                <figure class="pb-film-frame">
+                    <iframe src="https://www.youtube-nocookie.com/embed/ooB3PwKoN5E?rel=0&amp;playsinline=1"
+                            width="1920" height="1080"
+                            title="Mac 版 PhotoBooks — 自动照片书布局和 PDF 导出演示"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    <figcaption>
+                        <span>真实的工作流程·真实的输出·包含字幕</span>
+                        <a href="/assets/photobooks/documents/sample-photobook.pdf" target="_blank" rel="noopener">打开完整的示例 PDF <span aria-hidden="true">↗</span></a>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-process" id="how-it-works" aria-labelledby="process-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">三动。一本书。</p>
+                    <h2 id="process-heading">从导入到打印，没有空白页恐慌。</h2>
+                </div>
+
+                <ol class="pb-process-list">
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">01 / 导入</span>
+                            <h3>从您已有的照片开始。</h3>
+                            <p>选择磁盘上的 Apple 照片相册或文件。一切都保留在本地，因此大型库感觉很即时，不像上传队列。</p>
+                        </div>
+                        <div class="pb-import-visual" aria-hidden="true">
+                            <span class="pb-library-icon">✦</span>
+                            <p>夏天 / 248 张照片</p>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                    </li>
+                    <li class="pb-process-card pb-process-card--reverse">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">02 / 自动排列</span>
+                            <h3>在几秒钟内获得经过深思熟虑的初稿。</h3>
+                            <p>PhotoBooks 在每个跨页中平衡方向、裁剪、比例和视觉节奏。只要直觉告诉你，就可以更改布局或移动照片。</p>
+                        </div>
+                        <div class="pb-layout-visual" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                            <span>自动平衡</span>
+                        </div>
+                    </li>
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">03 / 出口</span>
+                            <h3>发送它进行打印，或者发送给您所爱的人。</h3>
+                            <p>导出可供打印的 PDF 以用于 Blurb PDF-to-Book 或其他打印服务，以及易于共享的更轻的数字副本。</p>
+                        </div>
+                        <div class="pb-export-visual" aria-hidden="true">
+                            <div class="pb-pdf-sheet"><b>PDF</b><span>打印就绪</span></div>
+                            <ul><li>尺寸处理</li><li>出血处理</li><li>你看到的就是打印出来的</li></ul>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="pb-use-cases" aria-labelledby="use-cases-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">比其他文件夹更有价值</p>
+                    <h2 id="use-cases-heading">制作一本你一直想做的书。</h2>
+                </div>
+                <div class="pb-use-case-grid">
+                    <article>
+                        <span aria-hidden="true">01</span>
+                        <h3>不应该存在于文件夹中的旅行。</h3>
+                        <p>将难忘的一周中的数百张照片变成一个无需滚动即可重温的故事。</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">02</span>
+                        <h3>一年的家庭时光，变得有形。</h3>
+                        <p>收集相机胶卷之间消失的微小而平凡的时刻，并给它们一个永久的位置。</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">03</span>
+                        <h3>今晚你就可以完成这份礼物。</h3>
+                        <p>从自动布局开始，添加最后的修饰，然后发送一份非常个人化的礼物进行打印。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="pb-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="pb-privacy-copy">
+                    <p class="pb-kicker">建筑私有</p>
+                    <h2 id="privacy-heading">你的记忆不是训练数据。</h2>
+                    <p>PhotoBooks 在您的 Mac 上运行。没有照片上传、云帐户或远程处理步骤。从导入到导出，您的库始终属于您。</p>
+                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">建在露天。查看源码 <span aria-hidden="true">↗</span></a>
+                </div>
+                <ul class="pb-privacy-list">
+                    <li><span aria-hidden="true">✓</span><p><strong>没有账户</strong>无需创建个人资料，也无需移交个人详细信息。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>没有上传</strong>您的原始照片保留在您的机器上。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>无水印</strong>您完成的出口完全属于您。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>没有黑匣子</strong>应用程序源可供检查。</p></li>
+                </ul>
+            </section>
+
+            <section class="pb-final-cta" aria-labelledby="download-heading">
+                <p class="pb-kicker">今晚做一个</p>
+                <h2 id="download-heading">照片准备好了。<br>书正在等待。</h2>
+                <p>下载相册，选择相册，然后在几秒钟内查看您的第一个完整草稿。</p>
+                <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">创作我的第一本书 <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">最新 .dmg · macOS 15 Sequoia 或更高版本 · 免费 · 没有帐户</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" aria-label="相册更新">
+            <div>
+                <p class="newsletter-title">获取相册更新</p>
+                <p class="pb-newsletter-copy">有关即将推出的 iPhone 和 iPad 版本的不定期发行说明和早期新闻。</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">电子邮件</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="你@example.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">网站</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <button type="submit" class="cta" id="nl-submit">让我随时了解情况 <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">双重选择加入·随时退订·无垃圾邮件</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/">Home</a>
+            <a href="/app-privacy">应用程序隐私</a>
+            <span>预计。 2013年</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">煮过一个 <b>开放GPU</b> by</span>
+                <a href="/" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock" href="/download/photobooks" rel="nofollow">创作我的第一本书 <span aria-hidden="true">↓</span></a>
+
+    <script src="/site.js?v=5" defer></script>
+</body>
+</html>

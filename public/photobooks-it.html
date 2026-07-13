@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBooks per Mac — Trasforma le tue foto in un bellissimo libro | Graphic Meat</title>
+    <meta name="description" content="Trasforma le foto di Apple in uno splendido fotolibro in pochi minuti con PhotoBooks per Mac. Disponi automaticamente ogni pagina, modifica qualsiasi cosa ed esporta un PDF pronto per la stampa. Gratuito, privato e interamente sul dispositivo.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="canonical" href="https://graphicmeat.com/it/photobooks">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/photobooks">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/photobooks">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/photobooks">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/photobooks">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/photobooks">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/photobooks">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/photobooks">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/photobooks">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/photobooks">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/photobooks">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Le tue foto raccontano già una storia. PhotoBooks lo trasforma in un libro.">
+    <meta property="og:description" content="Un'app Mac privata e gratuita che organizza automaticamente le tue foto in splendidi fotolibri pronti per la stampa.">
+    <meta property="og:url" content="https://graphicmeat.com/it/photobooks">
+    <meta property="og:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="L'icona dell'app PhotoBooks, che mostra una raccolta di album fotografici finiti">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Le tue foto raccontano già una storia. PhotoBooks lo trasforma in un libro.">
+    <meta name="twitter:description" content="Organizza automaticamente un bellissimo fotolibro sul tuo Mac. Gratuito, privato e pronto per la stampa.">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta name="twitter:image:alt" content="L'icona dell'app PhotoBooks, che mostra una raccolta di album fotografici finiti">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=8">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://graphicmeat.com/#organization",
+          "name": "Graphic Meat",
+          "url": "https://graphicmeat.com",
+          "logo": "https://graphicmeat.com/logo.png"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "PhotoBooks",
+          "url": "https://graphicmeat.com/it/photobooks",
+          "image": "https://graphicmeat.com/assets/photobooks/images/icon.png",
+          "screenshot": "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "macOS 15 or later",
+          "description": "Un'app nativa per macOS che importa foto da foto o file Apple, le organizza automaticamente in pagine di fotolibri modificabili ed esporta PDF pronti per la stampa o condivisibili interamente sul dispositivo.",
+          "downloadUrl": "https://graphicmeat.com/download/photobooks",
+          "featureList": "Layout di pagina automatici, importazione di foto da Apple, elaborazione sul dispositivo, pagine modificabili, esportazione di PDF pronti per la stampa, esportazione di PDF digitali",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Photo Book Maker per Mac: layout automatici ed esportazione PDF",
+          "description": "Una dimostrazione di PhotoBooks per Mac di 30 secondi che mostra l'importazione di foto, i layout di pagina automatici, la modifica e l'esportazione di PDF pronti per la stampa.",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ooB3PwKoN5E/maxresdefault.jpg",
+          "uploadDate": "2026-07-13",
+          "duration": "PT30S",
+          "contentUrl": "https://www.youtube.com/watch?v=ooB3PwKoN5E",
+          "embedUrl": "https://www.youtube-nocookie.com/embed/ooB3PwKoN5E",
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="photobooks-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell">
+        <nav class="topbar pb-topbar" aria-label="Primario">
+            <a class="home" href="/">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#how-it-works">Come funziona</a>
+                <a href="#privacy">Privacy</a>
+                <details class="pb-language-switcher">
+                    <summary><span aria-hidden="true">🇮🇹</span> Italiano</summary>
+                    <ul>
+                            <li><a href="/photobooks" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li>
+                            <li><a href="/de/photobooks" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li>
+                            <li><a href="/fr/photobooks" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li>
+                            <li><a href="/es/photobooks" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li>
+                            <li><a href="/it/photobooks" lang="it" hreflang="it" data-language="it" aria-current="page"><span aria-hidden="true">🇮🇹</span> Italiano</a></li>
+                            <li><a href="/ja/photobooks" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li>
+                            <li><a href="/ko/photobooks" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li>
+                            <li><a href="/zh-hans/photobooks" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li>
+                            <li><a href="/pt-br/photobooks" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li>
+                    </ul>
+                </details>
+                <a class="pb-nav-download" href="/download/photobooks" rel="nofollow">Scarica gratuitamente</a>
+            </div>
+        </nav>
+
+        <main>
+            <header class="pb-hero">
+                <div class="pb-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> Gratuito per macOS</p>
+                    <h1>Le tue foto raccontano già una storia. <em>PhotoBooks lo trasforma in un libro.</em></h1>
+                    <p class="pb-lede">Importa da Apple Foto. Ottieni un fotolibro splendidamente organizzato in pochi secondi. Modifica qualsiasi cosa, quindi esporta un PDF pronto per la stampa, in privato, interamente sul tuo Mac.</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">
+                            Crea il mio primo libro <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="pb-button pb-button--text" href="#watch-the-film">
+                            Guarda il film di 30 secondi <span aria-hidden="true">↘</span>
+                        </a>
+                    </div>
+                    <p class="pb-download-note">macOS 15+ · Nessun account · Nessuna filigrana · Foto mai caricate</p>
+                </div>
+
+                <figure class="pb-hero-art">
+                    <div class="pb-orbit pb-orbit--one" aria-hidden="true"></div>
+                    <div class="pb-orbit pb-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/photobooks/images/icon.png" alt="L'icona dell'app PhotoBooks, che mostra una raccolta di album fotografici finiti" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag pb-proof-tag--private">
+                        <span aria-hidden="true">●</span>
+                        100% sul dispositivo
+                    </span>
+                    <span class="pb-proof-tag pb-proof-tag--print">
+                        PDF pronto per la stampa <span aria-hidden="true">↗</span>
+                    </span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="Vantaggi dei fotolibri">
+                <p><strong>Applicazione nativa per Mac</strong><span>Veloce, familiare, integrato in SwiftUI</span></p>
+                <p><strong>Privato per progettazione</strong><span>La tua libreria non lascia mai il tuo Mac</span></p>
+                <p><strong>Libero di finire</strong><span>Nessun timer di prova o filigrana di esportazione</span></p>
+                <p><strong>Fatto per stampare</strong><span>Esportazione con dimensione e abbondanza gestite</span></p>
+            </aside>
+
+            <section class="pb-app-proof" aria-labelledby="app-proof-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">Sì, è una vera app per Mac</p>
+                        <h2 id="app-proof-heading">Un libro completo.<br>Uno spazio di lavoro mirato.</h2>
+                    </div>
+                    <p>Naviga in ogni pagina, perfeziona la foto selezionata, esplora layout alternativi e inserisci le immagini inutilizzate direttamente nella storia, senza lasciare la tela.</p>
+                </div>
+                <figure class="pb-app-window">
+                    <a href="/assets/photobooks/images/app-workspace.webp" target="_blank" rel="noopener" aria-label="Apri lo screenshot dell'app PhotoBooks a grandezza naturale">
+                        <img src="/assets/photobooks/images/app-workspace.webp" alt="Fotolibri in esecuzione su macOS con nove pagine di libro, due pagine modificabili, foto disponibili e scelte di layout visibili" width="2766" height="1794" loading="lazy">
+                    </a>
+                    <figcaption>
+                        <span>Fotolibri su macOS · build attuale</span>
+                        <span>Navigazione della pagina · modifica diretta · alternative di layout live</span>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-transform" aria-labelledby="transform-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">Dal rullino fotografico al tavolino da caffè</p>
+                    <h2 id="transform-heading">Meno ordinamento. Più ricordare.</h2>
+                    <p>Le tue foto migliori sono già lì. PhotoBooks trova un ritmo visivo attraverso di essi e crea la prima bozza, così puoi dedicare il tuo tempo a dare forma alla storia, senza trascinare le immagini in caselle vuote.</p>
+                </div>
+
+                <div class="pb-transform-stage" aria-label="Una cartella di foto sciolte che diventa un fotolibro finito">
+                    <div class="pb-photo-source">
+                        <span class="pb-source-label">Foto di Apple</span>
+                        <div class="pb-photo-stack" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <p><strong>Tutta la tua libreria</strong><span>Viaggi, famiglia, magia ordinaria</span></p>
+                    </div>
+                    <div class="pb-flow" aria-hidden="true">
+                        <span></span><span></span><span></span><b>Organizzare</b>
+                    </div>
+                    <div class="pb-book-result">
+                        <span class="pb-result-label">Prima bozza</span>
+                        <div class="pb-mini-book" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <p><strong>Un libro completo</strong><span>Equilibrato, modificabile, pronto per l'esportazione</span></p>
+                    </div>
+                </div>
+                <p class="pb-photo-credits">Fotografia di
+                    <a href="https://unsplash.com/photos/family-enjoys-a-day-at-the-beach-yJMB6Wnwfs0?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Hector O'Connor</a>,
+                    <a href="https://unsplash.com/photos/JzhVIQ_NeUw?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Emily Barnet</a>,
+                    <a href="https://unsplash.com/photos/Zdg33BPekGg?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Reed Geiger</a>,
+                    <a href="https://unsplash.com/photos/ONokxQ0unMc?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Tobias Reich</a>, E
+                    <a href="https://unsplash.com/photos/QopwOEmQvcs?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Karsten Winegeart</a> su Unsplash.
+                </p>
+            </section>
+
+            <section class="pb-film" id="watch-the-film" aria-labelledby="film-heading">
+                <div class="pb-film-heading">
+                    <div>
+                        <p class="pb-kicker">Visualizza l'intero flusso di lavoro</p>
+                        <h2 id="film-heading">Dalla libreria fotografica al libro pronto per la stampa in 30 secondi.</h2>
+                    </div>
+                    <p>Scegli le tue foto, imposta il formato, lascia che PhotoBooks organizzi ogni pagina ed esporti il ​​PDF finito, il tutto in un unico flusso di lavoro mirato.</p>
+                </div>
+                <figure class="pb-film-frame">
+                    <iframe src="https://www.youtube-nocookie.com/embed/ooB3PwKoN5E?rel=0&amp;playsinline=1"
+                            width="1920" height="1080"
+                            title="PhotoBooks per Mac: layout automatici di fotolibri e demo di esportazione in PDF"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    <figcaption>
+                        <span>Flusso di lavoro reale · output reale · didascalie incluse</span>
+                        <a href="/assets/photobooks/documents/sample-photobook.pdf" target="_blank" rel="noopener">Apri il PDF di esempio completo <span aria-hidden="true">↗</span></a>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-process" id="how-it-works" aria-labelledby="process-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">Tre mosse. Un libro.</p>
+                    <h2 id="process-heading">Dall'importazione alla stampa senza il panico delle pagine bianche.</h2>
+                </div>
+
+                <ol class="pb-process-list">
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">01 / Importazione</span>
+                            <h3>Inizia con le foto che hai già.</h3>
+                            <p>Scegli un album o file di Apple Foto sul disco. Tutto rimane locale, quindi una grande libreria sembra immediata, non come una coda di caricamento.</p>
+                        </div>
+                        <div class="pb-import-visual" aria-hidden="true">
+                            <span class="pb-library-icon">✦</span>
+                            <p>Estate / 248 foto</p>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                    </li>
+                    <li class="pb-process-card pb-process-card--reverse">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">02 / Disposizione automatica</span>
+                            <h3>Ottieni una prima bozza ponderata in pochi secondi.</h3>
+                            <p>PhotoBooks bilancia orientamento, ritaglio, scala e ritmo visivo in ogni pagina. Cambia un layout o sposta una foto ogni volta che l'istinto dice diversamente.</p>
+                        </div>
+                        <div class="pb-layout-visual" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                            <span>Bilanciato automaticamente</span>
+                        </div>
+                    </li>
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">03 / Esporta</span>
+                            <h3>Invialo per la stampa o invialo a qualcuno che ami.</h3>
+                            <p>Esporta un PDF pronto per la stampa per Blurb PDF-to-Book o un altro servizio di stampa, oltre a una copia digitale più leggera facile da condividere.</p>
+                        </div>
+                        <div class="pb-export-visual" aria-hidden="true">
+                            <div class="pb-pdf-sheet"><b>PDF</b><span>STAMPA PRONTA</span></div>
+                            <ul><li>Taglia gestita</li><li>Sanguinamento gestito</li><li>Ciò che vedi è ciò che viene stampato</li></ul>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="pb-use-cases" aria-labelledby="use-cases-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">Vale più di un'altra cartella</p>
+                    <h2 id="use-cases-heading">Realizza il libro che continui a voler realizzare.</h2>
+                </div>
+                <div class="pb-use-case-grid">
+                    <article>
+                        <span aria-hidden="true">01</span>
+                        <h3>Il viaggio che non dovrebbe vivere in una cartella.</h3>
+                        <p>Trasforma le centinaia di fotografie di una settimana indimenticabile in una storia che puoi rivisitare senza scorrere.</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">02</span>
+                        <h3>Un anno di famiglia, reso tangibile.</h3>
+                        <p>Raccogli i piccoli momenti ordinari che scompaiono tra i rullini fotografici e dai loro un posto permanente.</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">03</span>
+                        <h3>Il regalo che puoi finire stasera.</h3>
+                        <p>Inizia da un layout automatico, aggiungi i tocchi finali e invia un regalo profondamente personale da stampare.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="pb-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="pb-privacy-copy">
+                    <p class="pb-kicker">Privato per architettura</p>
+                    <h2 id="privacy-heading">I tuoi ricordi non sono dati di allenamento.</h2>
+                    <p>PhotoBooks funziona sul tuo Mac. Non è previsto il caricamento di foto, un account cloud o una fase di elaborazione remota. La tua libreria rimane tua dall'importazione all'esportazione.</p>
+                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">Costruito all'aperto. Visualizza la fonte <span aria-hidden="true">↗</span></a>
+                </div>
+                <ul class="pb-privacy-list">
+                    <li><span aria-hidden="true">✓</span><p><strong>Nessun conto</strong>Nessun profilo da creare o dettagli personali da consegnare.</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>Nessun caricamento</strong>Le tue foto originali rimangono sul tuo computer.</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>Nessuna filigrana</strong>La tua esportazione finita appartiene interamente a te.</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>Nessuna scatola nera</strong>L'origine dell'applicazione è disponibile per l'ispezione.</p></li>
+                </ul>
+            </section>
+
+            <section class="pb-final-cta" aria-labelledby="download-heading">
+                <p class="pb-kicker">Fanne uno stasera</p>
+                <h2 id="download-heading">Le foto sono pronte.<br>Il libro sta aspettando.</h2>
+                <p>Scarica PhotoBooks, scegli un album e visualizza la tua prima bozza completa in pochi secondi.</p>
+                <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">Crea il mio primo libro <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">Ultimo .dmg · macOS 15 Sequoia o successivo · Gratuito · Nessun account</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" aria-label="Aggiornamenti sui fotolibri">
+            <div>
+                <p class="newsletter-title">Ricevi aggiornamenti su PhotoBook</p>
+                <p class="pb-newsletter-copy">Note di rilascio occasionali e prime notizie sulle prossime versioni di iPhone e iPad.</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">Indirizzo e-mail</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="tu@esempio.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">Sito web</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <button type="submit" class="cta" id="nl-submit">Tienimi aggiornato <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">Doppio opt-in · cancella l'iscrizione in qualsiasi momento · niente spam</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/">Home</a>
+            <a href="/app-privacy">Privacy dell'app</a>
+            <span>Est. 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Cotto su un <b>GPU aperta</b> by</span>
+                <a href="/" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock" href="/download/photobooks" rel="nofollow">Crea il mio primo libro <span aria-hidden="true">↓</span></a>
+
+    <script src="/site.js?v=5" defer></script>
+</body>
+</html>

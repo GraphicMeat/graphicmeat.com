@@ -1,3 +1,43 @@
+// ===== PhotoBooks localization preference =====
+(function () {
+    const paths = {
+        en: '/photobooks', de: '/de/photobooks', fr: '/fr/photobooks', es: '/es/photobooks',
+        it: '/it/photobooks', ja: '/ja/photobooks', ko: '/ko/photobooks',
+        'zh-Hans': '/zh-hans/photobooks', 'pt-BR': '/pt-br/photobooks'
+    };
+    let selected = null;
+    try { selected = localStorage.getItem('graphicmeat-language'); } catch (_) {}
+
+    function browserLanguage() {
+        const languages = navigator.languages || [navigator.language || ''];
+        for (const raw of languages) {
+            const value = String(raw).replace('_', '-').toLowerCase();
+            const language = value.split('-')[0];
+            if (language === 'zh' && (value.includes('hans') || /-(cn|sg)(-|$)/.test(value))) return 'zh-Hans';
+            if (language === 'pt') return 'pt-BR';
+            if (['de', 'fr', 'es', 'it', 'ja', 'ko'].includes(language)) return language;
+            if (language === 'en') return 'en';
+        }
+        return 'en';
+    }
+
+    if ((location.pathname === '/photobooks' || location.pathname === '/photobooks/') && paths[selected || browserLanguage()] !== '/photobooks') {
+        location.replace(paths[selected || browserLanguage()] + location.search + location.hash);
+        return;
+    }
+
+    document.querySelectorAll('.pb-language-switcher [data-language]').forEach((link) => {
+        link.addEventListener('click', () => {
+            try { localStorage.setItem('graphicmeat-language', link.dataset.language); } catch (_) {}
+        });
+    });
+
+    // Keep the choice site-wide: links enter the localized PhotoBooks page when one exists.
+    if (selected && paths[selected]) {
+        document.querySelectorAll('a[href="/photobooks"]:not([data-language])').forEach((link) => { link.href = paths[selected]; });
+    }
+})();
+
 // ===== Contact form (no-ops on pages without the form) =====
 (function () {
     const form = document.getElementById('contact-form');
@@ -57,6 +97,19 @@
     const statusEl = document.getElementById('newsletter-status');
     if (!form || !statusEl) return;
 
+    const locale = document.documentElement.lang;
+    const translations = {
+        de: ['Wird gesendet…', 'Fast geschafft — bestätigen Sie die Anmeldung in Ihrer E-Mail.', 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.', 'Netzwerkfehler. Bitte versuchen Sie es erneut.'],
+        fr: ['Envoi…', 'Presque terminé — confirmez votre inscription dans votre e-mail.', 'Un problème est survenu. Veuillez réessayer.', 'Erreur réseau. Veuillez réessayer.'],
+        es: ['Enviando…', 'Ya casi está — confirma la suscripción en tu correo.', 'Algo ha salido mal. Inténtalo de nuevo.', 'Error de red. Inténtalo de nuevo.'],
+        it: ['Invio…', 'Ci siamo quasi — conferma l’iscrizione nella tua e-mail.', 'Qualcosa è andato storto. Riprova.', 'Errore di rete. Riprova.'],
+        ja: ['送信中…', 'あと少しです。メールで登録を確認してください。', '問題が発生しました。もう一度お試しください。', 'ネットワークエラーです。もう一度お試しください。'],
+        ko: ['전송 중…', '거의 완료되었습니다. 이메일에서 구독을 확인해 주세요.', '문제가 발생했습니다. 다시 시도해 주세요.', '네트워크 오류입니다. 다시 시도해 주세요.'],
+        'zh-Hans': ['正在发送…', '即将完成 — 请在电子邮件中确认订阅。', '出现问题，请重试。', '网络错误，请重试。'],
+        'pt-BR': ['Enviando…', 'Quase lá — confirme a inscrição no seu e-mail.', 'Algo deu errado. Tente novamente.', 'Erro de rede. Tente novamente.']
+    };
+    const messages = translations[locale];
+
     const startedEl = document.getElementById('nl-started');
     const submitBtn = document.getElementById('nl-submit');
     if (startedEl) startedEl.value = Date.now();
@@ -68,7 +121,7 @@
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        setStatus('Sending…', '');
+        setStatus(messages ? messages[0] : 'Sending…', '');
         if (submitBtn) submitBtn.disabled = true;
         try {
             const res = await fetch('/api/subscribe', {
@@ -82,14 +135,14 @@
             });
             const data = await res.json().catch(() => ({}));
             if (res.ok && data.ok) {
-                setStatus(data.message || 'Almost there — check your email to confirm.', 'ok');
+                setStatus(messages ? messages[1] : (data.message || 'Almost there — check your email to confirm.'), 'ok');
                 form.reset();
                 if (startedEl) startedEl.value = Date.now();
             } else {
-                setStatus(data.error || 'Something went wrong. Please try again.', 'err');
+                setStatus(messages ? messages[2] : (data.error || 'Something went wrong. Please try again.'), 'err');
             }
         } catch (_) {
-            setStatus('Network error. Please try again.', 'err');
+            setStatus(messages ? messages[3] : 'Network error. Please try again.', 'err');
         } finally {
             if (submitBtn) submitBtn.disabled = false;
         }

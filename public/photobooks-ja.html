@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac 用 PhotoBooks — 写真を美しい本に変えましょう | Graphic Meat</title>
+    <meta name="description" content="PhotoBooks for Mac を使用すると、Apple Photo を数分で美しいフォトブックに変えることができます。すべての見開きを自動配置し、編集し、印刷可能な PDF をエクスポートします。無料、プライベート、完全にデバイス上で利用できます。">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="canonical" href="https://graphicmeat.com/ja/photobooks">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/photobooks">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/photobooks">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/photobooks">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/photobooks">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/photobooks">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/photobooks">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/photobooks">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/photobooks">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/photobooks">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/photobooks">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="あなたの写真はすでに物語を語っています。 PhotoBooksはそれを本にします。">
+    <meta property="og:description" content="写真を自動的に配置して、すぐに印刷できる美しいフォトブックを作成する無料のプライベート Mac アプリ。">
+    <meta property="og:url" content="https://graphicmeat.com/ja/photobooks">
+    <meta property="og:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="完成したフォト アルバムのコレクションを表示する PhotoBooks アプリのアイコン">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="あなたの写真はすでに物語を語っています。 PhotoBooksはそれを本にします。">
+    <meta name="twitter:description" content="Mac で美しいフォトブックを自動配置します。無料、プライベート、すぐに印刷できます。">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/photobooks/images/icon.png">
+    <meta name="twitter:image:alt" content="完成したフォト アルバムのコレクションを表示する PhotoBooks アプリのアイコン">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=8">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://graphicmeat.com/#organization",
+          "name": "Graphic Meat",
+          "url": "https://graphicmeat.com",
+          "logo": "https://graphicmeat.com/logo.png"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "PhotoBooks",
+          "url": "https://graphicmeat.com/ja/photobooks",
+          "image": "https://graphicmeat.com/assets/photobooks/images/icon.png",
+          "screenshot": "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "macOS 15 or later",
+          "description": "Apple Photos またはファイルから写真をインポートし、編集可能なフォトブック見開きに自動的に配置し、印刷用または共有可能な PDF を完全にデバイス上でエクスポートするネイティブ macOS アプリ。",
+          "downloadUrl": "https://graphicmeat.com/download/photobooks",
+          "featureList": "自動ページレイアウト、Apple Photosインポート、デバイス上処理、編集可能なスプレッド、印刷可能PDFエクスポート、デジタルPDFエクスポート",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Mac 用フォトブックメーカー — 自動レイアウトと PDF エクスポート",
+          "description": "写真のインポート、自動ページ レイアウト、編集、印刷可能な PDF エクスポートを示す 30 秒の PhotoBook for Mac のデモ。",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ooB3PwKoN5E/maxresdefault.jpg",
+          "uploadDate": "2026-07-13",
+          "duration": "PT30S",
+          "contentUrl": "https://www.youtube.com/watch?v=ooB3PwKoN5E",
+          "embedUrl": "https://www.youtube-nocookie.com/embed/ooB3PwKoN5E",
+          "publisher": { "@id": "https://graphicmeat.com/#organization" }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="photobooks-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell">
+        <nav class="topbar pb-topbar" aria-label="主要な">
+            <a class="home" href="/">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#how-it-works">仕組み</a>
+                <a href="#privacy">プライバシー</a>
+                <details class="pb-language-switcher">
+                    <summary><span aria-hidden="true">🇯🇵</span> 日本語</summary>
+                    <ul>
+                            <li><a href="/photobooks" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li>
+                            <li><a href="/de/photobooks" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li>
+                            <li><a href="/fr/photobooks" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li>
+                            <li><a href="/es/photobooks" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li>
+                            <li><a href="/it/photobooks" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li>
+                            <li><a href="/ja/photobooks" lang="ja" hreflang="ja" data-language="ja" aria-current="page"><span aria-hidden="true">🇯🇵</span> 日本語</a></li>
+                            <li><a href="/ko/photobooks" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li>
+                            <li><a href="/zh-hans/photobooks" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li>
+                            <li><a href="/pt-br/photobooks" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li>
+                    </ul>
+                </details>
+                <a class="pb-nav-download" href="/download/photobooks" rel="nofollow">無料でダウンロード</a>
+            </div>
+        </nav>
+
+        <main>
+            <header class="pb-hero">
+                <div class="pb-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> macOSでは無料</p>
+                    <h1>あなたの写真はすでに物語を語っています。 <em>PhotoBooksはそれを本にします。</em></h1>
+                    <p class="pb-lede">Apple フォトからインポートします。美しくアレンジされたフォトブックが数秒で完成します。あらゆる調整を行ってから、印刷用の PDF を非公開で完全に Mac 上でエクスポートします。</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">
+                            最初の本を作成する <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="pb-button pb-button--text" href="#watch-the-film">
+                            30秒の映画を見る <span aria-hidden="true">↘</span>
+                        </a>
+                    </div>
+                    <p class="pb-download-note">macOS 15+ · アカウントなし · ウォーターマークなし · 写真はアップロードされていません</p>
+                </div>
+
+                <figure class="pb-hero-art">
+                    <div class="pb-orbit pb-orbit--one" aria-hidden="true"></div>
+                    <div class="pb-orbit pb-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/photobooks/images/icon.png" alt="完成したフォト アルバムのコレクションを表示する PhotoBooks アプリのアイコン" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag pb-proof-tag--private">
+                        <span aria-hidden="true">●</span>
+                        100% オンデバイス
+                    </span>
+                    <span class="pb-proof-tag pb-proof-tag--print">
+                        印刷可能な PDF <span aria-hidden="true">↗</span>
+                    </span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="フォトブック特典">
+                <p><strong>ネイティブ Mac アプリ</strong><span>高速で使いやすい、組み込みの SwiftUI</span></p>
+                <p><strong>設計によりプライベート化</strong><span>ライブラリが Mac から離れることはありません</span></p>
+                <p><strong>仕上げは自由</strong><span>トライアルタイマーやエクスポートウォーターマークなし</span></p>
+                <p><strong>印刷用に作られた</strong><span>サイズと裁ち落としを処理してエクスポート</span></p>
+            </aside>
+
+            <section class="pb-app-proof" aria-labelledby="app-proof-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">はい、本物の Mac アプリです</p>
+                        <h2 id="app-proof-heading">完全な本。<br>集中力のある 1 つのワークスペース。</h2>
+                    </div>
+                    <p>キャンバスから離れることなく、すべてのページに移動し、選択した写真を微調整し、代替レイアウトを探索し、未使用の画像をストーリーに直接取り込みます。</p>
+                </div>
+                <figure class="pb-app-window">
+                    <a href="/assets/photobooks/images/app-workspace.webp" target="_blank" rel="noopener" aria-label="フルサイズの PhotoBook アプリのスクリーンショットを開く">
+                        <img src="/assets/photobooks/images/app-workspace.webp" alt="macOS 上で実行される PhotoBook (9 ページ、編集可能な見開き 2 ページ、利用可能な写真、表示されるレイアウトの選択肢)" width="2766" height="1794" loading="lazy">
+                    </a>
+                    <figcaption>
+                        <span>macOS 上のフォトブック · 現在のビルド</span>
+                        <span>ページナビゲーション · 直接編集 · ライブレイアウトの代替</span>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-transform" aria-labelledby="transform-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">カメラロールからコーヒーテーブルまで</p>
+                    <h2 id="transform-heading">並べ替えが少なくなります。さらに思い出す。</h2>
+                    <p>あなたの最高の写真はすでにそこにあります。 PhotoBooks は、それら全体で視覚的なリズムを見つけて最初の草案を作成するため、空のボックスに画像をドラッグすることなく、ストーリーの形成に時間を費やすことができます。</p>
+                </div>
+
+                <div class="pb-transform-stage" aria-label="バラバラな写真のフォルダーが完成した写真集になる">
+                    <div class="pb-photo-source">
+                        <span class="pb-source-label">アップルの写真</span>
+                        <div class="pb-photo-stack" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <p><strong>あなたのライブラリ全体</strong><span>旅行、家族、普通の魔法</span></p>
+                    </div>
+                    <div class="pb-flow" aria-hidden="true">
+                        <span></span><span></span><span></span><b>整える</b>
+                    </div>
+                    <div class="pb-book-result">
+                        <span class="pb-result-label">初稿</span>
+                        <div class="pb-mini-book" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <p><strong>完全な本</strong><span>バランスが取れており、編集可能で、すぐにエクスポートできます</span></p>
+                    </div>
+                </div>
+                <p class="pb-photo-credits">撮影者
+                    <a href="https://unsplash.com/photos/family-enjoys-a-day-at-the-beach-yJMB6Wnwfs0?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">ヘクター・オコナー</a>,
+                    <a href="https://unsplash.com/photos/JzhVIQ_NeUw?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">エミリー・バーネット</a>,
+                    <a href="https://unsplash.com/photos/Zdg33BPekGg?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">リード・ガイガー</a>,
+                    <a href="https://unsplash.com/photos/ONokxQ0unMc?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">トビアス・ライヒ</a>、 そして
+                    <a href="https://unsplash.com/photos/QopwOEmQvcs?utm_source=graphicmeat&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">カルステン・ワインギアト</a> アンスプラッシュで。
+                </p>
+            </section>
+
+            <section class="pb-film" id="watch-the-film" aria-labelledby="film-heading">
+                <div class="pb-film-heading">
+                    <div>
+                        <p class="pb-kicker">ワークフロー全体を見る</p>
+                        <h2 id="film-heading">フォトライブラリから印刷可能な本まで 30 秒で作成できます。</h2>
+                    </div>
+                    <p>写真を選択し、形式を設定し、PhotoBooks に各ページを配置して、完成した PDF をエクスポートするすべてが 1 つの集中的なワークフローで行われます。</p>
+                </div>
+                <figure class="pb-film-frame">
+                    <iframe src="https://www.youtube-nocookie.com/embed/ooB3PwKoN5E?rel=0&amp;playsinline=1"
+                            width="1920" height="1080"
+                            title="PhotoBooks for Mac — 自動フォトブック レイアウトと PDF エクスポートのデモ"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    <figcaption>
+                        <span>実際のワークフロー、実際の出力、キャプションが含まれています</span>
+                        <a href="/assets/photobooks/documents/sample-photobook.pdf" target="_blank" rel="noopener">完全なサンプル PDF を開く <span aria-hidden="true">↗</span></a>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-process" id="how-it-works" aria-labelledby="process-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">3 つの動き。一冊。</p>
+                    <h2 id="process-heading">インポートから印刷まで、白紙ページでパニックになることなく実行できます。</h2>
+                </div>
+
+                <ol class="pb-process-list">
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">01 / インポート</span>
+                            <h3>すでに持っている写真から始めます。</h3>
+                            <p>Apple Photos アルバムまたはディスク上のファイルを選択します。すべてがローカルに維持されるため、大規模なライブラリはアップロード キューとは異なり、即時に感じられます。</p>
+                        </div>
+                        <div class="pb-import-visual" aria-hidden="true">
+                            <span class="pb-library-icon">✦</span>
+                            <p>夏 / 写真248枚</p>
+                            <div><i></i><i></i><i></i><i></i></div>
+                        </div>
+                    </li>
+                    <li class="pb-process-card pb-process-card--reverse">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">02 / 自動配置</span>
+                            <h3>考慮された初稿を数秒で入手できます。</h3>
+                            <p>PhotoBooks は、すべての見開きで向き、トリミング、スケール、視覚的なリズムのバランスをとります。本能がそう言わないときはいつでも、レイアウトを変更したり、写真を移動したりできます。</p>
+                        </div>
+                        <div class="pb-layout-visual" aria-hidden="true">
+                            <div><i></i><i></i><i></i></div>
+                            <div><i></i><i></i><i></i><i></i></div>
+                            <span>自動的にバランス調整される</span>
+                        </div>
+                    </li>
+                    <li class="pb-process-card">
+                        <div class="pb-card-copy">
+                            <span class="pb-card-number">03 / エクスポート</span>
+                            <h3>印刷するために送信したり、愛する人に送信したりできます。</h3>
+                            <p>Blurb PDF-to-Book またはその他の印刷サービス用に印刷可能な PDF をエクスポートし、共有しやすい軽量のデジタル コピーもエクスポートします。</p>
+                        </div>
+                        <div class="pb-export-visual" aria-hidden="true">
+                            <div class="pb-pdf-sheet"><b>PDF</b><span>印刷準備完了</span></div>
+                            <ul><li>取り扱いサイズ</li><li>ブリード処理済み</li><li>あなたが見ているものが印刷されるものです</li></ul>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="pb-use-cases" aria-labelledby="use-cases-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">他のフォルダーよりも価値があります</p>
+                    <h2 id="use-cases-heading">あなたが作りたいと思う本を作りましょう。</h2>
+                </div>
+                <div class="pb-use-case-grid">
+                    <article>
+                        <span aria-hidden="true">01</span>
+                        <h3>フォルダーに保存すべきではない旅行。</h3>
+                        <p>忘れられない一週間の数百枚の写真を、スクロールせずに見返すことができるストーリーに変えます。</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">02</span>
+                        <h3>家族の一年を具体化。</h3>
+                        <p>カメラロールの合間に消えてしまう、小さくて日常的な瞬間を集めて、永続的な場所を与えます。</p>
+                    </article>
+                    <article>
+                        <span aria-hidden="true">03</span>
+                        <h3>今夜完成できるギフト。</h3>
+                        <p>自動レイアウトから開始し、最後の仕上げを加えて、非常に個人的なギフトを印刷して送信します。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="pb-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="pb-privacy-copy">
+                    <p class="pb-kicker">アーキテクチャによるプライベート</p>
+                    <h2 id="privacy-heading">あなたの記憶はトレーニングデータではありません。</h2>
+                    <p>PhotoBook は Mac 上で実行できます。写真のアップロード、クラウド アカウント、リモート処理の手順はありません。ライブラリはインポートからエクスポートまでずっとあなたのものです。</p>
+                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">野外に建てられています。ソースを見る <span aria-hidden="true">↗</span></a>
+                </div>
+                <ul class="pb-privacy-list">
+                    <li><span aria-hidden="true">✓</span><p><strong>アカウントがありません</strong>プロフィールを作成したり、個人情報を引き渡したりする必要はありません。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>アップロードなし</strong>オリジナルの写真はマシン上に残ります。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>透かしなし</strong>完成したエクスポートは完全にあなたのものです。</p></li>
+                    <li><span aria-hidden="true">✓</span><p><strong>ブラックボックスなし</strong>アプリケーションのソースを検査できます。</p></li>
+                </ul>
+            </section>
+
+            <section class="pb-final-cta" aria-labelledby="download-heading">
+                <p class="pb-kicker">今夜も作ってね</p>
+                <h2 id="download-heading">写真の準備ができました。<br>本が待っています。</h2>
+                <p>フォトブックをダウンロードし、アルバムを選択すると、数秒で最初の完全な下書きが表示されます。</p>
+                <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">最初の本を作成する <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">最新の .dmg · macOS 15 Sequoia 以降 · 無料 · アカウントなし</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" aria-label="フォトブックの更新情報">
+            <div>
+                <p class="newsletter-title">フォトブックの最新情報を入手する</p>
+                <p class="pb-newsletter-copy">不定期のリリースノートと、今後の iPhone および iPad バージョンに関する初期ニュース。</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">電子メールアドレス</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">Webサイト</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <button type="submit" class="cta" id="nl-submit">最新情報を知らせてください <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">ダブルオプトイン · いつでも購読解除 · スパムなし</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/">Home</a>
+            <a href="/app-privacy">アプリのプライバシー</a>
+            <span>EST（東部基準時。 2013年</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">上で調理した <b>オープンGPU</b> by</span>
+                <a href="/" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock" href="/download/photobooks" rel="nofollow">最初の本を作成する <span aria-hidden="true">↓</span></a>
+
+    <script src="/site.js?v=5" defer></script>
+</body>
+</html>
