@@ -221,6 +221,11 @@ app.get('/api/subscribe/confirm', async (req, res) => {
 // ---- Static site ----
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Preserve previously shared/indexed PhotoBooks asset URLs after organizing media.
+app.get('/photobooks.png', (req, res) => res.redirect(301, '/assets/photobooks/images/icon.png'));
+app.get('/photobooks-app.webp', (req, res) => res.redirect(301, '/assets/photobooks/images/app-workspace.webp'));
+app.get('/photobooks-sample.pdf', (req, res) => res.redirect(301, '/assets/photobooks/documents/sample-photobook.pdf'));
+
 // Clean URLs for standalone pages.
 app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'contact.html'));
