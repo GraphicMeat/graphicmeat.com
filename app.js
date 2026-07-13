@@ -231,6 +231,10 @@ app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'contact.html'));
 });
 
+app.get('/app-privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'app-privacy.html'));
+});
+
 app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
 });
