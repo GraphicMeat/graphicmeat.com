@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://graphicmeat.com/</loc>
     <changefreq>weekly</changefreq>
@@ -10,6 +10,42 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://graphicmeat.com/mrukis</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis" />
+  </url>
+  <url>
+    <loc>https://graphicmeat.com/en/mrukis</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis" />
+  </url>
+  <url><loc>https://graphicmeat.com/mrukis/parduotuve</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/parduotuve" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/shop" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/shop</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/parduotuve" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/shop" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/apie-mus</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/apie-mus" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/about" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/about</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/apie-mus" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/about" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/renginiai</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/renginiai" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/events" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/events</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/renginiai" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/events" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/receptai" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/recipes" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/recipes</loc><lastmod>2026-07-14</lastmod><changefreq>weekly</changefreq><priority>0.6</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/receptai" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/recipes" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/jautienos-kumpio-suktinukai</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/neiprastas-befstrogenas</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/vengriskas-guliasas</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/sprandine-sous-vide</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/mesainis-su-melynuoju-suriu</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/receptai/mesainis-su-karamelizuotais-persikais</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/mrukis/duk</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/duk" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/faq" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/faq</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.4</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/duk" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/faq" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/privacy-policy</loc><lastmod>2026-07-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/privacy-policy" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/privacy" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/privacy</loc><lastmod>2026-07-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/privacy-policy" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/privacy" /></url>
+  <url><loc>https://graphicmeat.com/mrukis/refund_returns</loc><lastmod>2026-07-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/refund_returns" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/terms" /></url>
+  <url><loc>https://graphicmeat.com/en/mrukis/terms</loc><lastmod>2026-07-14</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="lt" href="https://graphicmeat.com/mrukis/refund_returns" /><xhtml:link rel="alternate" hreflang="en" href="https://graphicmeat.com/en/mrukis/terms" /></url>
   <url><loc>https://graphicmeat.com/de/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://graphicmeat.com/fr/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://graphicmeat.com/es/photobooks</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>

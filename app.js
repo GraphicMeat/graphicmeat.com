@@ -239,6 +239,40 @@ app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
 });
 
+app.get('/mrukis', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'mrukis.html'));
+});
+
+app.get('/en/mrukis', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'mrukis-en.html'));
+});
+
+const MRUKIS_PAGES = {
+    '/mrukis/parduotuve': 'mrukis-shop.html',
+    '/mrukis/apie-mus': 'mrukis-about.html',
+    '/mrukis/renginiai': 'mrukis-events.html',
+    '/mrukis/receptai': 'mrukis-recipes.html',
+    '/mrukis/receptai/jautienos-kumpio-suktinukai': 'mrukis-recipe-jautienos-kumpio-suktinukai.html',
+    '/mrukis/receptai/neiprastas-befstrogenas': 'mrukis-recipe-neiprastas-befstrogenas.html',
+    '/mrukis/receptai/vengriskas-guliasas': 'mrukis-recipe-vengriskas-guliasas.html',
+    '/mrukis/receptai/sprandine-sous-vide': 'mrukis-recipe-sprandine-sous-vide.html',
+    '/mrukis/receptai/mesainis-su-melynuoju-suriu': 'mrukis-recipe-mesainis-su-melynuoju-suriu.html',
+    '/mrukis/receptai/mesainis-su-karamelizuotais-persikais': 'mrukis-recipe-mesainis-su-karamelizuotais-persikais.html',
+    '/mrukis/duk': 'mrukis-faq.html',
+    '/mrukis/privacy-policy': 'mrukis-privacy.html',
+    '/mrukis/refund_returns': 'mrukis-terms.html',
+    '/en/mrukis/shop': 'mrukis-shop-en.html',
+    '/en/mrukis/about': 'mrukis-about-en.html',
+    '/en/mrukis/events': 'mrukis-events-en.html',
+    '/en/mrukis/recipes': 'mrukis-recipes-en.html',
+    '/en/mrukis/faq': 'mrukis-faq-en.html',
+    '/en/mrukis/privacy': 'mrukis-privacy-en.html',
+    '/en/mrukis/terms': 'mrukis-terms-en.html',
+};
+for (const [route, file] of Object.entries(MRUKIS_PAGES)) {
+    app.get(route, (req, res) => res.sendFile(path.join(__dirname, 'public', file)));
+}
+
 const PHOTOBOOK_LOCALES = ['de', 'fr', 'es', 'it', 'ja', 'ko', 'zh-hans', 'pt-br'];
 for (const locale of PHOTOBOOK_LOCALES) {
     app.get(`/${locale}/photobooks`, (req, res) => {

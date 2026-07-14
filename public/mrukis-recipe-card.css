@@ -1,0 +1,21 @@
+.recipe-card {
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 50px rgba(24, 39, 29, .12);
+}
+.recipe-card__stretched::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+.recipe-card:focus-within {
+  outline: 2px solid #73804c;
+  outline-offset: 4px;
+}
+.recipe-card .text-link {
+  display: inline-block;
+  margin-top: .8rem;
+}
