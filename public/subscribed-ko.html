@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스레터 — Graphic Meat</title>
+    <meta name="description" content="Graphic Meat 뉴스레터 구독 상태 및 확인입니다.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/subscribed">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/subscribed">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/subscribed">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/subscribed">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/subscribed">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/subscribed">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/subscribed">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/subscribed">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/subscribed">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/subscribed">
+
+    <link rel="canonical" href="https://graphicmeat.com/ko/subscribed">
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="뉴스레터 — Graphic Meat">
+    <meta property="og:description" content="Graphic Meat 뉴스레터 구독 상태 및 확인입니다.">
+    <meta property="og:url" content="https://graphicmeat.com/ko/subscribed">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="뉴스레터 — Graphic Meat">
+    <meta name="twitter:description" content="Graphic Meat 뉴스레터 구독 상태 및 확인입니다.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=8">
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="page">
+        <nav class="topbar" aria-label="기본">
+            <a class="home" href="/ko">
+                <img src="logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <a class="back" href="/ko">← 홈으로 돌아가기</a>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="언어 선택"><ul><li><a href="/subscribed" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/subscribed" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/subscribed" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/subscribed" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/subscribed" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/subscribed" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/subscribed" lang="ko" hreflang="ko" data-language="ko" aria-current="page"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/subscribed" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/subscribed" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+
+        <main>
+            <div class="result-lede">
+                <h1 class="page-h1" id="result-title"
+                    data-pending-title="거의 다 왔어" data-already-title="이미 구독 중입니다."
+                    data-expired-title="링크가 만료되었습니다" data-invalid-title="링크가 잘못되었습니다.">구독이 확인되었습니다</h1>
+                <p class="prose" id="result-body"
+                    data-pending-body="받은 편지함을 확인하세요. 확인 링크를 보냈습니다. 클릭하시면 구독이 완료됩니다. (링크는 48시간 후에 만료됩니다.)"
+                    data-already-body="해당 이메일이 이미 목록에 있는 것 같습니다. 더 이상 할 일이 없습니다."
+                    data-expired-body="해당 확인 링크는 만료되었습니다. 새로운 것을 얻으려면 다시 구독하십시오."
+                    data-invalid-body="해당 확인 링크는 유효하지 않거나 이미 사용되었습니다. 오류라고 생각되시면 다시 구독해주세요.">당신은 목록에 있습니다. 우리는 우리가 배송하는 제품에 대한 업데이트를 가끔 보내드릴 것입니다.</p>
+                <p style="margin-top:1.6rem"><a class="cta" href="/ko">집으로 돌아가기 <span class="arrow">&#8594;</span></a></p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <span>graphicmeat.com</span>
+            <a href="/ko">홈</a>
+            <a href="/ko/app-privacy">앱 개인정보 보호</a>
+            <span>예상 2013년</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">1시간 이상 조리 <b>오픈 GPU</b> 에 의해</span>
+                <a href="/ko" aria-label="Graphic Meat"><img src="logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="site.js?v=6" defer></script>
+    <script>
+        (function () {
+            var p = new URLSearchParams(location.search);
+            var title = document.getElementById('result-title');
+            var body = document.getElementById('result-body');
+            var err = p.get('error');
+            if (p.get('pending') === '1') {
+                title.textContent = title.dataset.pendingTitle;
+                body.textContent = body.dataset.pendingBody;
+            } else if (p.get('already') === '1') {
+                title.textContent = title.dataset.alreadyTitle;
+                body.textContent = body.dataset.alreadyBody;
+            } else if (err === 'expired') {
+                title.textContent = title.dataset.expiredTitle;
+                body.textContent = body.dataset.expiredBody;
+            } else if (err) {
+                title.textContent = title.dataset.invalidTitle;
+                body.textContent = body.dataset.invalidBody;
+            }
+        })();
+    </script>
+</body>
+</html>

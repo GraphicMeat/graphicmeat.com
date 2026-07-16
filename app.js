@@ -59,9 +59,15 @@ const wantsJson = (req) =>
     (req.get('accept') || '').includes('application/json') ||
     req.get('x-requested-with') === 'fetch';
 
+const SITE_LOCALES = new Set(['de', 'fr', 'es', 'it', 'ja', 'ko', 'zh-hans', 'pt-br']);
+function localePrefix(value) {
+    const locale = String(value || '').toLowerCase();
+    return SITE_LOCALES.has(locale) ? `/${locale}` : '';
+}
+
 function fail(req, res, code, msg) {
     if (wantsJson(req)) return res.status(code).json({ ok: false, error: msg });
-    return res.redirect(303, '/contact?error=' + encodeURIComponent(msg));
+    return res.redirect(303, `${localePrefix(req.body?.locale)}/contact?error=` + encodeURIComponent(msg));
 }
 
 app.post('/api/contact', contactLimiter, async (req, res) => {
@@ -103,7 +109,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     }
 
     if (wantsJson(req)) return res.json({ ok: true });
-    return res.redirect(303, '/contact?sent=1');
+    return res.redirect(303, `${localePrefix(b.locale)}/contact?sent=1`);
 });
 
 // ---- Newsletter (double opt-in) ----
@@ -123,31 +129,32 @@ function subReply(req, res, code, jsonBody, redirectPath) {
 
 app.post('/api/subscribe', subscribeLimiter, async (req, res) => {
     const b = req.body || {};
+    const subscribedPath = `${localePrefix(b.locale)}/subscribed`;
 
     // Honeypot + time-trap (same defenses as the contact form).
     if (b.website) {
-        return subReply(req, res, 200, { ok: true, message: 'Almost there — check your email to confirm.' }, '/subscribed?pending=1');
+        return subReply(req, res, 200, { ok: true, message: 'Almost there — check your email to confirm.' }, `${subscribedPath}?pending=1`);
     }
     const started = Number(b.started);
     if (started && Date.now() - started < 3000) {
-        return subReply(req, res, 400, { ok: false, error: 'Submitted too quickly — please try again.' }, '/subscribed?error=1');
+        return subReply(req, res, 400, { ok: false, error: 'Submitted too quickly — please try again.' }, `${subscribedPath}?error=1`);
     }
 
     const email = String(b.email || '').trim().toLowerCase();
     if (!EMAIL_RE.test(email) || email.length > 200) {
-        return subReply(req, res, 400, { ok: false, error: 'Please enter a valid email.' }, '/subscribed?error=1');
+        return subReply(req, res, 400, { ok: false, error: 'Please enter a valid email.' }, `${subscribedPath}?error=1`);
     }
 
     const pool = getPool();
     if (!pool || !smtpConfigured()) {
         console.error('Newsletter: DB or SMTP not configured.');
-        return subReply(req, res, 503, { ok: false, error: 'Newsletter is not configured yet. Please try again later.' }, '/subscribed?error=1');
+        return subReply(req, res, 503, { ok: false, error: 'Newsletter is not configured yet. Please try again later.' }, `${subscribedPath}?error=1`);
     }
 
     try {
         const [rows] = await pool.execute('SELECT id, status FROM subscribers WHERE email = ?', [email]);
         if (rows.length && rows[0].status === 'confirmed') {
-            return subReply(req, res, 200, { ok: true, message: "You're already subscribed." }, '/subscribed?already=1');
+            return subReply(req, res, 200, { ok: true, message: "You're already subscribed." }, `${subscribedPath}?already=1`);
         }
 
         const token = crypto.randomBytes(24).toString('hex'); // 48 hex chars
@@ -164,7 +171,7 @@ app.post('/api/subscribe', subscribeLimiter, async (req, res) => {
             );
         }
 
-        const link = `${SITE_URL}/api/subscribe/confirm?token=${token}`;
+        const link = `${SITE_URL}/api/subscribe/confirm?token=${token}&lang=${encodeURIComponent(String(b.locale || ''))}`;
         await getTransporter().sendMail({
             from: `"GraphicMeat" <${CONTACT_FROM}>`,
             to: email,
@@ -176,24 +183,25 @@ app.post('/api/subscribe', subscribeLimiter, async (req, res) => {
         });
     } catch (err) {
         console.error('Subscribe failed:', err.message);
-        return subReply(req, res, 500, { ok: false, error: 'Could not subscribe right now. Please try again later.' }, '/subscribed?error=1');
+        return subReply(req, res, 500, { ok: false, error: 'Could not subscribe right now. Please try again later.' }, `${subscribedPath}?error=1`);
     }
 
-    return subReply(req, res, 200, { ok: true, message: 'Almost there — check your email to confirm.' }, '/subscribed?pending=1');
+    return subReply(req, res, 200, { ok: true, message: 'Almost there — check your email to confirm.' }, `${subscribedPath}?pending=1`);
 });
 
 app.get('/api/subscribe/confirm', async (req, res) => {
     const token = String(req.query.token || '');
+    const subscribedPath = `${localePrefix(req.query.lang)}/subscribed`;
     const pool = getPool();
-    if (!pool || !/^[a-f0-9]{32,64}$/.test(token)) return res.redirect(303, '/subscribed?error=1');
+    if (!pool || !/^[a-f0-9]{32,64}$/.test(token)) return res.redirect(303, `${subscribedPath}?error=1`);
 
     try {
         const [rows] = await pool.execute(
             'SELECT id, email, (token_expires < NOW()) AS expired FROM subscribers WHERE token = ?',
             [token]
         );
-        if (!rows.length) return res.redirect(303, '/subscribed?error=1');
-        if (rows[0].expired) return res.redirect(303, '/subscribed?error=expired');
+        if (!rows.length) return res.redirect(303, `${subscribedPath}?error=1`);
+        if (rows[0].expired) return res.redirect(303, `${subscribedPath}?error=expired`);
 
         await pool.execute(
             "UPDATE subscribers SET status = 'confirmed', confirmed_at = NOW(), token = NULL, token_expires = NULL WHERE id = ?",
@@ -212,10 +220,10 @@ app.get('/api/subscribe/confirm', async (req, res) => {
         }
     } catch (err) {
         console.error('Confirm failed:', err.message);
-        return res.redirect(303, '/subscribed?error=1');
+        return res.redirect(303, `${subscribedPath}?error=1`);
     }
 
-    return res.redirect(303, '/subscribed');
+    return res.redirect(303, subscribedPath);
 });
 
 // ---- Static site ----
@@ -274,6 +282,20 @@ for (const [route, file] of Object.entries(MRUKIS_PAGES)) {
 }
 
 const PHOTOBOOK_LOCALES = ['de', 'fr', 'es', 'it', 'ja', 'ko', 'zh-hans', 'pt-br'];
+const LOCALIZED_SITE_PAGES = {
+    '': 'index',
+    '/blog': 'blog',
+    '/contact': 'contact',
+    '/app-privacy': 'app-privacy',
+    '/subscribed': 'subscribed',
+};
+for (const locale of PHOTOBOOK_LOCALES) {
+    for (const [route, file] of Object.entries(LOCALIZED_SITE_PAGES)) {
+        app.get(`/${locale}${route}`, (req, res) => {
+            res.sendFile(path.join(__dirname, 'public', `${file}-${locale}.html`));
+        });
+    }
+}
 for (const locale of PHOTOBOOK_LOCALES) {
     app.get(`/${locale}/photobooks`, (req, res) => {
         res.sendFile(path.join(__dirname, 'public', `photobooks-${locale}.html`));

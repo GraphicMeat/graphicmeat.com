@@ -7,6 +7,20 @@
     <meta name="description" content="Privacy information for apps made by Graphic Meat, including PhotoBooks and MailVault.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/app-privacy">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/app-privacy">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/app-privacy">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/app-privacy">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/app-privacy">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/app-privacy">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/app-privacy">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/app-privacy">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/app-privacy">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/app-privacy">
+
+
+
+
     <link rel="canonical" href="https://graphicmeat.com/app-privacy">
     <link rel="icon" type="image/png" href="/logo.png">
 
@@ -30,27 +44,30 @@
     <link rel="stylesheet" href="/site.css?v=8">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://graphicmeat.com/#organization",
-          "name": "Graphic Meat",
-          "url": "https://graphicmeat.com/",
-          "logo": "https://graphicmeat.com/logo.png",
-          "foundingDate": "2013"
-        },
-        {
-          "@type": "WebPage",
-          "name": "App Privacy — Graphic Meat",
-          "url": "https://graphicmeat.com/app-privacy",
-          "description": "Privacy information for apps made by Graphic Meat, including PhotoBooks and MailVault.",
-          "dateModified": "2026-07-14",
-          "publisher": { "@id": "https://graphicmeat.com/#organization" }
-        }
-      ]
+      "@type": "Organization",
+      "@id": "https://graphicmeat.com/#organization",
+      "name": "Graphic Meat",
+      "url": "https://graphicmeat.com/",
+      "logo": "https://graphicmeat.com/logo.png",
+      "foundingDate": "2013"
+    },
+    {
+      "@type": "WebPage",
+      "name": "App Privacy — Graphic Meat",
+      "url": "https://graphicmeat.com/app-privacy",
+      "description": "Privacy information for apps made by Graphic Meat, including PhotoBooks and MailVault.",
+      "dateModified": "2026-07-14",
+      "publisher": {
+        "@id": "https://graphicmeat.com/#organization"
+      },
+      "inLanguage": "en"
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -70,6 +87,10 @@
             </a>
             <a class="back" href="/">&#8592; Back to home</a>
         </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="Choose language"><ul><li><a href="/app-privacy" lang="en" hreflang="en" data-language="en" aria-current="page"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/app-privacy" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/app-privacy" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/app-privacy" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/app-privacy" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/app-privacy" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/app-privacy" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/app-privacy" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/app-privacy" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
 
         <main>
             <article class="privacy-page">
@@ -134,6 +155,7 @@
                     <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
                 </div>
                 <input type="hidden" name="started" id="nl-started" value="">
+                <input type="hidden" name="locale" value="">
                 <button type="submit" class="cta" id="nl-submit">Subscribe <span class="arrow">&#8594;</span></button>
             </form>
             <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
@@ -153,6 +175,6 @@
         </footer>
     </div>
 
-    <script src="/site.js?v=4" defer></script>
+    <script src="/site.js?v=6" defer></script>
 </body>
 </html>

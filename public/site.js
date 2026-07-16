@@ -1,15 +1,8 @@
-// ===== PhotoBooks localization preference =====
+// ===== Site-wide localization preference =====
 (function () {
-    const paths = {
-        en: '/photobooks', de: '/de/photobooks', fr: '/fr/photobooks', es: '/es/photobooks',
-        it: '/it/photobooks', ja: '/ja/photobooks', ko: '/ko/photobooks',
-        'zh-Hans': '/zh-hans/photobooks', 'pt-BR': '/pt-br/photobooks'
-    };
-    const articlePaths = {
-        en: '/blog/automatic-masonry-layouts-photobooks', de: '/de/blog/automatic-masonry-layouts-photobooks', fr: '/fr/blog/automatic-masonry-layouts-photobooks', es: '/es/blog/automatic-masonry-layouts-photobooks',
-        it: '/it/blog/automatic-masonry-layouts-photobooks', ja: '/ja/blog/automatic-masonry-layouts-photobooks', ko: '/ko/blog/automatic-masonry-layouts-photobooks',
-        'zh-Hans': '/zh-hans/blog/automatic-masonry-layouts-photobooks', 'pt-BR': '/pt-br/blog/automatic-masonry-layouts-photobooks'
-    };
+    const prefixes = { en: '', de: '/de', fr: '/fr', es: '/es', it: '/it', ja: '/ja', ko: '/ko', 'zh-Hans': '/zh-hans', 'pt-BR': '/pt-br' };
+    const pages = ['/', '/blog', '/contact', '/app-privacy', '/subscribed', '/photobooks', '/blog/automatic-masonry-layouts-photobooks'];
+    const pathsFor = (page) => Object.fromEntries(Object.entries(prefixes).map(([locale, prefix]) => [locale, page === '/' ? (prefix || '/') : prefix + page]));
     let selected = null;
     try { selected = localStorage.getItem('graphicmeat-language'); } catch (_) {}
 
@@ -26,14 +19,13 @@
         return 'en';
     }
 
-    if ((location.pathname === '/photobooks' || location.pathname === '/photobooks/') && paths[selected || browserLanguage()] !== '/photobooks') {
-        location.replace(paths[selected || browserLanguage()] + location.search + location.hash);
-        return;
-    }
-
-    if ((location.pathname === articlePaths.en || location.pathname === articlePaths.en + '/') && articlePaths[selected || browserLanguage()] !== articlePaths.en) {
-        location.replace(articlePaths[selected || browserLanguage()] + location.search + location.hash);
-        return;
+    const englishPage = pages.find((page) => location.pathname === page || (page !== '/' && location.pathname === page + '/'));
+    if (englishPage) {
+        const destination = pathsFor(englishPage)[selected || browserLanguage()];
+        if (destination !== englishPage) {
+            location.replace(destination + location.search + location.hash);
+            return;
+        }
     }
 
     document.querySelectorAll('.pb-language-switcher [data-language]').forEach((link) => {
@@ -42,10 +34,14 @@
         });
     });
 
-    // Keep the choice site-wide: links enter the localized PhotoBooks page when one exists.
-    if (selected && paths[selected]) {
-        document.querySelectorAll('a[href="/photobooks"]:not([data-language])').forEach((link) => { link.href = paths[selected]; });
-        document.querySelectorAll(`a[href="${articlePaths.en}"]:not([data-language])`).forEach((link) => { link.href = articlePaths[selected]; });
+    // Keep a saved choice site-wide, including pages that have not yet been visited.
+    if (selected && prefixes[selected] !== undefined) {
+        pages.forEach((page) => {
+            document.querySelectorAll(`a[href="${page}"]:not([data-language]), a[href^="${page}#"]:not([data-language])`).forEach((link) => {
+                const suffix = link.getAttribute('href').slice(page.length);
+                link.href = pathsFor(page)[selected] + suffix;
+            });
+        });
     }
 })();
 
@@ -57,6 +53,17 @@
 
     const startedEl = document.getElementById('cf-started');
     const submitBtn = document.getElementById('cf-submit');
+    const contactTranslations = {
+        de: ['Danke — Ihre Nachricht ist unterwegs.', 'Wird gesendet…', 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.', 'Netzwerkfehler. Bitte versuchen Sie es erneut.'],
+        fr: ['Merci — votre message a bien été envoyé.', 'Envoi…', 'Un problème est survenu. Veuillez réessayer.', 'Erreur réseau. Veuillez réessayer.'],
+        es: ['Gracias, tu mensaje está en camino.', 'Enviando…', 'Algo ha salido mal. Inténtalo de nuevo.', 'Error de red. Inténtalo de nuevo.'],
+        it: ['Grazie — il tuo messaggio è stato inviato.', 'Invio…', 'Qualcosa è andato storto. Riprova.', 'Errore di rete. Riprova.'],
+        ja: ['ありがとうございます。メッセージを送信しました。', '送信中…', '問題が発生しました。もう一度お試しください。', 'ネットワークエラーです。もう一度お試しください。'],
+        ko: ['감사합니다. 메시지가 전송되었습니다.', '전송 중…', '문제가 발생했습니다. 다시 시도해 주세요.', '네트워크 오류입니다. 다시 시도해 주세요.'],
+        'zh-Hans': ['谢谢，您的消息已发送。', '正在发送…', '出现问题，请重试。', '网络错误，请重试。'],
+        'pt-BR': ['Obrigado — sua mensagem foi enviada.', 'Enviando…', 'Algo deu errado. Tente novamente.', 'Erro de rede. Tente novamente.']
+    };
+    const messages = contactTranslations[document.documentElement.lang];
     if (startedEl) startedEl.value = Date.now();
 
     function setStatus(msg, kind) {
@@ -66,15 +73,15 @@
 
     // No-JS fallback feedback (server redirects to ?sent=1 / ?error=...)
     const params = new URLSearchParams(location.search);
-    if (params.get('sent') === '1') setStatus('Thanks — your message is on its way.', 'ok');
-    else if (params.get('error')) setStatus(params.get('error'), 'err');
+    if (params.get('sent') === '1') setStatus(messages ? messages[0] : 'Thanks — your message is on its way.', 'ok');
+    else if (params.get('error')) setStatus(messages ? messages[2] : params.get('error'), 'err');
     if (params.has('sent') || params.has('error')) {
         history.replaceState(null, '', location.pathname + location.hash);
     }
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        setStatus('Sending…', '');
+        setStatus(messages ? messages[1] : 'Sending…', '');
         if (submitBtn) submitBtn.disabled = true;
         try {
             const res = await fetch('/api/contact', {
@@ -88,14 +95,14 @@
             });
             const data = await res.json().catch(() => ({}));
             if (res.ok && data.ok) {
-                setStatus('Thanks — your message is on its way.', 'ok');
+                setStatus(messages ? messages[0] : 'Thanks — your message is on its way.', 'ok');
                 form.reset();
                 if (startedEl) startedEl.value = Date.now();
             } else {
-                setStatus(data.error || 'Something went wrong. Please try again.', 'err');
+                setStatus(messages ? messages[2] : (data.error || 'Something went wrong. Please try again.'), 'err');
             }
         } catch (_) {
-            setStatus('Network error. Please try again.', 'err');
+            setStatus(messages ? messages[3] : 'Network error. Please try again.', 'err');
         } finally {
             if (submitBtn) submitBtn.disabled = false;
         }

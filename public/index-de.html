@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Meat – Unabhängiges Produktstudio</title>
+    <meta name="description" content="Graphic Meat ist ein unabhängiges Produktstudio. Gut gemacht ist keine Voraussetzung. Wir entwickeln MailVault – lokale E-Mail-Archivierung – und mehr.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/">
+
+
+
+
+    <link rel="canonical" href="https://graphicmeat.com/de">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Graphic Meat – Unabhängiges Produktstudio">
+    <meta property="og:description" content="Unabhängiges Produktstudio. Gut gemacht ist keine Voraussetzung. Wir entwickeln MailVault – lokale E-Mail-Archivierung – und mehr.">
+    <meta property="og:url" content="https://graphicmeat.com/de">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Graphic Meat – Unabhängiges Produktstudio">
+    <meta name="twitter:description" content="Unabhängiges Produktstudio. Gut gemacht ist keine Voraussetzung. Wir entwickeln MailVault – lokale E-Mail-Archivierung – und mehr.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=8">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Graphic Meat",
+  "url": "https://graphicmeat.com",
+  "logo": "https://graphicmeat.com/logo.png",
+  "foundingDate": "2013",
+  "slogan": "Gut gemacht ist keine Voraussetzung",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general",
+    "url": "https://graphicmeat.com/de/contact"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "MailVault",
+        "url": "https://mailvaultapp.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "macOS, Linux",
+        "description": "Archivieren Sie Ihre IMAP-E-Mails lokal als Standard-EML-Dateien – geben Sie Serverspeicher frei und sorgen Sie dafür, dass alles offline durchsuchbar ist.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://mailvaultapp.com",
+          "description": "Abonnementpläne sind bei MailVault erhältlich."
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PhotoBooks",
+        "url": "https://graphicmeat.com/de/photobooks",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "macOS 15",
+        "description": "Native macOS-Fotobuch-App – Import aus Apple Fotos, automatische Anordnung der Albumseiten, Export druckfertiger PDFs. Kostenlos und vollständig auf dem Gerät.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="page">
+        <nav class="site-nav" aria-label="Primär">
+            <a class="site-nav__brand" href="/de" aria-current="page">Graphic<span>Meat</span></a>
+            <div class="site-nav__links">
+                <a href="#products">Produkte</a>
+                <a href="/de/blog">Feldnotizen</a>
+                <a href="/de/contact">Kontakt</a>
+            </div>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="Sprache wählen"><ul><li><a href="/" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de" lang="de" hreflang="de" data-language="de" aria-current="page"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+        <!-- HERO -->
+        <header class="hero">
+            <h1 class="logo-wrap">
+                <img src="logo.png" alt="Graphic Meat – unabhängiges Produktstudio" width="360" height="300">
+                <span class="sr-only">Graphic Meat – unabhängiges Produktstudio</span>
+            </h1>
+            <p class="tagline">
+                <span class="dash"></span>
+                Gut gemacht ist keine Voraussetzung
+                <span class="dash"></span>
+            </p>
+            <p class="hero-kicker">Unabhängige Software, für die es sich zu bezahlen lohnt – entwickelt, um Vertrauen zu gewinnen, nicht um Aufmerksamkeit zu erregen.</p>
+            <p class="studio-line">Standardmäßig privat  ·  Nachhaltig konzipiert  ·  Geschätzt. 2013</p>
+            <a href="#products" class="scroll-hint">↓ Was wir bauen</a>
+        </header>
+
+        <!-- PRODUCTS -->
+        <section id="products" aria-labelledby="products-h">
+            <h2 id="products-h" class="section-label"><span class="mark">//</span> Was wir bauen</h2>
+            <div class="product-grid">
+                <!-- To add a product: duplicate this <article class="card"> Blockieren und bearbeiten Sie den Inhalt. ->
+                <article class="card">
+                    <div class="card-head">
+                        <div class="card-id">
+                            <img src="mailvault.png" alt="MailVault-Logo" width="42" height="42">
+                            <h3 class="card-name">MailVault</h3>
+                        </div>
+                        <span class="badge live">Lebe</span>
+                    </div>
+                    <p class="card-tagline">Ihr Postfach ist voll. Ihr Archiv muss nicht sein.</p>
+                    <p class="card-blurb">Archivieren Sie Ihre IMAP-E-Mails lokal als Standard-EML-Dateien – geben Sie Serverspeicher frei und sorgen Sie dafür, dass alles offline durchsuchbar ist. Für immer.</p>
+                    <ul class="chips">
+                        <li class="chip">Lokales .eml-Archiv</li>
+                        <li class="chip">Offline-Suche</li>
+                        <li class="chip">IMAP mit mehreren Konten</li>
+                        <li class="chip">Abonnementpläne</li>
+                    </ul>
+                    <a class="gh-stars" href="https://github.com/GraphicMeat/mail-vault-app" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/mail-vault-app">
+                        <span class="star" aria-hidden="true">&#9733;</span>
+                        <span>Stern auf GitHub</span>
+                        <span class="count" hidden></span>
+                    </a>
+                    <div class="card-foot">
+                        <p class="card-meta">Funktioniert mit · Gmail · Outlook · IMAP<br>macOS · Linux</p>
+                        <a class="cta" href="https://mailvaultapp.com" target="_blank" rel="noopener noreferrer">Besuchen Sie MailVault <span class="arrow">&#8594;</span></a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-head">
+                        <div class="card-id">
+                            <img src="assets/photobooks/images/icon.png" alt="__FOTOBÜCHER__-App-Symbol" width="42" height="42">
+                            <h3 class="card-name">PhotoBooks</h3>
+                        </div>
+                        <span class="badge beta">Kostenlos für Mac</span>
+                    </div>
+                    <p class="card-tagline">Schöne Fotobücher, automatisch.</p>
+                    <p class="card-blurb">Eine native Mac-App, die Ihre Fotobibliothek in ein druckfertiges Album verwandelt – importieren Sie Fotos aus Apple, ordnen Sie die Seiten automatisch an und exportieren Sie eine PDF-Datei zum Drucken oder Teilen. Kostenlos und Ihre Fotos verlassen nie Ihren Mac.</p>
+                    <ul class="chips">
+                        <li class="chip">Intelligentes automatisches Layout</li>
+                        <li class="chip">Import von Apple-Fotos</li>
+                        <li class="chip">Druckfertiges PDF</li>
+                        <li class="chip">Kostenlos · auf dem Gerät</li>
+                    </ul>
+                    <a class="gh-stars" href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/PhotoBooks">
+                        <span class="star" aria-hidden="true">&#9733;</span>
+                        <span>Stern auf GitHub</span>
+                        <span class="count" hidden></span>
+                    </a>
+                    <div class="card-foot">
+                        <p class="card-meta">Für · macOS 15+<br>iPhone · iPad bald</p>
+                        <a class="cta" href="/de/photobooks">Sehen Sie, wie es funktioniert <span class="arrow">&#8594;</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FIELD NOTES -->
+        <section id="field-notes" aria-labelledby="field-notes-h">
+            <div class="section-headline">
+                <h2 id="field-notes-h" class="section-label"><span class="mark">//</span> Feldnotizen</h2>
+                <a href="/de/blog">Alle Notizen anzeigen <span aria-hidden="true">&#8594;</span></a>
+            </div>
+            <article class="story-card story-card--featured">
+                <div>
+                    <p class="story-meta"><time datetime="2026-07-12">12. Juli 2026</time> · Designsysteme · 8 Min. Lektüre</p>
+                    <h3><a href="/de/blog/automatic-masonry-layouts-photobooks">Das Web löste automatisches Mauerwerk. Warum gibt es keine Fotobücher?</a></h3>
+                    <p>Webbrowser fließen seit Jahren ungleichmäßige Inhalte in ausgewogene Raster ein. In gedruckten Alben werden die Leute immer noch dazu aufgefordert, jedes Foto in eine Schachtel zu ziehen. Das fehlende Stück ist nicht das Layout, sondern das Urteilsvermögen.</p>
+                </div>
+                <a class="story-arrow" href="/de/blog/automatic-masonry-layouts-photobooks" aria-label="Lesen Sie das Web gelöstes automatisches Mauerwerk. Warum gibt es keine Fotobücher?">&#8599;</a>
+            </article>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" aria-labelledby="about-h">
+            <h2 id="about-h" class="section-label"><span class="mark">//</span> Wer wir sind</h2>
+            <p class="prose">Graphic Meat ist ein unabhängiges Produktstudio, das seit 2013 besteht. Wir bauen kleine, scharfe Tools, die Ihre Daten respektieren und eine Sache gut machen. Einige werden per Abonnement bezahlt, andere sind kostenlos und Open Source – das Modell folgt dem Produkt, während das Ziel dasselbe bleibt: nützliche Software und ein Studio, das sie weiterhin herstellen kann. Gut gemacht ist keine Voraussetzung.</p>
+        </section>
+
+        <!-- HOW WE BUILD -->
+        <section id="how-we-build" aria-labelledby="how-h">
+            <h2 id="how-h" class="section-label"><span class="mark">//</span> Wie wir bauen</h2>
+            <p class="prose">Kleine Werkzeuge verdienen immer noch echte Ingenieurskunst. Wir stützen uns auf die Muster, die sich in der Softwarewelt bereits bewährt haben, und kombinieren sie mit KI, um schnell vom leeren Repo zum Produktversand zu gelangen – ohne das Durcheinander, das normalerweise mit Geschwindigkeit einhergeht.</p>
+            <ul class="feature-grid">
+                <li class="feature">
+                    <h3>Modularität</h3>
+                    <p>Kleine, in sich geschlossene Teile mit klaren Nähten. Jeder Teil erledigt eine Aufgabe, sodass Funktionen hinzukommen und Fehler unterdrückt bleiben.</p>
+                </li>
+                <li class="feature">
+                    <h3>Testgetrieben</h3>
+                    <p>Schreiben Sie zuerst den Test und dann den Code, der ihn besteht. Das Verhalten wird vor der Auslieferung fixiert und bleibt fixiert, wenn der Code wächst.</p>
+                </li>
+                <li class="feature">
+                    <h3>Zum Testen gebaut</h3>
+                    <p>Code so gestaltet, dass er überprüft werden kann – reine Funktionen, eingefügte Abhängigkeiten, kein versteckter Zustand. Wenn es schwer zu testen ist, ist es schlecht konzipiert.</p>
+                </li>
+                <li class="feature">
+                    <h3>KISS</h3>
+                    <p>Das Einfachste, was jedes Mal funktioniert. Keine spekulativen Abstraktionen, keine Cleverness, um um 3 Uhr morgens zu entschlüsseln. Langweiliger Code ist ein Feature.</p>
+                </li>
+                <li class="feature">
+                    <h3>SOLID</h3>
+                    <p>Bewährte Designprinzipien halten die Verantwortlichkeiten sauber und ändern sich kostengünstig, sodass sich die Codebasis verbiegt, anstatt zu brechen.</p>
+                </li>
+                <li class="feature">
+                    <h3>KI-beschleunigt</h3>
+                    <p>Die KI übernimmt die Hauptarbeit bei Gerüsten, Umgestaltungen und Überprüfungen – nach menschlichem Ermessen –, sodass die Qualität steigt, während die Bauzeit sinkt.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- CONTACT CTA -->
+        <section id="contact" aria-labelledby="contact-h">
+            <h2 id="contact-h" class="section-label"><span class="mark">//</span> Nehmen Sie Kontakt auf</h2>
+            <div class="contact-cta">
+                <p><strong>Bauen Sie etwas oder möchten Sie mit uns zusammenarbeiten?</strong> Senden Sie uns eine Nachricht – wir melden uns bei Ihnen.</p>
+                <a class="cta" href="/de/contact">Kontaktieren Sie uns <span class="arrow">&#8594;</span></a>
+            </div>
+        </section>
+
+        <!-- CONNECT -->
+        <section class="connect" aria-label="Finden Sie uns online">
+            <h2 class="connect-title">Finden Sie uns</h2>
+            <div class="social-row">
+                <a class="social-link" href="https://x.com/GraphicMeat" target="_blank" rel="noopener noreferrer" aria-label="Graphic Meat auf X">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65Z"/></svg>
+                    <span>@GraphicMeat</span>
+                </a>
+                <a class="social-link" href="https://github.com/orgs/GraphicMeat/repositories" target="_blank" rel="noopener noreferrer" aria-label="Graphic Meat-Repositorys auf GitHub">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                    <span>GraphicMeat Repos</span>
+                </a>
+                <a class="social-link" href="https://github.com/rokas-ambrazevicius" target="_blank" rel="noopener noreferrer" aria-label="Rokas Ambrazevicius auf GitHub">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                    <span>rokas-ambrazevicius</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter" aria-label="Newsletter-Anmeldung">
+            <p class="newsletter-title">Erhalten Sie gelegentlich Updates zu unseren Sendungen</p>
+            <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                <label for="nl-email" class="sr-only">E-Mail-Adresse</label>
+                <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                <div class="hp" aria-hidden="true">
+                    <label for="nl-website">Website</label>
+                    <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" name="started" id="nl-started" value="">
+                <input type="hidden" name="locale" value="de">
+                <button type="submit" class="cta" id="nl-submit">Abonnieren <span class="arrow">&#8594;</span></button>
+            </form>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+            <p class="newsletter-note">Double-Opt-In · Wir senden Ihnen einen Bestätigungslink per E-Mail · Kein Spam</p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>graphicmeat.com</span>
+            <a href="/de/blog">Feldnotizen</a>
+            <a href="/de/contact">Kontakt</a>
+            <a href="/de/app-privacy">App-Datenschutz</a>
+            <span>Schätzung: 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Über einem gekocht <b>GPU öffnen</b> von</span>
+                <a href="/de" aria-label="Graphic Meat"><img src="logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="site.js?v=6" defer></script>
+</body>
+</html>

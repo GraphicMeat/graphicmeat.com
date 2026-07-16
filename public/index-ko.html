@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Meat — 독립 제품 스튜디오</title>
+    <meta name="description" content="Graphic Meat는 독립 제품 스튜디오입니다. 잘 했어는 필수 사항이 아닙니다. 우리는 MailVault(로컬 이메일 보관) 등을 구축합니다.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/">
+
+
+
+
+    <link rel="canonical" href="https://graphicmeat.com/ko">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Graphic Meat — 독립 제품 스튜디오">
+    <meta property="og:description" content="독립 제품 스튜디오. 잘 했어는 필수 사항이 아닙니다. 우리는 MailVault(로컬 이메일 보관) 등을 구축합니다.">
+    <meta property="og:url" content="https://graphicmeat.com/ko">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Graphic Meat — 독립 제품 스튜디오">
+    <meta name="twitter:description" content="독립 제품 스튜디오. 잘 했어는 필수 사항이 아닙니다. 우리는 MailVault(로컬 이메일 보관) 등을 구축합니다.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=8">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Graphic Meat",
+  "url": "https://graphicmeat.com",
+  "logo": "https://graphicmeat.com/logo.png",
+  "foundingDate": "2013",
+  "slogan": "잘했어는 필수사항은 아니야",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general",
+    "url": "https://graphicmeat.com/ko/contact"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "MailVault",
+        "url": "https://mailvaultapp.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "macOS, Linux",
+        "description": "IMAP 이메일을 표준 .eml 파일로 로컬에 보관하세요. 서버 저장 공간을 확보하고 모든 것을 오프라인에서 검색할 수 있도록 유지하세요.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://mailvaultapp.com",
+          "description": "구독 계획은 MailVault에서 이용 가능합니다."
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PhotoBooks",
+        "url": "https://graphicmeat.com/ko/photobooks",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "macOS 15",
+        "description": "기본 macOS 사진첩 앱 — Apple Photos에서 가져오기, 앨범 페이지 자동 정렬, 인쇄용 PDF 내보내기. 무료이며 기기에 완전히 내장되어 있습니다.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="page">
+        <nav class="site-nav" aria-label="기본">
+            <a class="site-nav__brand" href="/ko" aria-current="page">Graphic<span>Meat</span></a>
+            <div class="site-nav__links">
+                <a href="#products">제품</a>
+                <a href="/ko/blog">필드 노트</a>
+                <a href="/ko/contact">연락처</a>
+            </div>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="언어 선택"><ul><li><a href="/" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko" lang="ko" hreflang="ko" data-language="ko" aria-current="page"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+        <!-- HERO -->
+        <header class="hero">
+            <h1 class="logo-wrap">
+                <img src="logo.png" alt="Graphic Meat — 독립 제품 스튜디오" width="360" height="300">
+                <span class="sr-only">Graphic Meat — 독립 제품 스튜디오</span>
+            </h1>
+            <p class="tagline">
+                <span class="dash"></span>
+                잘했어는 필수사항은 아니야
+                <span class="dash"></span>
+            </p>
+            <p class="hero-kicker">비용을 지불할 가치가 있는 독립 소프트웨어는 관심을 끌기보다는 신뢰를 얻기 위해 만들어졌습니다.</p>
+            <p class="studio-line">기본적으로 비공개  ·  지속 가능한 설계  ·  Est. 2013년</p>
+            <a href="#products" class="scroll-hint">↓ 우리가 만들고 있는 것</a>
+        </header>
+
+        <!-- PRODUCTS -->
+        <section id="products" aria-labelledby="products-h">
+            <h2 id="products-h" class="section-label"><span class="mark">//</span> 우리가 만들고 있는 것</h2>
+            <div class="product-grid">
+                <!-- To add a product: duplicate this <article class="card"> 콘텐츠를 차단하고 편집하세요. -->
+                <article class="card">
+                    <div class="card-head">
+                        <div class="card-id">
+                            <img src="mailvault.png" alt="MailVault 로고" width="42" height="42">
+                            <h3 class="card-name">MailVault</h3>
+                        </div>
+                        <span class="badge live">라이브</span>
+                    </div>
+                    <p class="card-tagline">귀하의 편지함이 꽉 찼습니다. 귀하의 아카이브가 반드시 그럴 필요는 없습니다.</p>
+                    <p class="card-blurb">IMAP 이메일을 표준 .eml 파일로 로컬에 보관하세요. 서버 저장 공간을 확보하고 모든 것을 오프라인에서 검색할 수 있도록 유지하세요. 영원히.</p>
+                    <ul class="chips">
+                        <li class="chip">로컬 .eml 아카이브</li>
+                        <li class="chip">오프라인 검색</li>
+                        <li class="chip">다중 계정 IMAP</li>
+                        <li class="chip">구독 계획</li>
+                    </ul>
+                    <a class="gh-stars" href="https://github.com/GraphicMeat/mail-vault-app" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/mail-vault-app">
+                        <span class="star" aria-hidden="true">&#9733;</span>
+                        <span>GitHub의 스타</span>
+                        <span class="count" hidden></span>
+                    </a>
+                    <div class="card-foot">
+                        <p class="card-meta">사용 가능한 앱: · Gmail · Outlook · IMAP<br>macOS · 리눅스</p>
+                        <a class="cta" href="https://mailvaultapp.com" target="_blank" rel="noopener noreferrer">MailVault 방문 <span class="arrow">&#8594;</span></a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-head">
+                        <div class="card-id">
+                            <img src="assets/photobooks/images/icon.png" alt="__사진집__ 앱 아이콘" width="42" height="42">
+                            <h3 class="card-name">PhotoBooks</h3>
+                        </div>
+                        <span class="badge beta">Mac용 무료</span>
+                    </div>
+                    <p class="card-tagline">아름다운 사진첩이 자동으로 만들어집니다.</p>
+                    <p class="card-blurb">사진 라이브러리를 인쇄 가능한 앨범으로 바꿔주는 기본 Mac 앱 — Apple Photos에서 가져오기, 페이지 자동 정렬, 인쇄 또는 공유를 위해 PDF 내보내기. 무료이며, 사진이 Mac 밖으로 나갈 일이 없습니다.</p>
+                    <ul class="chips">
+                        <li class="chip">스마트 자동 레이아웃</li>
+                        <li class="chip">Apple 사진 가져오기</li>
+                        <li class="chip">인쇄 가능한 PDF</li>
+                        <li class="chip">무료 · 기기 내</li>
+                    </ul>
+                    <a class="gh-stars" href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer" data-repo="GraphicMeat/PhotoBooks">
+                        <span class="star" aria-hidden="true">&#9733;</span>
+                        <span>GitHub의 스타</span>
+                        <span class="count" hidden></span>
+                    </a>
+                    <div class="card-foot">
+                        <p class="card-meta">· macOS 15+용<br>아이폰·아이패드 곧 출시</p>
+                        <a class="cta" href="/ko/photobooks">작동 방식 보기 <span class="arrow">&#8594;</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FIELD NOTES -->
+        <section id="field-notes" aria-labelledby="field-notes-h">
+            <div class="section-headline">
+                <h2 id="field-notes-h" class="section-label"><span class="mark">//</span> 필드 노트</h2>
+                <a href="/ko/blog">모든 메모 보기 <span aria-hidden="true">&#8594;</span></a>
+            </div>
+            <article class="story-card story-card--featured">
+                <div>
+                    <p class="story-meta"><time datetime="2026-07-12">2026년 7월 12일</time> · 디자인 시스템 · 8분 읽기</p>
+                    <h3><a href="/ko/blog/automatic-masonry-layouts-photobooks">웹은 자동 벽돌을 해결했습니다. 왜 화보집이 없나요?</a></h3>
+                    <p>웹 브라우저는 수년 동안 고르지 않은 콘텐츠를 균형 잡힌 그리드로 흘러갔습니다. 인쇄된 앨범은 여전히 ​​사람들에게 모든 사진을 상자에 넣으라고 요구합니다. 누락된 부분은 레이아웃이 아니라 판단입니다.</p>
+                </div>
+                <a class="story-arrow" href="/ko/blog/automatic-masonry-layouts-photobooks" aria-label="웹에서 자동 벽돌을 해결했습니다. 왜 화보집이 없나요?">&#8599;</a>
+            </article>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" aria-labelledby="about-h">
+            <h2 id="about-h" class="section-label"><span class="mark">//</span> 우리는 누구인가</h2>
+            <p class="prose">Graphic Meat는 2013년부터 운영되고 있는 독립 제품 스튜디오입니다. 우리는 귀하의 데이터를 존중하고 한 가지 일을 잘 수행하는 작고 날카로운 도구를 만듭니다. 일부는 구독으로 지불되고 일부는 무료 오픈 소스입니다. 모델은 제품을 따르지만 목표는 동일하게 유지됩니다. 유용한 소프트웨어와 이를 계속 만들 수 있는 스튜디오입니다. 잘 했어는 필수 사항이 아닙니다.</p>
+        </section>
+
+        <!-- HOW WE BUILD -->
+        <section id="how-we-build" aria-labelledby="how-h">
+            <h2 id="how-h" class="section-label"><span class="mark">//</span> 우리가 구축하는 방법</h2>
+            <p class="prose">작은 도구는 여전히 실제 엔지니어링이 필요합니다. 우리는 소프트웨어 세계에서 이미 입증된 패턴에 의존하고 이를 AI와 결합하여 일반적으로 속도에 수반되는 혼란 없이 빈 저장소에서 제품 배송으로 빠르게 이동합니다.</p>
+            <ul class="feature-grid">
+                <li class="feature">
+                    <h3>모듈성</h3>
+                    <p>솔기가 뚜렷하고 독립적인 작은 부품입니다. 각 부분은 하나의 작업을 수행하므로 기능은 추가되고 버그는 그대로 유지됩니다.</p>
+                </li>
+                <li class="feature">
+                    <h3>테스트 기반</h3>
+                    <p>먼저 테스트를 작성한 다음 이를 통과하는 코드를 작성하세요. 동작은 출시되기 전에 고정되어 있으며 코드가 커짐에 따라 고정된 상태로 유지됩니다.</p>
+                </li>
+                <li class="feature">
+                    <h3>테스트용으로 제작됨</h3>
+                    <p>검증할 수 있도록 만들어진 코드 — 순수한 함수, 주입된 종속성, 숨겨진 상태 없음. 테스트하기 어렵다면 잘못 설계된 것입니다.</p>
+                </li>
+                <li class="feature">
+                    <h3>KISS</h3>
+                    <p>언제나 작동하는 가장 간단한 것입니다. 추측적인 추상화도 없고 새벽 3시에 해독할 수 있는 영리함도 없습니다. 지루한 코드가 특징입니다.</p>
+                </li>
+                <li class="feature">
+                    <h3>SOLID</h3>
+                    <p>오랜 시간에 걸쳐 테스트된 디자인 원칙은 책임을 깨끗하게 유지하고 변경 비용을 저렴하게 유지하므로 코드베이스가 깨지는 대신 휘어집니다.</p>
+                </li>
+                <li class="feature">
+                    <h3>AI 가속</h3>
+                    <p>AI는 인간의 판단에 따라 스캐폴딩, 리팩터링 및 검토 작업을 수행하므로 품질은 향상되고 빌드 시간은 단축됩니다.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- CONTACT CTA -->
+        <section id="contact" aria-labelledby="contact-h">
+            <h2 id="contact-h" class="section-label"><span class="mark">//</span> 연락하세요</h2>
+            <div class="contact-cta">
+                <p><strong>뭔가를 만들고 싶거나 우리와 함께 일하고 싶나요?</strong> 메시지를 보내주시면 연락드리겠습니다.</p>
+                <a class="cta" href="/ko/contact">문의하기 <span class="arrow">&#8594;</span></a>
+            </div>
+        </section>
+
+        <!-- CONNECT -->
+        <section class="connect" aria-label="온라인에서 우리를 찾아보세요">
+            <h2 class="connect-title">우리를 찾아보세요</h2>
+            <div class="social-row">
+                <a class="social-link" href="https://x.com/GraphicMeat" target="_blank" rel="noopener noreferrer" aria-label="X의 Graphic Meat">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65Z"/></svg>
+                    <span>@GraphicMeat</span>
+                </a>
+                <a class="social-link" href="https://github.com/orgs/GraphicMeat/repositories" target="_blank" rel="noopener noreferrer" aria-label="Graphic Meat GitHub의 저장소">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                    <span>GraphicMeat 저장소</span>
+                </a>
+                <a class="social-link" href="https://github.com/rokas-ambrazevicius" target="_blank" rel="noopener noreferrer" aria-label="GitHub의 Rokas Ambrazevicius">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                    <span>rokas-ambrazevicius</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter" aria-label="뉴스레터 가입">
+            <p class="newsletter-title">우리가 배송하는 제품에 대한 업데이트를 가끔 받아보세요</p>
+            <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                <label for="nl-email" class="sr-only">이메일 주소</label>
+                <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                <div class="hp" aria-hidden="true">
+                    <label for="nl-website">웹사이트</label>
+                    <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" name="started" id="nl-started" value="">
+                <input type="hidden" name="locale" value="ko">
+                <button type="submit" class="cta" id="nl-submit">구독 <span class="arrow">&#8594;</span></button>
+            </form>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+            <p class="newsletter-note">이중 선택 · 확인 링크를 이메일로 보내드립니다 · 스팸 없음</p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>graphicmeat.com</span>
+            <a href="/ko/blog">필드 노트</a>
+            <a href="/ko/contact">연락처</a>
+            <a href="/ko/app-privacy">앱 개인정보 보호</a>
+            <span>예상 2013년</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">1시간 이상 조리 <b>오픈 GPU</b> 에 의해</span>
+                <a href="/ko" aria-label="Graphic Meat"><img src="logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="site.js?v=6" defer></script>
+</body>
+</html>

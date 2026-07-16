@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter — Graphic Meat</title>
+    <meta name="description" content="Graphic Meat newsletter subscription status and confirmation.">
     <meta name="robots" content="noindex, follow">
     <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/subscribed">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/subscribed">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/subscribed">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/subscribed">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/subscribed">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/subscribed">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/subscribed">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/subscribed">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/subscribed">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/subscribed">
+
+    <link rel="canonical" href="https://graphicmeat.com/subscribed">
     <link rel="icon" type="image/png" href="logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Newsletter — Graphic Meat">
+    <meta property="og:description" content="Graphic Meat newsletter subscription status and confirmation.">
+    <meta property="og:url" content="https://graphicmeat.com/subscribed">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Newsletter — Graphic Meat">
+    <meta name="twitter:description" content="Graphic Meat newsletter subscription status and confirmation.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -29,11 +52,21 @@
             </a>
             <a class="back" href="/">&#8592; Back to home</a>
         </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="Choose language"><ul><li><a href="/subscribed" lang="en" hreflang="en" data-language="en" aria-current="page"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/subscribed" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/subscribed" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/subscribed" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/subscribed" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/subscribed" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/subscribed" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/subscribed" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/subscribed" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
 
         <main>
             <div class="result-lede">
-                <h1 class="page-h1" id="result-title">Subscription confirmed</h1>
-                <p class="prose" id="result-body">You're on the list. We'll send the occasional update on what we ship — nothing else.</p>
+                <h1 class="page-h1" id="result-title"
+                    data-pending-title="Almost there" data-already-title="You're already subscribed"
+                    data-expired-title="Link expired" data-invalid-title="Link invalid">Subscription confirmed</h1>
+                <p class="prose" id="result-body"
+                    data-pending-body="Check your inbox — we've sent a confirmation link. Click it to finish subscribing. (The link expires in 48 hours.)"
+                    data-already-body="Looks like this email is already on the list. Nothing more to do."
+                    data-expired-body="That confirmation link has expired. Please subscribe again to get a fresh one."
+                    data-invalid-body="That confirmation link is invalid or has already been used. If you think this is a mistake, subscribe again.">You're on the list. We'll send the occasional update on what we ship — nothing else.</p>
                 <p style="margin-top:1.6rem"><a class="cta" href="/">Back to home <span class="arrow">&#8594;</span></a></p>
             </div>
         </main>
@@ -50,7 +83,7 @@
         </footer>
     </div>
 
-    <script src="site.js?v=4" defer></script>
+    <script src="site.js?v=6" defer></script>
     <script>
         (function () {
             var p = new URLSearchParams(location.search);
@@ -58,17 +91,17 @@
             var body = document.getElementById('result-body');
             var err = p.get('error');
             if (p.get('pending') === '1') {
-                title.textContent = 'Almost there';
-                body.textContent = "Check your inbox — we've sent a confirmation link. Click it to finish subscribing. (The link expires in 48 hours.)";
+                title.textContent = title.dataset.pendingTitle;
+                body.textContent = body.dataset.pendingBody;
             } else if (p.get('already') === '1') {
-                title.textContent = "You're already subscribed";
-                body.textContent = "Looks like this email is already on the list. Nothing more to do.";
+                title.textContent = title.dataset.alreadyTitle;
+                body.textContent = body.dataset.alreadyBody;
             } else if (err === 'expired') {
-                title.textContent = 'Link expired';
-                body.textContent = 'That confirmation link has expired. Please subscribe again to get a fresh one.';
+                title.textContent = title.dataset.expiredTitle;
+                body.textContent = body.dataset.expiredBody;
             } else if (err) {
-                title.textContent = 'Link invalid';
-                body.textContent = "That confirmation link is invalid or has already been used. If you think this is a mistake, subscribe again.";
+                title.textContent = title.dataset.invalidTitle;
+                body.textContent = body.dataset.invalidBody;
             }
         })();
     </script>
