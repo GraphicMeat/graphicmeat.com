@@ -5,6 +5,11 @@
         it: '/it/photobooks', ja: '/ja/photobooks', ko: '/ko/photobooks',
         'zh-Hans': '/zh-hans/photobooks', 'pt-BR': '/pt-br/photobooks'
     };
+    const articlePaths = {
+        en: '/blog/automatic-masonry-layouts-photobooks', de: '/de/blog/automatic-masonry-layouts-photobooks', fr: '/fr/blog/automatic-masonry-layouts-photobooks', es: '/es/blog/automatic-masonry-layouts-photobooks',
+        it: '/it/blog/automatic-masonry-layouts-photobooks', ja: '/ja/blog/automatic-masonry-layouts-photobooks', ko: '/ko/blog/automatic-masonry-layouts-photobooks',
+        'zh-Hans': '/zh-hans/blog/automatic-masonry-layouts-photobooks', 'pt-BR': '/pt-br/blog/automatic-masonry-layouts-photobooks'
+    };
     let selected = null;
     try { selected = localStorage.getItem('graphicmeat-language'); } catch (_) {}
 
@@ -26,6 +31,11 @@
         return;
     }
 
+    if ((location.pathname === articlePaths.en || location.pathname === articlePaths.en + '/') && articlePaths[selected || browserLanguage()] !== articlePaths.en) {
+        location.replace(articlePaths[selected || browserLanguage()] + location.search + location.hash);
+        return;
+    }
+
     document.querySelectorAll('.pb-language-switcher [data-language]').forEach((link) => {
         link.addEventListener('click', () => {
             try { localStorage.setItem('graphicmeat-language', link.dataset.language); } catch (_) {}
@@ -35,6 +45,7 @@
     // Keep the choice site-wide: links enter the localized PhotoBooks page when one exists.
     if (selected && paths[selected]) {
         document.querySelectorAll('a[href="/photobooks"]:not([data-language])').forEach((link) => { link.href = paths[selected]; });
+        document.querySelectorAll(`a[href="${articlePaths.en}"]:not([data-language])`).forEach((link) => { link.href = articlePaths[selected]; });
     }
 })();
 

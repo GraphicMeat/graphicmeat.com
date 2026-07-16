@@ -73,8 +73,16 @@
   </url>
   <url>
     <loc>https://graphicmeat.com/blog/automatic-masonry-layouts-photobooks</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://graphicmeat.com/de/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/fr/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/es/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/it/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/ja/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/ko/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/zh-hans/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://graphicmeat.com/pt-br/blog/automatic-masonry-layouts-photobooks</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
