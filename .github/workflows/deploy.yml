@@ -14,6 +14,7 @@ name: Deploy
 #   GRILL_EMAIL_SMTP_APP_PASSWORD  Purelymail app password for grill@graphicmeat.com
 #   DB_PASS                        random 32+ char string (MariaDB graphicmeat user)
 #   IP_SALT                        random 32+ char string
+#   ADMIN_KEY                      random 32+ char string (GET /api/admin/subscribers)
 
 on:
   push:
@@ -61,6 +62,7 @@ jobs:
           ANALYTICS_API_KEY: ${{ secrets.ANALYTICS_API_KEY }}
           MAILVAULT_ANALYTICS_URL: ${{ secrets.MAILVAULT_ANALYTICS_URL }}
           MAILVAULT_ANALYTICS_KEY: ${{ secrets.MAILVAULT_ANALYTICS_KEY }}
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
         run: |
           ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
@@ -71,6 +73,7 @@ jobs:
              ANALYTICS_API_KEY='${ANALYTICS_API_KEY}' \
              MAILVAULT_ANALYTICS_URL='${MAILVAULT_ANALYTICS_URL}' \
              MAILVAULT_ANALYTICS_KEY='${MAILVAULT_ANALYTICS_KEY}' \
+             ADMIN_KEY='${ADMIN_KEY}' \
              bash /root/graphicmeat-deploy/deploy/standup.sh"
 
       - name: Verify via Cloudflare (public)

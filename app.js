@@ -247,6 +247,35 @@ app.get('/api/subscribe/confirm', async (req, res) => {
     return res.redirect(303, subscribedPath);
 });
 
+// ---- Admin: subscriber list ----
+function timingSafeEqualStr(a, b) {
+    const bufA = Buffer.from(a);
+    const bufB = Buffer.from(b);
+    if (bufA.length !== bufB.length) return false;
+    return crypto.timingSafeEqual(bufA, bufB);
+}
+
+app.get('/api/admin/subscribers', async (req, res) => {
+    const adminKey = process.env.ADMIN_KEY;
+    const provided = req.get('x-admin-key');
+    if (!adminKey || !provided || !timingSafeEqualStr(provided, adminKey)) {
+        return res.status(401).json({ error: 'unauthorized' });
+    }
+
+    const pool = getPool();
+    if (!pool) return res.status(503).json({ error: 'db unavailable' });
+
+    try {
+        const [rows] = await pool.execute(
+            'SELECT email, status, created_at, confirmed_at FROM subscribers ORDER BY created_at DESC'
+        );
+        res.json(rows);
+    } catch (err) {
+        console.error('Admin subscribers fetch failed:', err.message);
+        res.status(503).json({ error: 'db unavailable' });
+    }
+});
+
 // ---- Static site ----
 app.use(express.static(path.join(__dirname, 'public')));
 
