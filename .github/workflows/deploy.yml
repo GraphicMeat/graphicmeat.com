@@ -57,12 +57,20 @@ jobs:
           GRILL_EMAIL_SMTP_APP_PASSWORD: ${{ secrets.GRILL_EMAIL_SMTP_APP_PASSWORD }}
           DB_PASS: ${{ secrets.DB_PASS }}
           IP_SALT: ${{ secrets.IP_SALT }}
+          ANALYTICS_PASS: ${{ secrets.ANALYTICS_PASS }}
+          ANALYTICS_API_KEY: ${{ secrets.ANALYTICS_API_KEY }}
+          MAILVAULT_ANALYTICS_URL: ${{ secrets.MAILVAULT_ANALYTICS_URL }}
+          MAILVAULT_ANALYTICS_KEY: ${{ secrets.MAILVAULT_ANALYTICS_KEY }}
         run: |
           ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
             "GRILL_EMAIL_SMTP_APP_PASSWORD='${GRILL_EMAIL_SMTP_APP_PASSWORD}' \
              DB_PASS='${DB_PASS}' \
              IP_SALT='${IP_SALT}' \
+             ANALYTICS_PASS='${ANALYTICS_PASS}' \
+             ANALYTICS_API_KEY='${ANALYTICS_API_KEY}' \
+             MAILVAULT_ANALYTICS_URL='${MAILVAULT_ANALYTICS_URL}' \
+             MAILVAULT_ANALYTICS_KEY='${MAILVAULT_ANALYTICS_KEY}' \
              bash /root/graphicmeat-deploy/deploy/standup.sh"
 
       - name: Verify via Cloudflare (public)

@@ -36,6 +36,8 @@ mkdir -p "$ENV_DIR"
 # Env vars passed to this script (e.g. from CI) WIN over the existing file; the file is
 # only a fallback so values generated on a prior run survive a re-run.
 IN_DB_PASS="${DB_PASS:-}"; IN_IP_SALT="${IP_SALT:-}"; IN_GRILL="${GRILL_EMAIL_SMTP_APP_PASSWORD:-}"
+IN_AN_PASS="${ANALYTICS_PASS:-}"; IN_AN_KEY="${ANALYTICS_API_KEY:-}"
+IN_MV_URL="${MAILVAULT_ANALYTICS_URL:-}"; IN_MV_KEY="${MAILVAULT_ANALYTICS_KEY:-}"
 if [[ -f "$ENV_DIR/secrets.env" ]]; then
     # shellcheck disable=SC1091
     source "$ENV_DIR/secrets.env"
@@ -53,6 +55,11 @@ if [[ -z "${GRILL_EMAIL_SMTP_APP_PASSWORD:-}" ]]; then
     fi
 fi
 GRILL_EMAIL_SMTP_APP_PASSWORD="${GRILL_EMAIL_SMTP_APP_PASSWORD:-}"
+# meatlytics: CI value wins, else keep existing, else generate (pass/key must exist for the dashboard to be usable)
+ANALYTICS_PASS="${IN_AN_PASS:-${ANALYTICS_PASS:-$(openssl rand -hex 12)}}"
+ANALYTICS_API_KEY="${IN_AN_KEY:-${ANALYTICS_API_KEY:-$(openssl rand -hex 32)}}"
+MAILVAULT_ANALYTICS_URL="${IN_MV_URL:-${MAILVAULT_ANALYTICS_URL:-}}"
+MAILVAULT_ANALYTICS_KEY="${IN_MV_KEY:-${MAILVAULT_ANALYTICS_KEY:-}}"
 
 cat > "$ENV_DIR/.env" <<EOF
 # Public (non-secret) config for graphicmeat.com. Managed by deploy/standup.sh.
@@ -75,6 +82,10 @@ cat > "$ENV_DIR/secrets.env" <<EOF
 DB_PASS=$DB_PASS
 IP_SALT=$IP_SALT
 GRILL_EMAIL_SMTP_APP_PASSWORD=$GRILL_EMAIL_SMTP_APP_PASSWORD
+ANALYTICS_PASS=$ANALYTICS_PASS
+ANALYTICS_API_KEY=$ANALYTICS_API_KEY
+MAILVAULT_ANALYTICS_URL=$MAILVAULT_ANALYTICS_URL
+MAILVAULT_ANALYTICS_KEY=$MAILVAULT_ANALYTICS_KEY
 EOF
 chown -R "$APP_USER:$APP_USER" "$ENV_DIR" "$APP_DIR"
 chmod 600 "$ENV_DIR/secrets.env"
