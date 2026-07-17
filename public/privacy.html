@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy — Graphic Meat</title>
+    <meta name="description" content="How graphicmeat.com handles data: self-hosted first-party analytics, the contact form, and newsletter signups.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="canonical" href="https://graphicmeat.com/privacy.html">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="Privacy — Graphic Meat">
+    <meta property="og:description" content="How graphicmeat.com handles data: self-hosted first-party analytics, the contact form, and newsletter signups.">
+    <meta property="og:url" content="https://graphicmeat.com/privacy.html">
+    <meta property="og:image" content="https://graphicmeat.com/logo.png">
+    <meta property="og:image:alt" content="Graphic Meat logo">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy — Graphic Meat">
+    <meta name="twitter:description" content="How graphicmeat.com handles data: self-hosted first-party analytics, the contact form, and newsletter signups.">
+    <meta name="twitter:image" content="https://graphicmeat.com/logo.png">
+    <meta name="twitter:image:alt" content="Graphic Meat logo">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=8">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://graphicmeat.com/#organization",
+      "name": "Graphic Meat",
+      "url": "https://graphicmeat.com/",
+      "logo": "https://graphicmeat.com/logo.png",
+      "foundingDate": "2013"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Privacy — Graphic Meat",
+      "url": "https://graphicmeat.com/privacy.html",
+      "description": "How graphicmeat.com handles data: self-hosted first-party analytics, the contact form, and newsletter signups.",
+      "dateModified": "2026-07-17",
+      "publisher": {
+        "@id": "https://graphicmeat.com/#organization"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="page">
+        <nav class="topbar" aria-label="Primary">
+            <a class="home" href="/">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <a class="back" href="/">&#8592; Back to home</a>
+        </nav>
+
+        <main>
+            <article class="privacy-page">
+                <h1><span class="mark">//</span> Privacy</h1>
+                <p class="privacy-updated">Effective July 17, 2026</p>
+                <p class="privacy-intro">This page explains how graphicmeat.com itself handles data — analytics, the contact form, and the newsletter. For how our apps (PhotoBooks, MailVault) handle your data, see <a href="/app-privacy">App privacy</a>.</p>
+
+                <section class="privacy-section" aria-labelledby="analytics-heading">
+                    <h2 id="analytics-heading">Analytics</h2>
+                    <p>This site uses self-hosted, first-party analytics. All analytics data is processed and stored on our own server and is never shared with, or sent to, any third party. We do not use analytics cookies and we do not store personal information. Visits are counted using an anonymous identifier derived from your IP address and browser signature, hashed with a secret key that is automatically deleted every 24 hours — after that, re-identifying any visitor is impossible, even for us. Raw IP addresses and browser signatures are never written to disk. What we record: pages viewed, referring site, clicks, scrolling, and approximate time on page — in aggregate, to understand which content works and to improve the site.</p>
+                </section>
+
+                <section class="privacy-section" aria-labelledby="forms-heading">
+                    <h2 id="forms-heading">Contact form and newsletter</h2>
+                    <p>The <a href="/contact">contact form</a> sends your message to us by email so we can reply — we don't store submissions in a database. The newsletter signup uses double opt-in: we email you a confirmation link before you're subscribed, and we store your email address only to send you updates about Graphic Meat. Neither is ever shared with a third party.</p>
+                </section>
+            </article>
+        </main>
+
+        <section class="newsletter" aria-label="Newsletter signup">
+            <p class="newsletter-title">Get occasional updates on what we ship</p>
+            <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                <label for="nl-email" class="sr-only">Email address</label>
+                <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                <div class="hp" aria-hidden="true">
+                    <label for="nl-website">Website</label>
+                    <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" name="started" id="nl-started" value="">
+                <input type="hidden" name="locale" value="">
+                <button type="submit" class="cta" id="nl-submit">Subscribe <span class="arrow">&#8594;</span></button>
+            </form>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+            <p class="newsletter-note">Double opt-in · we email a confirm link · no spam</p>
+        </section>
+
+        <footer class="footer">
+            <span>graphicmeat.com</span>
+            <a href="/">Home</a>
+            <a href="/contact">Contact</a>
+            <a href="/app-privacy">App privacy</a>
+            <a href="/privacy.html" aria-current="page">Privacy</a>
+            <span>Est. 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Cooked over an <b>open GPU</b> by</span>
+                <a href="/" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/site.js?v=6" defer></script>
+<script defer src="/gm.js" data-site="graphicmeat"></script></body>
+</html>
