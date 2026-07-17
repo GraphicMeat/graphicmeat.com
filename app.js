@@ -5,12 +5,33 @@ const path = require('path');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
+const analytics = require('meatlytics');
 const { getPool, initDatabase } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set('trust proxy', 1); // behind nginx reverse proxy (Hetzner) — needed for correct client IP in rate limiter
+
+// Self-hosted analytics (meatlytics): /gm.js, /gm/e, /_analytics, /gm/api/*.
+// Mounted first — it reads POST /gm/e's raw body itself, so it must run before
+// the body parsers below would otherwise consume the stream.
+const analyticsPeers = [];
+if (process.env.MAILVAULT_ANALYTICS_URL) {
+    analyticsPeers.push({
+        name: 'mailvault',
+        url: process.env.MAILVAULT_ANALYTICS_URL,
+        apiKey: process.env.MAILVAULT_ANALYTICS_KEY,
+    });
+}
+app.use(analytics({
+    siteId: 'graphicmeat',
+    dbPath: path.join(__dirname, 'data', 'analytics.db'),
+    dashboardPassword: process.env.ANALYTICS_PASS,
+    apiKey: process.env.ANALYTICS_API_KEY,
+    peers: analyticsPeers,
+}));
+
 app.use(express.urlencoded({ extended: false, limit: '32kb' }));
 app.use(express.json({ limit: '32kb' }));
 

@@ -23,6 +23,7 @@
     "dotenv": "^16.4.7",
     "express": "^5.2.1",
     "express-rate-limit": "^7.5.0",
+    "meatlytics": "file:../analytics",
     "mysql2": "^3.22.5",
     "nodemailer": "^6.9.16"
   }
