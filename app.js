@@ -27,7 +27,6 @@ if (process.env.MAILVAULT_ANALYTICS_URL) {
 app.use(analytics({
     siteId: 'graphicmeat',
     dbPath: path.join(__dirname, 'data', 'analytics.db'),
-    dashboardPassword: process.env.ANALYTICS_PASS,
     apiKey: process.env.ANALYTICS_API_KEY,
     peers: analyticsPeers,
 }));

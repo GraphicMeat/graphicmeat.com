@@ -36,7 +36,7 @@ mkdir -p "$ENV_DIR"
 # Env vars passed to this script (e.g. from CI) WIN over the existing file; the file is
 # only a fallback so values generated on a prior run survive a re-run.
 IN_DB_PASS="${DB_PASS:-}"; IN_IP_SALT="${IP_SALT:-}"; IN_GRILL="${GRILL_EMAIL_SMTP_APP_PASSWORD:-}"
-IN_AN_PASS="${ANALYTICS_PASS:-}"; IN_AN_KEY="${ANALYTICS_API_KEY:-}"
+IN_AN_KEY="${ANALYTICS_API_KEY:-}"
 IN_MV_URL="${MAILVAULT_ANALYTICS_URL:-}"; IN_MV_KEY="${MAILVAULT_ANALYTICS_KEY:-}"
 IN_ADMIN_KEY="${ADMIN_KEY:-}"
 if [[ -f "$ENV_DIR/secrets.env" ]]; then
@@ -56,8 +56,8 @@ if [[ -z "${GRILL_EMAIL_SMTP_APP_PASSWORD:-}" ]]; then
     fi
 fi
 GRILL_EMAIL_SMTP_APP_PASSWORD="${GRILL_EMAIL_SMTP_APP_PASSWORD:-}"
-# meatlytics: CI value wins, else keep existing, else generate (pass/key must exist for the dashboard to be usable)
-ANALYTICS_PASS="${IN_AN_PASS:-${ANALYTICS_PASS:-$(openssl rand -hex 12)}}"
+# meatlytics: CI value wins, else keep existing, else generate. Dashboard login is
+# passkey-based (first boot logs a one-time setup path to journalctl).
 ANALYTICS_API_KEY="${IN_AN_KEY:-${ANALYTICS_API_KEY:-$(openssl rand -hex 32)}}"
 MAILVAULT_ANALYTICS_URL="${IN_MV_URL:-${MAILVAULT_ANALYTICS_URL:-}}"
 MAILVAULT_ANALYTICS_KEY="${IN_MV_KEY:-${MAILVAULT_ANALYTICS_KEY:-}}"
@@ -85,7 +85,6 @@ cat > "$ENV_DIR/secrets.env" <<EOF
 DB_PASS=$DB_PASS
 IP_SALT=$IP_SALT
 GRILL_EMAIL_SMTP_APP_PASSWORD=$GRILL_EMAIL_SMTP_APP_PASSWORD
-ANALYTICS_PASS=$ANALYTICS_PASS
 ANALYTICS_API_KEY=$ANALYTICS_API_KEY
 MAILVAULT_ANALYTICS_URL=$MAILVAULT_ANALYTICS_URL
 MAILVAULT_ANALYTICS_KEY=$MAILVAULT_ANALYTICS_KEY
