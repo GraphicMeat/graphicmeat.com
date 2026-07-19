@@ -24,7 +24,7 @@ id -u "$APP_USER" &>/dev/null || useradd --system --no-create-home --shell /usr/
 
 echo "==> 2/8 sync code to $APP_DIR"
 mkdir -p "$APP_DIR"
-rsync -a --delete --exclude '.git' --exclude 'node_modules' --exclude '.env' "$SRC"/ "$APP_DIR"/
+rsync -a --delete --exclude '.git' --exclude 'node_modules' --exclude '.env' --exclude 'data/' "$SRC"/ "$APP_DIR"/
 
 echo "==> 3/8 npm install (production)"
 cd "$APP_DIR"
