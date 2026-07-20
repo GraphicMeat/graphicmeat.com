@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatPad for Mac — 本地注释和严肃的代码编辑器 | Graphic Meat</title>
+    <meta name="description" content="MeatPad 是一款本地优先的 Mac 应用程序，用于笔记、Markdown 和代码项目，具有全文搜索、真实代码折叠、项目搜索、主题、命令和可选的语言服务器智能。">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/meatpad">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/meatpad">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/meatpad">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/meatpad">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/meatpad">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/meatpad">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/meatpad">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/meatpad">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/meatpad">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/meatpad">
+
+
+
+    <link rel="canonical" href="https://graphicmeat.com/zh-hans/meatpad">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="MeatPad — 从注释开始。留下来给编辑。">
+    <meta property="og:description" content="一个私有的、本地优先的 Mac 工作区，用于笔记、Markdown 和真实代码项目。">
+    <meta property="og:url" content="https://graphicmeat.com/zh-hans/meatpad">
+    <meta property="og:image" content="https://graphicmeat.com/assets/meatpad/images/zh-hans/01-notes-search.webp">
+    <meta property="og:image:width" content="2880">
+    <meta property="og:image:height" content="1800">
+    <meta property="og:image:alt" content="MeatPad 显示 macOS 上本地笔记的全文搜索">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MeatPad — 从注释开始。留下来给编辑。">
+    <meta name="twitter:description" content="本地笔记、Markdown、代码项目、搜索、折叠、主题和语言智能尽在一个本机 Mac 应用程序中。">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/meatpad/images/zh-hans/01-notes-search.webp">
+    <meta name="twitter:image:alt" content="MeatPad 显示 macOS 上本地笔记的全文搜索">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=11">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://graphicmeat.com/#organization",
+      "name": "Graphic Meat",
+      "url": "https://graphicmeat.com",
+      "logo": "https://graphicmeat.com/logo.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "MeatPad",
+      "url": "https://graphicmeat.com/zh-hans/meatpad",
+      "image": "https://graphicmeat.com/assets/meatpad/images/icon.png",
+      "screenshot": [
+        "https://graphicmeat.com/assets/meatpad/images/zh-hans/01-notes-search.webp",
+        "https://graphicmeat.com/assets/meatpad/images/zh-hans/02-swift-project.webp",
+        "https://graphicmeat.com/assets/meatpad/images/zh-hans/05-themes.webp"
+      ],
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS 14 or later",
+      "softwareVersion": "0.9 preview",
+      "downloadUrl": "https://graphicmeat.com/download/meatpad",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "本地优先的 macOS 应用程序，用于笔记、Markdown 和代码项目，具有全文笔记搜索、项目搜索、真实代码折叠、可定制语法主题、可信命令和可选语言服务器功能。",
+      "featureList": "Local notes, full-text note search, project editor, Markdown highlighting, syntax highlighting, real code folding, project search and replace, customizable themes, snippets, trusted shell commands, diagnostics, completion, hover, definition, references, symbols, rename, export, delete-all",
+      "publisher": {
+        "@id": "https://graphicmeat.com/#organization"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="meatpad-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell mp-shell">
+        <nav class="topbar pb-topbar mp-topbar" aria-label="小学">
+            <a class="home" href="/zh-hans">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#workspace">工作空间</a>
+                <a href="#intelligence">情报</a>
+                <a href="#privacy">隐私</a>
+                <a class="pb-nav-download" href="/download/meatpad" rel="nofollow">下载0.9</a>
+            </div>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="选择语言"><ul><li><a href="/meatpad" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/meatpad" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/meatpad" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/meatpad" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/meatpad" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/meatpad" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/meatpad" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/meatpad" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans" aria-current="page"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/meatpad" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+        <main>
+            <header class="mp-hero">
+                <div class="mp-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> macOS 原生</p>
+                    <h1>从一条笔记开始。 <em>因编辑器而留下。</em></h1>
+                    <p class="pb-lede">MeatPad 是本地优先的快速笔记、Markdown 和真实代码项目的主页。搜索所有内容，折叠实际语法，调整每种颜色，并使用您自己的工具 - 无需将您的工作转移到浏览器中。</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">下载 Mac 版 <span aria-hidden="true">↓</span></a>
+                        <a class="pb-button pb-button--text" href="#workspace">查看工作区 <span aria-hidden="true">↘</span></a>
+                    </div>
+                    <p class="pb-download-note">macOS 14+ · 无帐户 · 普通文件 · 预览版 0.9</p>
+                </div>
+                <figure class="mp-hero-art">
+                    <div class="mp-icon-orbit mp-icon-orbit--one" aria-hidden="true"></div>
+                    <div class="mp-icon-orbit mp-icon-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/meatpad/images/icon.png" alt="MeatPad 应用程序图标，结合了一张纸和钢笔笔尖" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag mp-proof-local"><span aria-hidden="true">●</span> 本地优先</span>
+                    <span class="pb-proof-tag mp-proof-native">使用 SwiftUI 构建 <span aria-hidden="true">⌘</span></span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="MeatPad 好处">
+                <p><strong>笔记+项目</strong><span>一款专注的应用程序，两种思考方式</span></p>
+                <p><strong>搜索单词</strong><span>全文注释和项目范围内的搜索</span></p>
+                <p><strong>编辑真实语法</strong><span>突出显示、折叠、片段、完成</span></p>
+                <p><strong>拥有文件</strong><span>随时导出；没有专有数据库</span></p>
+            </aside>
+
+            <section class="mp-proof" id="workspace" aria-labelledby="workspace-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">进入思想的捷径</p>
+                        <h2 id="workspace-heading">找到那句话。<br>而不是那个文件。</h2>
+                    </div>
+                    <p>文件夹保持宽阔的形状。全文搜索可以找到每个笔记中的确切想法。结果在同一个本机窗口中更新，并且源在 Mac 上仍然是普通文本。</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/zh-hans/01-notes-search.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 MeatPad 笔记搜索屏幕截图">
+                        <img src="/assets/meatpad/images/zh-hans/01-notes-search.webp" alt="MeatPad 注释浏览器显示对隐私架构注释中突出显示的本地优先和匹配文本的搜索" width="2880" height="1800" loading="eager">
+                    </a>
+                    <figcaption><span>全文注释搜索·突出显示的匹配项</span><span>本地存储·文件夹·垃圾箱</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-dual" aria-labelledby="dual-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">会成长为利器的笔记本</p>
+                    <h2 id="dual-heading">简单时用纯文本，需要时用项目。</h2>
+                    <p>打开一个文件夹，MeatPad 就会成为一个严肃的编辑器：文件树、选项卡、语法感知结构、项目搜索以及理解您面前文档的工具。</p>
+                </div>
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>01 / 项目工作区</span>
+                            <h3>在代码库中移动而不丢失线程。</h3>
+                            <p>浏览文件夹、保持多个文件打开并在无干扰的本机窗口中进行编辑。</p>
+                        </div>
+                        <a href="/assets/meatpad/images/zh-hans/02-swift-project.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/zh-hans/02-swift-project.webp" alt="MeatPad 使用文件树、打开选项卡、语法突出显示和代码折叠控件编辑 Swift 项目" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>02 / Markdown 读起来像代码</span>
+                            <h3>在一个真正的编辑器中编写散文和围栏代码。</h3>
+                            <p>Markdown 结构和嵌入式语言保持清晰，具有行号和本机文本行为。</p>
+                        </div>
+                        <a href="/assets/meatpad/images/zh-hans/03-markdown-highlighting.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/zh-hans/03-markdown-highlighting.webp" alt="MeatPad 使用突出显示的标题、列表、链接和受隔离的 Swift 代码块编辑 Markdown" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mp-capabilities" aria-labelledby="capabilities-heading">
+                <div class="mp-capabilities-heading">
+                    <p class="pb-kicker">编辑器基础知识，完成</p>
+                    <h2 id="capabilities-heading">小事就是大事。</h2>
+                </div>
+                <div class="mp-capability-grid">
+                    <article><span>⌄</span><h3>真正的代码折叠</h3><p>折叠语法定义的区域、折叠所有内容或重新打开您正在工作的位置。</p></article>
+                    <article><span>⌕</span><h3>项目范围内的搜索</h3><p>搜索每个文件，检查分组匹配，并从一个面板在整个项目中进行替换。</p></article>
+                    <article><span>⌃</span><h3>项目感知补全</h3><p>本地完成来自打开的项目、代码片段、语言关键字和可选的服务器结果。</p></article>
+                    <article><span>◫</span><h3>自定义主题</h3><p>选择内置主题或逐个调整编辑器调色板令牌，无需重新启动应用程序。</p></article>
+                </div>
+                <figure class="pb-app-window mp-window mp-search-window">
+                    <a href="/assets/meatpad/images/zh-hans/04-project-search.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 MeatPad 项目搜索屏幕截图">
+                        <img src="/assets/meatpad/images/zh-hans/04-project-search.webp" alt="MeatPad 项目搜索显示 Swift、Markdown 和测试文件中本地优先的匹配项" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>项目搜索·分组结果</span><span>搜索和替换 · 键盘优先</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-intelligence" id="intelligence" aria-labelledby="intelligence-heading">
+                <div class="mp-intelligence-copy">
+                    <p class="pb-kicker">使用你自己的智能工具</p>
+                    <h2 id="intelligence-heading">你的语言服务器。你的 Mac。无需云端中间商。</h2>
+                    <p>安装受支持的服务器后，直接下载版本会将项目连接到诊断、完成、悬停信息、定义、引用、文档符号和重命名。</p>
+                    <ul>
+                        <li><span>01</span><strong>Swift</strong><small>SourceKit-LSP</small></li>
+                        <li><span>02</span><strong>Rust</strong><small>rust-analyzer</small></li>
+                        <li><span>03</span><strong>打字稿 / JavaScript</strong><small>typescript-language-server</small></li>
+                        <li><span>04</span><strong>Python</strong><small>Pyright</small></li>
+                    </ul>
+                </div>
+                <aside class="mp-honesty-card" aria-label="MeatPad 语言智能如何运作">
+                    <span class="mp-terminal-dot" aria-hidden="true"></span>
+                    <p class="mp-honesty-label">没有隐形服务</p>
+                    <h3>MeatPad 不上传代码来提供编辑器情报。</h3>
+                    <p>它会检测 Mac 上已安装的语言服务器并在项目内启动它们。如果服务器不存在，普通编辑和本地完成仍然可以工作。</p>
+                    <p class="mp-honesty-note">Mac App Store 沙箱无法执行用户安装的语言服务器。因此，完整的 LSP 支持属于经过公证的直接下载版本。</p>
+                </aside>
+            </section>
+
+            <section class="mp-themes" aria-labelledby="themes-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">让编辑器成为你的</p>
+                        <h2 id="themes-heading">每种语法标记都有颜色，由你决定。</h2>
+                    </div>
+                    <p>从平衡的内置主题开始，然后调整编辑器背景、文本、注释、关键字、字符串、数字、类型等。预览会随着您的工作而更新。</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/zh-hans/05-themes.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 MeatPad 主题编辑器屏幕截图">
+                        <img src="/assets/meatpad/images/zh-hans/05-themes.webp" alt="MeatPad 主题设置显示多个主题和可编辑语法颜色，并带有实时代码预览" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>内置主题·自定义调色板</span><span>实时语法预览·编辑器颜色</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="mp-privacy-copy">
+                    <p class="pb-kicker">本地化意味着运营本地化</p>
+                    <h2 id="privacy-heading">无需账户。无需同步引擎。数据绝不被锁定。</h2>
+                    <p>MeatPad 的隐私屏幕用简单的语言说明了该应用程序的功能。注释和设置保留在这台 Mac 上。导出创建普通文件。仅在明确确认后，删除所有内容才会删除本地数据。</p>
+                    <div class="mp-safety-grid">
+                        <article><span>✓</span><div><h3>按需导出</h3><p>像普通文件一样记下笔记和设置。</p></div></article>
+                        <article><span>✓</span><div><h3>导入的命令启动不受信任</h3><p>在运行之前检查脚本、工作目录、输入、环境和超时。</p></div></article>
+                        <article><span>✓</span><div><h3>删除是故意的</h3><p>破坏性行为是可见的、有范围的、并且得到确认的。</p></div></article>
+                    </div>
+                </div>
+                <figure class="mp-privacy-shot">
+                    <a href="/assets/meatpad/images/zh-hans/06-privacy.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 MeatPad 隐私设置屏幕截图">
+                        <img src="/assets/meatpad/images/zh-hans/06-privacy.webp" alt="MeatPad 隐私设置解释本地数据存储、导出和确认的“删除所有内容”操作" width="2880" height="1800" loading="lazy">
+                    </a>
+                </figure>
+            </section>
+
+            <section class="pb-final-cta mp-final-cta" id="availability" aria-labelledby="availability-heading">
+                <p class="pb-kicker">MeatPad 0.9 预览</p>
+                <h2 id="availability-heading">编辑器已就绪。<br>把它带回家。</h2>
+                <p>立即免费下载经过公证的 Mac 版本。加入下面的 Graphic Meat 列表，了解通往 1.0 的发行说明。</p>
+                <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">下载MeatPad <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">macOS 14 索诺玛或更高版本 · 免费直接下载 · 无需帐户</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" id="meatpad-updates" aria-label="MeatPad 更新">
+            <div>
+                <p class="newsletter-title">获取 MeatPad 发行说明</p>
+                <p class="pb-newsletter-copy">现在有一个确认，新版本发布时的简短说明。没有别的了。</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">电子邮件地址</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">网站</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <input type="hidden" name="locale" value="zh-hans">
+                    <button type="submit" class="cta" id="nl-submit">让我随时了解情况 <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">双重选择加入·随时退订·无垃圾邮件</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/zh-hans">首页</a>
+            <a href="/zh-hans/app-privacy">应用程序隐私</a>
+            <span>Est. 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Cooked over an <b>open GPU</b> by</span>
+                <a href="/zh-hans" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock mp-mobile-dock" href="#meatpad-updates">获取发布通知 <span aria-hidden="true">↓</span></a>
+    <script src="/site.js?v=6" defer></script>
+    <script defer src="/gm.js" data-site="graphicmeat"></script>
+</body>
+</html>

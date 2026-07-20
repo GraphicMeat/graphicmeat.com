@@ -296,6 +296,10 @@ app.get('/photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'photobooks.html'));
 });
 
+app.get('/meatpad', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'meatpad.html'));
+});
+
 app.get('/mrukis', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'mrukis.html'));
 });
@@ -349,6 +353,9 @@ for (const locale of PHOTOBOOK_LOCALES) {
     app.get(`/${locale}/photobooks`, (req, res) => {
         res.sendFile(path.join(__dirname, 'public', `photobooks-${locale}.html`));
     });
+    app.get(`/${locale}/meatpad`, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', `meatpad-${locale}.html`));
+    });
 }
 
 app.get('/blog', (req, res) => {
@@ -372,31 +379,36 @@ for (const locale of PHOTOBOOK_LOCALES) {
     });
 }
 
-// ---- Download: always redirect to the latest PhotoBooks .dmg ----
-// Release asset filenames carry the version (PhotoBooks-x.y.z.dmg), so there's no
+// ---- Download: always redirect to the latest release .dmg ----
+// Release asset filenames carry the version (App-x.y.z.dmg), so there's no
 // stable GitHub URL — resolve the newest via the API and 302 to it.
-const PB_REPO = 'GraphicMeat/PhotoBooks';
-const PB_RELEASES = `https://github.com/${PB_REPO}/releases/latest`;
-let pbCache = { url: null, at: 0 }; // ponytail: in-memory cache, fine for one process; add shared cache only if multi-instance
+const DL_REPOS = {
+    photobooks: 'GraphicMeat/PhotoBooks',
+    meatpad: 'GraphicMeat/MeatPad',
+};
+const dlCache = {}; // ponytail: in-memory cache, fine for one process; add shared cache only if multi-instance
 
-async function latestPhotoBooksDmg() {
-    if (pbCache.url && Date.now() - pbCache.at < 15 * 60 * 1000) return pbCache.url;
-    const r = await fetch(`https://api.github.com/repos/${PB_REPO}/releases/latest`, {
+async function latestDmg(repo) {
+    const c = dlCache[repo];
+    if (c && Date.now() - c.at < 15 * 60 * 1000) return c.url;
+    const r = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
         headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'graphicmeat.com' },
     });
     if (!r.ok) throw new Error(`GitHub API ${r.status}`);
     const dmg = ((await r.json()).assets || []).find((a) => a.name.endsWith('.dmg'));
     if (!dmg) throw new Error('no .dmg asset in latest release');
-    pbCache = { url: dmg.browser_download_url, at: Date.now() };
-    return pbCache.url;
+    dlCache[repo] = { url: dmg.browser_download_url, at: Date.now() };
+    return dlCache[repo].url;
 }
 
-app.get('/download/photobooks', async (req, res) => {
+app.get('/download/:app', async (req, res, next) => {
+    const repo = DL_REPOS[req.params.app];
+    if (!repo) return next(); // unknown app → catch-all
     try {
-        res.redirect(302, await latestPhotoBooksDmg());
+        res.redirect(302, await latestDmg(repo));
     } catch (err) {
-        console.error('PhotoBooks download redirect failed:', err.message);
-        res.redirect(302, PB_RELEASES); // fall back to the releases page — user still gets the latest
+        console.error(`${req.params.app} download redirect failed:`, err.message);
+        res.redirect(302, `https://github.com/${repo}/releases/latest`); // fall back to the releases page — user still gets the latest
     }
 });
 

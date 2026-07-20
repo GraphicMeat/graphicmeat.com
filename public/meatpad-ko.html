@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac용 MeatPad — 로컬 메모 및 고급 코드 편집기 | Graphic Meat</title>
+    <meta name="description" content="MeatPad은 전체 텍스트 검색, 실제 코드 접기, 프로젝트 검색, 테마, 명령 및 선택적 언어 서버 인텔리전스를 갖춘 메모, Markdown 및 코드 프로젝트를 위한 로컬 우선 Mac 앱입니다.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/meatpad">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/meatpad">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/meatpad">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/meatpad">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/meatpad">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/meatpad">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/meatpad">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/meatpad">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/meatpad">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/meatpad">
+
+
+
+    <link rel="canonical" href="https://graphicmeat.com/ko/meatpad">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="MeatPad — 메모로 시작하세요. 편집자를 위해 머무르십시오.">
+    <meta property="og:description" content="메모, Markdown 및 실제 코드 프로젝트를 위한 로컬 우선 비공개 Mac 작업 공간입니다.">
+    <meta property="og:url" content="https://graphicmeat.com/ko/meatpad">
+    <meta property="og:image" content="https://graphicmeat.com/assets/meatpad/images/ko/01-notes-search.webp">
+    <meta property="og:image:width" content="2880">
+    <meta property="og:image:height" content="1800">
+    <meta property="og:image:alt" content="MeatPad macOS의 로컬 메모 전체 텍스트 검색을 표시합니다.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MeatPad — 메모로 시작하세요. 편집자를 위해 머무르십시오.">
+    <meta name="twitter:description" content="하나의 기본 Mac 앱에 로컬 메모, Markdown, 코드 프로젝트, 검색, 접기, 테마 및 언어 인텔리전스가 포함되어 있습니다.">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/meatpad/images/ko/01-notes-search.webp">
+    <meta name="twitter:image:alt" content="MeatPad macOS의 로컬 메모 전체 텍스트 검색을 표시합니다.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=11">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://graphicmeat.com/#organization",
+      "name": "Graphic Meat",
+      "url": "https://graphicmeat.com",
+      "logo": "https://graphicmeat.com/logo.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "MeatPad",
+      "url": "https://graphicmeat.com/ko/meatpad",
+      "image": "https://graphicmeat.com/assets/meatpad/images/icon.png",
+      "screenshot": [
+        "https://graphicmeat.com/assets/meatpad/images/ko/01-notes-search.webp",
+        "https://graphicmeat.com/assets/meatpad/images/ko/02-swift-project.webp",
+        "https://graphicmeat.com/assets/meatpad/images/ko/05-themes.webp"
+      ],
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS 14 or later",
+      "softwareVersion": "0.9 preview",
+      "downloadUrl": "https://graphicmeat.com/download/meatpad",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "전체 텍스트 노트 검색, 프로젝트 검색, 실제 코드 접기, 사용자 정의 가능한 구문 테마, 신뢰할 수 있는 명령 및 선택적 언어 서버 기능을 갖춘 노트, Markdown 및 코드 프로젝트를 위한 네이티브 로컬 우선 macOS 앱입니다.",
+      "featureList": "Local notes, full-text note search, project editor, Markdown highlighting, syntax highlighting, real code folding, project search and replace, customizable themes, snippets, trusted shell commands, diagnostics, completion, hover, definition, references, symbols, rename, export, delete-all",
+      "publisher": {
+        "@id": "https://graphicmeat.com/#organization"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="meatpad-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell mp-shell">
+        <nav class="topbar pb-topbar mp-topbar" aria-label="기본">
+            <a class="home" href="/ko">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#workspace">작업공간</a>
+                <a href="#intelligence">지능</a>
+                <a href="#privacy">개인 정보 보호</a>
+                <a class="pb-nav-download" href="/download/meatpad" rel="nofollow">0.9 다운로드</a>
+            </div>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="언어 선택"><ul><li><a href="/meatpad" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/meatpad" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/meatpad" lang="fr" hreflang="fr" data-language="fr"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/meatpad" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/meatpad" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/meatpad" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/meatpad" lang="ko" hreflang="ko" data-language="ko" aria-current="page"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/meatpad" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/meatpad" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+        <main>
+            <header class="mp-hero">
+                <div class="mp-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> macOS용 기본</p>
+                    <h1>메모로 시작하세요. <em>편집기로 이어가세요.</em></h1>
+                    <p class="pb-lede">MeatPad은 빠른 메모, Markdown 및 실제 코드 프로젝트를 위한 로컬 우선 홈입니다. 작업 내용을 브라우저로 옮기지 않고도 모든 것을 검색하고, 실제 구문을 접고, 모든 색상을 조정하고, 자신만의 도구를 가져올 수 있습니다.</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">Mac용 다운로드 <span aria-hidden="true">↓</span></a>
+                        <a class="pb-button pb-button--text" href="#workspace">작업 공간 보기 <span aria-hidden="true">↘</span></a>
+                    </div>
+                    <p class="pb-download-note">macOS 14세 이상 · 계정 없음 · 일반 파일 · 미리보기 0.9</p>
+                </div>
+                <figure class="mp-hero-art">
+                    <div class="mp-icon-orbit mp-icon-orbit--one" aria-hidden="true"></div>
+                    <div class="mp-icon-orbit mp-icon-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/meatpad/images/icon.png" alt="MeatPad 종이와 만년필 펜촉을 결합한 앱 아이콘" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag mp-proof-local"><span aria-hidden="true">●</span> 로컬 우선</span>
+                    <span class="pb-proof-tag mp-proof-native">SwiftUI로 제작됨 <span aria-hidden="true">⌘</span></span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="MeatPad 혜택">
+                <p><strong>메모 + 프로젝트</strong><span>하나의 집중된 앱, 두 가지 사고 방식</span></p>
+                <p><strong>단어 검색</strong><span>전체 텍스트 메모 및 프로젝트 전체 검색</span></p>
+                <p><strong>실제 구문 편집</strong><span>강조표시, 접기, 조각, 완성</span></p>
+                <p><strong>파일을 소유하세요</strong><span>언제든지 수출하세요. 독점 데이터베이스 없음</span></p>
+            </aside>
+
+            <section class="mp-proof" id="workspace" aria-labelledby="workspace-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">생각으로의 빠른 길</p>
+                        <h2 id="workspace-heading">문장을 찾으세요.<br>파일이 아니라.</h2>
+                    </div>
+                    <p>폴더는 넓은 모양을 유지합니다. 전체 텍스트 검색은 모든 노트에 담긴 정확한 생각을 찾아줍니다. 결과는 동일한 기본 창에서 업데이트되며 소스는 Mac에서 일반 텍스트로 유지됩니다.</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/ko/01-notes-search.webp" target="_blank" rel="noopener" aria-label="전체 크기 MeatPad 노트 검색 스크린샷 열기">
+                        <img src="/assets/meatpad/images/ko/01-notes-search.webp" alt="MeatPad 개인 정보 보호 아키텍처 노트 내에서 강조 표시된 로컬 우선 및 일치 텍스트 검색을 보여주는 노트 브라우저" width="2880" height="1800" loading="eager">
+                    </a>
+                    <figcaption><span>전체 텍스트 노트 검색 · 강조 표시된 일치 항목</span><span>로컬 저장소 · 폴더 · 휴지통</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-dual" aria-labelledby="dual-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">본격적인 도구로 자라는 노트</p>
+                    <h2 id="dual-heading">간단할 때는 일반 텍스트. 필요할 때는 프로젝트.</h2>
+                    <p>폴더를 열면 MeatPad은(는) 파일 트리, 탭, 구문 인식 구조, 프로젝트 검색 및 눈앞에 있는 문서를 이해하는 도구를 갖춘 전문 편집기가 됩니다.</p>
+                </div>
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>01 / 프로젝트 작업공간</span>
+                            <h3>스레드를 잃지 않고 코드베이스를 통해 이동합니다.</h3>
+                            <p>폴더를 탐색하고, 여러 파일을 열어두고, 방해받지 않는 기본 창에서 편집하세요.</p>
+                        </div>
+                        <a href="/assets/meatpad/images/ko/02-swift-project.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/ko/02-swift-project.webp" alt="MeatPad 파일 트리, 열린 탭, 구문 강조 및 코드 접기 컨트롤을 사용하여 Swift 프로젝트 편집" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>02 / 코드처럼 읽는 Markdown</span>
+                            <h3>하나의 실제 편집기에서 산문과 울타리 코드를 작성하세요.</h3>
+                            <p>Markdown 구조 및 내장 언어는 줄 번호 및 기본 텍스트 동작과 함께 읽기 쉬운 상태로 유지됩니다.</p>
+                        </div>
+                        <a href="/assets/meatpad/images/ko/03-markdown-highlighting.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/ko/03-markdown-highlighting.webp" alt="MeatPad 편집 Markdown 강조 표시된 제목, 목록, 링크 및 분리된 Swift 코드 블록" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mp-capabilities" aria-labelledby="capabilities-heading">
+                <div class="mp-capabilities-heading">
+                    <p class="pb-kicker">에디터 기본 사항 완료</p>
+                    <h2 id="capabilities-heading">작은 것이 전부입니다.</h2>
+                </div>
+                <div class="mp-capability-grid">
+                    <article><span>⌄</span><h3>실제 코드 접기</h3><p>구문이 정의된 영역을 축소하거나, 모든 것을 접거나, 작업하던 위치에서 정확히 다시 엽니다.</p></article>
+                    <article><span>⌕</span><h3>프로젝트 전체 검색</h3><p>모든 파일을 검색하고, 그룹화된 일치 항목을 검사하고, 하나의 패널에서 프로젝트 전체를 교체합니다.</p></article>
+                    <article><span>⌃</span><h3>프로젝트 인식 자동 완성</h3><p>로컬 완성은 열려 있는 프로젝트, 조각, 언어 키워드 및 선택적 서버 결과에서 가져옵니다.</p></article>
+                    <article><span>◫</span><h3>맞춤 테마</h3><p>앱을 다시 시작하지 않고도 내장 테마를 선택하거나 토큰별로 편집기 팔레트 토큰을 조정할 수 있습니다.</p></article>
+                </div>
+                <figure class="pb-app-window mp-window mp-search-window">
+                    <a href="/assets/meatpad/images/ko/04-project-search.webp" target="_blank" rel="noopener" aria-label="전체 크기 MeatPad 프로젝트 검색 스크린샷 열기">
+                        <img src="/assets/meatpad/images/ko/04-project-search.webp" alt="Swift, Markdown 및 테스트 파일 전반에 걸쳐 로컬 우선 일치 항목을 표시하는 MeatPad 프로젝트 검색" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>프로젝트 검색 · 그룹화된 결과</span><span>검색 및 바꾸기 · 키보드 우선</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-intelligence" id="intelligence" aria-labelledby="intelligence-heading">
+                <div class="mp-intelligence-copy">
+                    <p class="pb-kicker">익숙한 인텔리전스를 그대로</p>
+                    <h2 id="intelligence-heading">내 언어 서버. 내 Mac. 클라우드 중개자 없이.</h2>
+                    <p>지원되는 서버가 설치되면 직접 다운로드 빌드는 프로젝트를 진단, 완료, 가리키기 정보, 정의, 참조, 문서 기호 및 이름 바꾸기에 연결합니다.</p>
+                    <ul>
+                        <li><span>01</span><strong>Swift</strong><small>SourceKit-LSP</small></li>
+                        <li><span>02</span><strong>Rust</strong><small>rust-analyzer</small></li>
+                        <li><span>03</span><strong>타입스크립트/자바스크립트</strong><small>typescript-language-server</small></li>
+                        <li><span>04</span><strong>Python</strong><small>Pyright</small></li>
+                    </ul>
+                </div>
+                <aside class="mp-honesty-card" aria-label="MeatPad 언어 지능이 작동하는 방식">
+                    <span class="mp-terminal-dot" aria-hidden="true"></span>
+                    <p class="mp-honesty-label">보이지 않는 서비스 없음</p>
+                    <h3>MeatPad은 편집자 정보를 제공하기 위한 코드를 업로드하지 않습니다.</h3>
+                    <p>Mac에 이미 설치된 언어 서버를 감지하고 프로젝트 내에서 실행합니다. 서버가 없으면 일반 편집 및 로컬 완성이 계속 작동합니다.</p>
+                    <p class="mp-honesty-note">Mac App Store 샌드박스는 사용자가 설치한 언어 서버를 실행할 수 없습니다. 따라서 전체 LSP 지원은 공증된 직접 다운로드 빌드에 속합니다.</p>
+                </aside>
+            </section>
+
+            <section class="mp-themes" aria-labelledby="themes-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">편집기를 나만의 것으로 만드세요</p>
+                        <h2 id="themes-heading">모든 토큰에 색을. 선택은 당신이.</h2>
+                    </div>
+                    <p>균형 잡힌 내장 테마로 시작한 다음 편집기 배경, 텍스트, 설명, 키워드, 문자열, 숫자, 유형 등을 조정하세요. 작업하는 동안 미리보기가 업데이트됩니다.</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/ko/05-themes.webp" target="_blank" rel="noopener" aria-label="전체 크기 MeatPad 테마 편집기 스크린샷 열기">
+                        <img src="/assets/meatpad/images/ko/05-themes.webp" alt="MeatPad 라이브 코드 미리보기로 여러 테마와 편집 가능한 구문 색상을 표시하는 테마 설정" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>내장 테마 · 사용자 정의 팔레트</span><span>실시간 구문 미리보기 · 편집기 색상</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="mp-privacy-copy">
+                    <p class="pb-kicker">로컬은 운영상 로컬을 의미합니다.</p>
+                    <h2 id="privacy-heading">계정 없음. 동기화 엔진 없음. 데이터 종속 없음.</h2>
+                    <p>MeatPad의 개인 정보 보호 화면에는 앱이 수행하는 작업이 일반 언어로 표시됩니다. 메모와 설정은 이 Mac에 유지됩니다. 내보내기는 일반 파일을 생성합니다. 모두 삭제는 명시적인 확인 후에만 로컬 데이터를 제거합니다.</p>
+                    <div class="mp-safety-grid">
+                        <article><span>✓</span><div><h3>요청 시 내보내기</h3><p>메모와 설정을 일반 파일로 가져옵니다.</p></div></article>
+                        <article><span>✓</span><div><h3>가져온 명령은 신뢰할 수 없는 상태로 시작됩니다.</h3><p>실행하기 전에 스크립트, 작업 디렉터리, 입력, 환경 및 시간 초과를 검토하세요.</p></div></article>
+                        <article><span>✓</span><div><h3>삭제는 고의적입니다</h3><p>파괴적인 행동은 가시화되고, 범위가 정해지고, 확인됩니다.</p></div></article>
+                    </div>
+                </div>
+                <figure class="mp-privacy-shot">
+                    <a href="/assets/meatpad/images/ko/06-privacy.webp" target="_blank" rel="noopener" aria-label="전체 크기 MeatPad 개인 정보 보호 설정 스크린샷 열기">
+                        <img src="/assets/meatpad/images/ko/06-privacy.webp" alt="MeatPad 로컬 데이터 저장, 내보내기 및 확인된 모든 항목 삭제 작업을 설명하는 개인 정보 보호 설정" width="2880" height="1800" loading="lazy">
+                    </a>
+                </figure>
+            </section>
+
+            <section class="pb-final-cta mp-final-cta" id="availability" aria-labelledby="availability-heading">
+                <p class="pb-kicker">MeatPad 0.9 미리보기</p>
+                <h2 id="availability-heading">편집기는 준비됐습니다.<br>집에 가져가세요.</h2>
+                <p>지금 공증된 Mac 빌드를 무료로 다운로드하세요. 1.0 출시에 대한 릴리스 노트를 보려면 아래 Graphic Meat 목록에 가입하세요.</p>
+                <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">MeatPad 다운로드 <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">macOS 14 Sonoma 이상 · 무료 직접 다운로드 · 계정 필요 없음</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" id="meatpad-updates" aria-label="MeatPad 업데이트">
+            <div>
+                <p class="newsletter-title">MeatPad 출시 노트 받기</p>
+                <p class="pb-newsletter-copy">이제 한 가지 확인을 하고, 새 빌드가 출시되면 간단한 메모를 보냅니다. 다른 것은 없습니다.</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">이메일 주소</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">웹사이트</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <input type="hidden" name="locale" value="ko">
+                    <button type="submit" class="cta" id="nl-submit">계속해서 소식을 전해 주세요 <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">이중 수신 동의 · 언제든지 구독 취소 · 스팸 없음</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/ko">홈</a>
+            <a href="/ko/app-privacy">앱 개인정보 보호</a>
+            <span>Est. 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Cooked over an <b>open GPU</b> by</span>
+                <a href="/ko" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock mp-mobile-dock" href="#meatpad-updates">출시 알림 받기 <span aria-hidden="true">↓</span></a>
+    <script src="/site.js?v=6" defer></script>
+    <script defer src="/gm.js" data-site="graphicmeat"></script>
+</body>
+</html>

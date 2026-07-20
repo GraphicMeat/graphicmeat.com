@@ -3,9 +3,10 @@
   "studio": {"name": "Graphic Meat", "url": "https://graphicmeat.com", "founded": 2013, "tagline": "Well done isn't a requirement", "contact": "https://graphicmeat.com/contact"},
   "apps": [
     {"name": "MailVault", "status": "live", "summary": "Archive IMAP email locally as standard .eml files and search it offline.", "url": "https://mailvaultapp.com", "source_url": "https://github.com/GraphicMeat/mail-vault-app", "platforms": ["macOS", "Linux"], "pricing_model": "subscription", "pricing_url": "https://mailvaultapp.com", "open_source": true, "privacy": "Runs locally"},
-    {"name": "PhotoBooks", "status": "beta", "summary": "Automatically arrange Apple Photos into photobook spreads and export print-ready PDFs.", "url": "https://graphicmeat.com/photobooks", "download_url": "https://graphicmeat.com/download/photobooks", "source_url": "https://github.com/GraphicMeat/PhotoBooks", "platforms": ["macOS 15+"], "price": 0, "currency": "USD", "open_source": true, "privacy": "Fully on-device; no account"}
+    {"name": "PhotoBooks", "status": "beta", "summary": "Automatically arrange Apple Photos into photobook spreads and export print-ready PDFs.", "url": "https://graphicmeat.com/photobooks", "download_url": "https://graphicmeat.com/download/photobooks", "source_url": "https://github.com/GraphicMeat/PhotoBooks", "platforms": ["macOS 15+"], "price": 0, "currency": "USD", "open_source": true, "privacy": "Fully on-device; no account"},
+    {"name": "MeatPad", "status": "preview", "summary": "Local-first notes, Markdown, and code projects with search, folding, themes, commands, and optional language-server intelligence.", "url": "https://graphicmeat.com/meatpad", "download_url": "https://graphicmeat.com/download/meatpad", "source_url": "https://github.com/GraphicMeat/MeatPad", "platforms": ["macOS 14+"], "version": "0.9 preview", "price": 0, "currency": "USD", "open_source": true, "privacy": "Local files; no account"}
   ],
   "editorial_url": "https://graphicmeat.com/blog",
   "rss_url": "https://graphicmeat.com/feed.xml",
-  "updated": "2026-07-12"
+  "updated": "2026-07-20"
 }

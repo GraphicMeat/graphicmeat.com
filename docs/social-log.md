@@ -44,3 +44,45 @@ Drew from: PhotoBooks' big recent burst — CurationAnalyzer near-duplicate clus
 Draft:
 > Taught the photobook app to curate: cluster near-duplicates, keep the best of each burst, promote heroes to full spreads. Layout turned out to be the easy half — deciding which photos deserve space is where taste has to become an algorithm. #buildinpublic #SwiftUI
 
+
+## 2026-07-14 — PhotoBooks + graphicmeat.com (localization: nine languages)
+Drew from: PhotoBooks' large recent burst localizing the whole app via String Catalogs into the "Big 8" (de fr es it ja ko zh-Hans pt-BR) + English — per-feature catalog sweeps (SetupFeature, ExportFeature, DocumentUI, EditorFeature, BookBrowser), verbatim handling for numeric accessibility values/separators, pruning dead/orphan keys, plus an App Store release pipeline and localized store screenshots. graphicmeat.com matched it same-week by localizing the /photobooks marketing page and adding a language picker. First localization/i18n beat in the log; distinct from 07-13 (curation) and the sda routing/map runs. No client specifics needed here.
+
+Draft:
+> Localized the photobook app into nine languages. Translation was the easy part — the real work was the edges: numbers that must stay verbatim, separators, accessibility values, pruning dead keys. Still wild that one person can ship in 9 languages now. #buildinpublic #SwiftUI
+
+## 2026-07-15 — sda (route-cost calculator: domain complexity, kept abstract)
+Drew from: sda's last ~36h — building a standalone /calculator page (waypoints, geocode, pins, preview, result cards) that prices a route with toll fares, truck-profile compliance rules, and a real fleet default. Notable sub-details: a fix to charge the cheapest toll fare rather than the sum of alternatives, and multiple perf commits gating/capping route+rule geometry so compliance never freezes the UI. Also fresh but not the chosen beat: direction-of-travel heading arrows on truck markers (incl. parked/last-known), route-history reuse on new tasks, and a new graphicmeat.com "MR. Ukis multilingual storefront" page. Chose the calculator angle — first cost/pricing beat in the log, distinct from the recent localization (07-14) and curation (07-13) runs and from earlier sda document-extraction/map beats. No client/tenant/driver specifics per instructions.
+
+Draft:
+> A route is never just distance. Building a standalone cost calculator, the hard part was tolls with multiple fare options (you want the cheapest, not the sum) and compliance rules so heavy they froze the UI until I capped the geometry. #buildinpublic #logistics
+
+## 2026-07-16 — PhotoBooks (cross-platform: Mac-first app onto iPhone/iPad)
+Drew from: PhotoBooks' last ~36h — bringing the (originally Mac-first) app to iOS: swapping in native PhotosPicker for photo selection on iOS+macOS, gating macOS window min-sizes and stacking source cards on narrow screens, fixing an iOS build (lock args to PhotoActionsInlineOverlay), fixing a Replace/Swap photo dead-end (auto-open tray + Add from Library), and an iPad reorder toolbar button for the regular-width page browser. sda also had activity (calculator recent-addresses dropdown, parked-truck heading arrows, route-history reuse) but 07-15 already covered sda and PhotoBooks' cross-platform push is the fresher, unused angle. First cross-platform/iOS-adaptation beat in the log — distinct from 07-13 curation and 07-14 localization.
+
+Draft:
+> Bringing the photobook app to iPhone this week — it's all the small adaptations: a layout built for a Mac window has to stack for a narrow screen, swap in the native photo picker, and stop dead-ending flows that assumed a mouse. Same app, different hands. #SwiftUI #indiedev
+
+## 2026-07-17 — sda (live-map heading / "live" vs last-known, kept abstract)
+Drew from: sda's recent (~last few days) map work — direction-of-travel heading arrows next to truck markers, and keeping the last-known heading on parked/idle trucks. No fresh 36h sda commit today (PhotoBooks had iOS bug-fixes, but that repeats 07-16's cross-platform beat; graphicmeat.com localized remaining pages, repeats 07-14). Chose the heading angle: first-time beat about the gap between "live" and "last-known" on a real-time map. Distinct from 07-11 pin-label toggle, 07-15 cost calculator, 07-12 fuel-POI merge. No client/tenant/driver specifics.
+
+Draft:
+> On a live fleet map a truck isn't just a dot — it's pointing somewhere. Added heading arrows for direction of travel, and kept the last-known heading on parked trucks. "Live" turns out to be a stack of last-knowns you hope are recent enough. #buildinpublic #logistics
+
+## 2026-07-18 — graphicmeat.com + mail-vault-app (self-hosted first-party analytics)
+Drew from: this cycle's meatlytics work spanning two repos — a self-hosted, first-party analytics engine added to both graphicmeat.com and the MailVault website: passkey login (dropped ANALYTICS_PASS), country stats + live world map, admin subscribers endpoint, AGPL-relicensed history, site privacy page disclosing the self-hosted analytics, plus deploy/env provisioning behind Caddy. First analytics/privacy/self-hosting beat in the log — distinct from 07-17 heading arrows, 07-16 cross-platform, 07-15 cost calculator, 07-14 localization. No client specifics involved.
+
+Draft:
+> Instead of dropping a third-party tracker into my sites, I built and self-hosted my own analytics — first-party, passkey login, no data sold on. Now shared across every product. More work, but I own the numbers and visitors aren't the product. #buildinpublic #selfhosted
+
+## 2026-07-19 — PhotoBooks (release/distribution machinery)
+Drew from: PhotoBooks' recent release-pipeline work — localized iOS metadata upload workflow, a private screenshot upload pipeline, and a build that fails when the generated project is stale. Only fresh 36h commits today were graphicmeat.com meatlytics bumps (passkey login, subscribers endpoint, world map) — same self-hosted-analytics theme as 07-18, so skipped to avoid repeating a beat two runs in a row. Chose the shipping-machinery angle: first release/distribution/build-hygiene beat in the log — distinct from 07-18 analytics, 07-16 cross-platform iOS, 07-14 localization. No client specifics.
+
+Draft:
+> Shipping solo, the part nobody shows isn't the app — it's the machinery around it. This week: App Store release plumbing. Automated metadata upload, a screenshot pipeline, a build that fails if the project's stale. Unglamorous, and the reason it ships. #buildinpublic #SwiftUI
+
+## 2026-07-20 — graphicmeat.com + mail-vault-app (deploys eating their own data)
+Drew from: the only fresh commits across all five repos (~36h) — both sites: rsync deploy excludes for data/ and analytics.db after a deploy wiped the analytics database, a Caddy matcher fix so /gm/* didn't fall through to static index.html, plus meatlytics bumps (passkey invite links, platform stats: browser/OS/device/language). PhotoBooks, pressureCooker and sda were quiet. Related to 07-18 (self-hosted analytics) and 07-19 (release machinery) but a distinct beat: the failure mode where stateless-deploy habits destroy the state a self-hosted service accumulates. No client specifics.
+
+Draft:
+> Self-hosting lesson, learned the hard way: my deploy script rsynced the app folder clean and deleted the analytics database it had been filling for days. Owning your data also means your deploys can eat it. Excludes added, lesson kept. #buildinpublic #selfhosted

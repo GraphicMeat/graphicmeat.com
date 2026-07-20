@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatPad pour Mac — Notes locales et éditeur de code sérieux | Graphic Meat</title>
+    <meta name="description" content="MeatPad est une première application Mac locale pour les notes, Markdown et les projets de code, avec recherche en texte intégral, pliage de code réel, recherche de projet, thèmes, commandes et intelligence de serveur de langage en option.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0c0c0f">
+    <link rel="alternate" hreflang="en" href="https://graphicmeat.com/meatpad">
+    <link rel="alternate" hreflang="de" href="https://graphicmeat.com/de/meatpad">
+    <link rel="alternate" hreflang="fr" href="https://graphicmeat.com/fr/meatpad">
+    <link rel="alternate" hreflang="es" href="https://graphicmeat.com/es/meatpad">
+    <link rel="alternate" hreflang="it" href="https://graphicmeat.com/it/meatpad">
+    <link rel="alternate" hreflang="ja" href="https://graphicmeat.com/ja/meatpad">
+    <link rel="alternate" hreflang="ko" href="https://graphicmeat.com/ko/meatpad">
+    <link rel="alternate" hreflang="zh-Hans" href="https://graphicmeat.com/zh-hans/meatpad">
+    <link rel="alternate" hreflang="pt-BR" href="https://graphicmeat.com/pt-br/meatpad">
+    <link rel="alternate" hreflang="x-default" href="https://graphicmeat.com/meatpad">
+
+
+
+    <link rel="canonical" href="https://graphicmeat.com/fr/meatpad">
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Graphic Meat">
+    <meta property="og:title" content="MeatPad — Commencez par une note. Restez pour l'éditeur.">
+    <meta property="og:description" content="Un espace de travail Mac privé et local pour les notes, Markdown et les vrais projets de code.">
+    <meta property="og:url" content="https://graphicmeat.com/fr/meatpad">
+    <meta property="og:image" content="https://graphicmeat.com/assets/meatpad/images/fr/01-notes-search.webp">
+    <meta property="og:image:width" content="2880">
+    <meta property="og:image:height" content="1800">
+    <meta property="og:image:alt" content="MeatPad affichant la recherche en texte intégral dans les notes locales sur macOS">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MeatPad — Commencez par une note. Restez pour l'éditeur.">
+    <meta name="twitter:description" content="Notes locales, Markdown, projets de code, recherche, pliage, thèmes et intelligence linguistique dans une application Mac native.">
+    <meta name="twitter:image" content="https://graphicmeat.com/assets/meatpad/images/fr/01-notes-search.webp">
+    <meta name="twitter:image:alt" content="MeatPad affichant la recherche en texte intégral dans les notes locales sur macOS">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=11">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://graphicmeat.com/#organization",
+      "name": "Graphic Meat",
+      "url": "https://graphicmeat.com",
+      "logo": "https://graphicmeat.com/logo.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "MeatPad",
+      "url": "https://graphicmeat.com/fr/meatpad",
+      "image": "https://graphicmeat.com/assets/meatpad/images/icon.png",
+      "screenshot": [
+        "https://graphicmeat.com/assets/meatpad/images/fr/01-notes-search.webp",
+        "https://graphicmeat.com/assets/meatpad/images/fr/02-swift-project.webp",
+        "https://graphicmeat.com/assets/meatpad/images/fr/05-themes.webp"
+      ],
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS 14 or later",
+      "softwareVersion": "0.9 preview",
+      "downloadUrl": "https://graphicmeat.com/download/meatpad",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Une application macOS locale native pour les notes, Markdown et les projets de code avec recherche de notes en texte intégral, recherche de projets, pliage de code réel, thèmes de syntaxe personnalisables, commandes fiables et fonctionnalités de serveur de langage en option.",
+      "featureList": "Local notes, full-text note search, project editor, Markdown highlighting, syntax highlighting, real code folding, project search and replace, customizable themes, snippets, trusted shell commands, diagnostics, completion, hover, definition, references, symbols, rename, export, delete-all",
+      "publisher": {
+        "@id": "https://graphicmeat.com/#organization"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="meatpad-page">
+    <canvas id="bg"></canvas>
+    <div class="glow" id="glow"></div>
+    <div class="bracket bracket--tl"></div>
+    <div class="bracket bracket--tr"></div>
+    <div class="bracket bracket--bl"></div>
+    <div class="bracket bracket--br"></div>
+
+    <div class="pb-shell mp-shell">
+        <nav class="topbar pb-topbar mp-topbar" aria-label="Primaire">
+            <a class="home" href="/fr">
+                <img src="/logo.png" alt="" width="38" height="32" aria-hidden="true">
+                <span class="wm">Graphic<b>Meat</b></span>
+            </a>
+            <div class="pb-nav-links">
+                <a href="#workspace">Espace de travail</a>
+                <a href="#intelligence">Renseignement</a>
+                <a href="#privacy">Confidentialité</a>
+                <a class="pb-nav-download" href="/download/meatpad" rel="nofollow">Télécharger 0.9</a>
+            </div>
+        </nav>
+        <div class="pb-language-switcher article-language-switcher site-language-switcher" role="navigation" aria-label="Choisir la langue"><ul><li><a href="/meatpad" lang="en" hreflang="en" data-language="en"><span aria-hidden="true">🇬🇧</span> English</a></li><li><a href="/de/meatpad" lang="de" hreflang="de" data-language="de"><span aria-hidden="true">🇩🇪</span> Deutsch</a></li><li><a href="/fr/meatpad" lang="fr" hreflang="fr" data-language="fr" aria-current="page"><span aria-hidden="true">🇫🇷</span> Français</a></li><li><a href="/es/meatpad" lang="es" hreflang="es" data-language="es"><span aria-hidden="true">🇪🇸</span> Español</a></li><li><a href="/it/meatpad" lang="it" hreflang="it" data-language="it"><span aria-hidden="true">🇮🇹</span> Italiano</a></li><li><a href="/ja/meatpad" lang="ja" hreflang="ja" data-language="ja"><span aria-hidden="true">🇯🇵</span> 日本語</a></li><li><a href="/ko/meatpad" lang="ko" hreflang="ko" data-language="ko"><span aria-hidden="true">🇰🇷</span> 한국어</a></li><li><a href="/zh-hans/meatpad" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-Hans"><span aria-hidden="true">🇨🇳</span> 简体中文</a></li><li><a href="/pt-br/meatpad" lang="pt-BR" hreflang="pt-BR" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span> Português (Brasil)</a></li></ul></div>
+
+
+
+        <main>
+            <header class="mp-hero">
+                <div class="mp-hero-copy">
+                    <p class="pb-eyebrow"><span aria-hidden="true"></span> Natif pour macOS</p>
+                    <h1>Commencez par une note. <em>Restez pour l’éditeur.</em></h1>
+                    <p class="pb-lede">MeatPad est une première maison locale pour des notes rapides, Markdown et de vrais projets de code. Recherchez tout, pliez la syntaxe réelle, ajustez chaque couleur et apportez vos propres outils, sans déplacer votre travail dans un navigateur.</p>
+                    <div class="pb-actions">
+                        <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">Télécharger pour Mac <span aria-hidden="true">↓</span></a>
+                        <a class="pb-button pb-button--text" href="#workspace">Découvrir l’espace de travail <span aria-hidden="true">↘</span></a>
+                    </div>
+                    <p class="pb-download-note">macOS 14+ · Pas de compte · Fichiers simples · Aperçu 0.9</p>
+                </div>
+                <figure class="mp-hero-art">
+                    <div class="mp-icon-orbit mp-icon-orbit--one" aria-hidden="true"></div>
+                    <div class="mp-icon-orbit mp-icon-orbit--two" aria-hidden="true"></div>
+                    <img src="/assets/meatpad/images/icon.png" alt="Icône d'application MeatPad, combinant une feuille de papier et une pointe de stylo plume" width="1024" height="1024" fetchpriority="high">
+                    <span class="pb-proof-tag mp-proof-local"><span aria-hidden="true">●</span> Le local d’abord</span>
+                    <span class="pb-proof-tag mp-proof-native">Construit avec SwiftUI <span aria-hidden="true">⌘</span></span>
+                </figure>
+            </header>
+
+            <aside class="pb-trust-rail" aria-label="Avantages de MeatPad">
+                <p><strong>Notes + projets</strong><span>Une application ciblée, deux façons de penser</span></p>
+                <p><strong>Rechercher les mots</strong><span>Notes en texte intégral et recherche à l’échelle du projet</span></p>
+                <p><strong>Modifier la syntaxe réelle</strong><span>Surlignage, pliage, extraits, complétion</span></p>
+                <p><strong>Posséder les fichiers</strong><span>Exportez à tout moment ; pas de base de données propriétaire</span></p>
+            </aside>
+
+            <section class="mp-proof" id="workspace" aria-labelledby="workspace-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">Le chemin rapide vers la pensée</p>
+                        <h2 id="workspace-heading">Retrouvez la phrase.<br>Pas le fichier.</h2>
+                    </div>
+                    <p>Les dossiers conservent leur forme large. La recherche en texte intégral trouve la pensée exacte dans chaque note. Les résultats sont mis à jour dans la même fenêtre native et la source reste le texte ordinaire sur votre Mac.</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/fr/01-notes-search.webp" target="_blank" rel="noopener" aria-label="Ouvrez la capture d'écran de recherche de notes MeatPad en taille réelle.">
+                        <img src="/assets/meatpad/images/fr/01-notes-search.webp" alt="Navigateur de notes MeatPad affichant une recherche de texte local d'abord et correspondant mis en évidence dans une note d'architecture de confidentialité" width="2880" height="1800" loading="eager">
+                    </a>
+                    <figcaption><span>Recherche de notes en texte intégral · correspondances mises en évidence</span><span>Stockage local · dossiers · corbeille</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-dual" aria-labelledby="dual-heading">
+                <div class="pb-section-intro">
+                    <p class="pb-kicker">Un carnet qui a du mordant</p>
+                    <h2 id="dual-heading">Du texte brut quand il suffit. Un projet quand il le faut.</h2>
+                    <p>Ouvrez un dossier et MeatPad devient un éditeur sérieux : arborescence de fichiers, onglets, structure sensible à la syntaxe, recherche de projet et outils qui comprennent le document devant vous.</p>
+                </div>
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>01 / Espace de travail projet</span>
+                            <h3>Parcourez une base de code sans perdre le fil.</h3>
+                            <p>Parcourez les dossiers, gardez plusieurs fichiers ouverts et modifiez-les dans une fenêtre native sans distraction.</p>
+                        </div>
+                        <a href="/assets/meatpad/images/fr/02-swift-project.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/fr/02-swift-project.webp" alt="MeatPad modification d'un projet Swift avec une arborescence de fichiers, des onglets ouverts, une coloration syntaxique et des contrôles de pliage de code" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>02 / Markdown qui se lit comme du code</span>
+                            <h3>Écrivez de la prose et du code clôturé dans un seul véritable éditeur.</h3>
+                            <p>La structure Markdown et les langages intégrés restent lisibles, avec les numéros de ligne et le comportement du texte natif.</p>
+                        </div>
+                        <a href="/assets/meatpad/images/fr/03-markdown-highlighting.webp" target="_blank" rel="noopener">
+                            <img src="/assets/meatpad/images/fr/03-markdown-highlighting.webp" alt="MeatPad éditant Markdown avec des titres, des listes, des liens en surbrillance et un bloc de code Swift clôturé" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mp-capabilities" aria-labelledby="capabilities-heading">
+                <div class="mp-capabilities-heading">
+                    <p class="pb-kicker">Fondamentaux de l'éditeur, terminés</p>
+                    <h2 id="capabilities-heading">Les petites choses sont tout.</h2>
+                </div>
+                <div class="mp-capability-grid">
+                    <article><span>⌄</span><h3>Pliage de code réel</h3><p>Réduisez les régions définies par la syntaxe, pliez tout ou rouvrez exactement là où vous travailliez.</p></article>
+                    <article><span>⌕</span><h3>Recherche à l'échelle du projet</h3><p>Recherchez chaque fichier, inspectez les correspondances groupées et remplacez-les dans tout le projet à partir d'un seul panneau.</p></article>
+                    <article><span>⌃</span><h3>Complétion adaptée au projet</h3><p>Les complétions locales s'appuient sur le projet ouvert, les extraits de code, les mots-clés de langue et les résultats facultatifs du serveur.</p></article>
+                    <article><span>◫</span><h3>Thèmes personnalisés</h3><p>Choisissez un thème intégré ou ajustez le jeton de la palette de l'éditeur par jeton, sans redémarrer l'application.</p></article>
+                </div>
+                <figure class="pb-app-window mp-window mp-search-window">
+                    <a href="/assets/meatpad/images/fr/04-project-search.webp" target="_blank" rel="noopener" aria-label="Ouvrez la capture d'écran de recherche de projet MeatPad en taille réelle">
+                        <img src="/assets/meatpad/images/fr/04-project-search.webp" alt="Recherche de projet MeatPad affichant les correspondances pour le local d'abord dans Swift, Markdown et les fichiers de test" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>Recherche de projets · résultats groupés</span><span>Rechercher et remplacer · le clavier en premier</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-intelligence" id="intelligence" aria-labelledby="intelligence-heading">
+                <div class="mp-intelligence-copy">
+                    <p class="pb-kicker">Apportez votre propre intelligence</p>
+                    <h2 id="intelligence-heading">Votre serveur de langage. Votre Mac. Aucun intermédiaire dans le cloud.</h2>
+                    <p>Lorsqu'un serveur pris en charge est installé, la version à téléchargement direct connecte les projets aux diagnostics, à l'achèvement, aux informations de survol, à la définition, aux références, aux symboles de document et au changement de nom.</p>
+                    <ul>
+                        <li><span>01</span><strong>Swift</strong><small>SourceKit-LSP</small></li>
+                        <li><span>02</span><strong>Rust</strong><small>rust-analyzer</small></li>
+                        <li><span>03</span><strong>TypeScript/JavaScript</strong><small>typescript-language-server</small></li>
+                        <li><span>04</span><strong>Python</strong><small>Pyright</small></li>
+                    </ul>
+                </div>
+                <aside class="mp-honesty-card" aria-label="Comment fonctionne l'intelligence linguistique MeatPad">
+                    <span class="mp-terminal-dot" aria-hidden="true"></span>
+                    <p class="mp-honesty-label">Pas de service invisible</p>
+                    <h3>MeatPad ne télécharge pas de code pour fournir des informations à l'éditeur.</h3>
+                    <p>Il détecte les serveurs de langue déjà installés sur votre Mac et les lance dans le projet. Si un serveur est absent, l'édition ordinaire et la complétion locale continuent de fonctionner.</p>
+                    <p class="mp-honesty-note">Le bac à sable du Mac App Store ne peut pas exécuter les serveurs de langue installés par l'utilisateur. La prise en charge complète de LSP appartient donc à la version notariée à téléchargement direct.</p>
+                </aside>
+            </section>
+
+            <section class="mp-themes" aria-labelledby="themes-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">Personnalisez l'éditeur</p>
+                        <h2 id="themes-heading">Chaque élément syntaxique a sa couleur. À vous de la choisir.</h2>
+                    </div>
+                    <p>Commencez avec un thème intégré équilibré, puis ajustez l'arrière-plan de l'éditeur, le texte, les commentaires, les mots-clés, les chaînes, les nombres, les types, etc. L'aperçu se met à jour au fur et à mesure que vous travaillez.</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/meatpad/images/fr/05-themes.webp" target="_blank" rel="noopener" aria-label="Ouvrez la capture d'écran en taille réelle de l'éditeur de thème MeatPad">
+                        <img src="/assets/meatpad/images/fr/05-themes.webp" alt="MeatPad Paramètres de thèmes affichant plusieurs thèmes et couleurs de syntaxe modifiables avec un aperçu du code en direct" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>Thèmes intégrés · palettes personnalisées</span><span>Aperçu de la syntaxe en direct · Couleurs de l'éditeur</span></figcaption>
+                </figure>
+            </section>
+
+            <section class="mp-privacy" id="privacy" aria-labelledby="privacy-heading">
+                <div class="mp-privacy-copy">
+                    <p class="pb-kicker">Local signifie opérationnellement local</p>
+                    <h2 id="privacy-heading">Aucun compte. Aucun moteur de synchronisation. Vos données restent à vous.</h2>
+                    <p>L'écran de confidentialité de MeatPad indique ce que fait l'application en langage clair. Les notes et les paramètres restent sur ce Mac. L'exportation crée des fichiers ordinaires. Supprimer tout supprime les données locales uniquement après une confirmation explicite.</p>
+                    <div class="mp-safety-grid">
+                        <article><span>✓</span><div><h3>Exporter à la demande</h3><p>Prenez des notes et des paramètres sous forme de fichiers normaux.</p></div></article>
+                        <article><span>✓</span><div><h3>Les commandes importées démarrent sans confiance</h3><p>Vérifiez le script, le répertoire de travail, l'entrée, l'environnement et le délai d'attente avant son exécution.</p></div></article>
+                        <article><span>✓</span><div><h3>La suppression est délibérée</h3><p>Les actions destructrices sont visibles, délimitées et confirmées.</p></div></article>
+                    </div>
+                </div>
+                <figure class="mp-privacy-shot">
+                    <a href="/assets/meatpad/images/fr/06-privacy.webp" target="_blank" rel="noopener" aria-label="Ouvrez la capture d'écran en taille réelle des paramètres de confidentialité MeatPad">
+                        <img src="/assets/meatpad/images/fr/06-privacy.webp" alt="MeatPad Paramètres de confidentialité expliquant le stockage des données locales, l'exportation et l'action confirmée Supprimer tout" width="2880" height="1800" loading="lazy">
+                    </a>
+                </figure>
+            </section>
+
+            <section class="pb-final-cta mp-final-cta" id="availability" aria-labelledby="availability-heading">
+                <p class="pb-kicker">Aperçu de MeatPad 0.9</p>
+                <h2 id="availability-heading">L’éditeur est prêt.<br>Ramenez-le à la maison.</h2>
+                <p>Téléchargez dès maintenant gratuitement la version notariée de Mac. Rejoignez la liste Graphic Meat ci-dessous pour les notes de version sur la route vers la version 1.0.</p>
+                <a class="pb-button pb-button--primary" href="/download/meatpad" rel="nofollow">Télécharger MeatPad <span aria-hidden="true">↓</span></a>
+                <span class="pb-final-meta">macOS 14 Sonoma ou version ultérieure · téléchargement direct gratuit · aucun compte requis</span>
+            </section>
+        </main>
+
+        <section class="newsletter pb-newsletter" id="meatpad-updates" aria-label="Mises à jour MeatPad">
+            <div>
+                <p class="newsletter-title">Obtenez les notes de version MeatPad</p>
+                <p class="pb-newsletter-copy">Une confirmation maintenant, une courte note lorsqu'une nouvelle version est expédiée. Rien d'autre.</p>
+            </div>
+            <div>
+                <form id="newsletter-form" class="newsletter-form" action="/api/subscribe" method="post" novalidate>
+                    <label for="nl-email" class="sr-only">Adresse e-mail</label>
+                    <input id="nl-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com">
+                    <div class="hp" aria-hidden="true">
+                        <label for="nl-website">Site Web</label>
+                        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="started" id="nl-started" value="">
+                    <input type="hidden" name="locale" value="fr">
+                    <button type="submit" class="cta" id="nl-submit">Tenez-moi au courant <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                <p class="newsletter-note">Double opt-in · désabonnement à tout moment · pas de spam</p>
+            </div>
+        </section>
+
+        <footer class="footer pb-footer">
+            <span>graphicmeat.com</span>
+            <a href="/fr">Accueil</a>
+            <a href="/fr/app-privacy">Confidentialité des applications</a>
+            <span>Est. 2013</span>
+            <div class="footer-sizzle">
+                <span class="sizzle-text">Cooked over an <b>open GPU</b> by</span>
+                <a href="/fr" aria-label="Graphic Meat"><img src="/logo.png" alt="Graphic Meat" width="40" height="40"></a>
+            </div>
+        </footer>
+    </div>
+
+    <a class="pb-mobile-dock mp-mobile-dock" href="#meatpad-updates">Me prévenir au lancement <span aria-hidden="true">↓</span></a>
+    <script src="/site.js?v=6" defer></script>
+    <script defer src="/gm.js" data-site="graphicmeat"></script>
+</body>
+</html>
