@@ -10,6 +10,7 @@
 ## Editorial
 
 - [Field Notes](https://graphicmeat.com/blog): Articles about product design, private software, automatic layouts and independent app development.
+- [What is Graphic Meat? Not vegan, not a butcher — it’s software.](https://graphicmeat.com/blog/what-is-graphic-meat): The studio name explained — graphical satire where meat stands for the substance of shipped software, not food.
 - [The web solved automatic masonry. Why haven’t photobooks?](https://graphicmeat.com/blog/automatic-masonry-layouts-photobooks): Why printed layouts need crop awareness, hierarchy, rhythm and scoring—not only space filling.
 
 ## Promotion facts

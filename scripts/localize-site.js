@@ -29,13 +29,17 @@ const pages = [
     { source: 'contact.html', stem: 'contact', route: '/contact' },
     { source: 'app-privacy.html', stem: 'app-privacy', route: '/app-privacy' },
     { source: 'subscribed.html', stem: 'subscribed', route: '/subscribed', noindex: true },
+    { source: 'blog-what-is-graphic-meat.html', stem: 'blog-what-is-graphic-meat', route: '/blog/what-is-graphic-meat' },
 ];
 
 const protectedText = /^(?:Graphic|Meat|Graphic Meat|GraphicMeat|MailVault|PhotoBooks|KISS|SOLID|macOS|Linux|Gmail|Outlook|IMAP|Apple|GitHub|X|graphicmeat\.com|rokas-ambrazevicius|@GraphicMeat|you@example\.com|\.eml|\d+|[\W_]+)$/i;
 const translateAttrs = /\b(?:aria-label|alt|placeholder|data-(?:pending|already|expired|invalid)-(?:title|body))="([^"]+)"/g;
+// Mask tokens must not contain dictionary words — Google Translate translates
+// them (e.g. __BRAND__ → __ブランド__) and unmask then misses. Digit-suffixed
+// nonsense tokens survive like the chunk markers do.
 const masks = new Map([
-    ['GraphicMeat', '__BRAND_COMPACT__'], ['Graphic Meat', '__BRAND__'],
-    ['MailVault', '__MAILVAULT__'], ['PhotoBooks', '__PHOTOBOOKS__'], ['macOS', '__MACOS__'],
+    ['GraphicMeat', '__GMW_1__'], ['Graphic Meat', '__GMW_2__'],
+    ['MailVault', '__GMW_3__'], ['PhotoBooks', '__GMW_4__'], ['macOS', '__GMW_5__'],
 ]);
 function mask(value) { for (const [word, token] of masks) value = value.split(word).join(token); return value; }
 function unmask(value) { for (const [word, token] of masks) value = value.split(token).join(word); return value; }
@@ -56,7 +60,7 @@ function jsonStrings(html) {
     html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (_, raw) => {
         try {
             const visit = (value, key = '') => {
-                if (typeof value === 'string' && ['name', 'description', 'slogan', 'headline', 'about'].includes(key) && shouldTranslate(value)) values.push(value);
+                if (typeof value === 'string' && ['name', 'description', 'slogan', 'headline', 'about', 'text'].includes(key) && shouldTranslate(value)) values.push(value);
                 else if (Array.isArray(value)) value.forEach((v) => visit(v, key));
                 else if (value && typeof value === 'object') Object.entries(value).forEach(([k, v]) => visit(v, k));
             };
@@ -182,7 +186,7 @@ function alternates(page) {
 
 function rewriteLinks(html, locale) {
     if (locale.key === 'en') return html;
-    const known = ['/', '/blog', '/contact', '/app-privacy', '/subscribed', '/photobooks', '/blog/automatic-masonry-layouts-photobooks'];
+    const known = ['/', '/blog', '/contact', '/app-privacy', '/subscribed', '/photobooks', '/blog/automatic-masonry-layouts-photobooks', '/blog/what-is-graphic-meat'];
     for (const url of known.sort((a, b) => b.length - a.length)) {
         const localized = `/${locale.route}${url === '/' ? '' : url}`;
         html = html.replace(new RegExp(`href="${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=([#?"]|$))`, 'g'), `href="${localized}`);
@@ -194,7 +198,7 @@ function decorate(source, page, locale, translations) {
     let html = replaceText(source, translations);
     html = localizeJsonLd(html, translations, locale);
     if (locale.key !== 'en') {
-        const absoluteRoutes = ['/blog/automatic-masonry-layouts-photobooks', '/photobooks', '/app-privacy', '/contact', '/blog', '/subscribed'];
+        const absoluteRoutes = ['/blog/automatic-masonry-layouts-photobooks', '/blog/what-is-graphic-meat', '/photobooks', '/app-privacy', '/contact', '/blog', '/subscribed'];
         for (const route of absoluteRoutes) html = html.split(`https://graphicmeat.com${route}`).join(`https://graphicmeat.com/${locale.route}${route}`);
     }
     html = html.replace(/<html lang="[^"]+">/, `<html lang="${locale.html}">`);

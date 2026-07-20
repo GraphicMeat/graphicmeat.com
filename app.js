@@ -355,6 +355,10 @@ app.get('/blog', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'blog.html'));
 });
 
+app.get('/blog/what-is-graphic-meat', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'blog-what-is-graphic-meat.html'));
+});
+
 app.get('/blog/automatic-masonry-layouts-photobooks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'blog-automatic-masonry-layouts-photobooks.html'));
 });
@@ -362,6 +366,9 @@ app.get('/blog/automatic-masonry-layouts-photobooks', (req, res) => {
 for (const locale of PHOTOBOOK_LOCALES) {
     app.get(`/${locale}/blog/automatic-masonry-layouts-photobooks`, (req, res) => {
         res.sendFile(path.join(__dirname, 'public', `blog-automatic-masonry-layouts-photobooks-${locale}.html`));
+    });
+    app.get(`/${locale}/blog/what-is-graphic-meat`, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', `blog-what-is-graphic-meat-${locale}.html`));
     });
 }
 
