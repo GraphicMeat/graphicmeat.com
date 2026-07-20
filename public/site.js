@@ -324,3 +324,36 @@
     resize();
     window.addEventListener('resize', resize);
 })();
+
+// ===== Screenshot lightbox (links to full-size images open overlay instead of new tab) =====
+(function () {
+    const links = Array.from(document.querySelectorAll('a[target="_blank"]'))
+        .filter((a) => a.querySelector('img') && /\.(webp|png|jpe?g)$/i.test(a.getAttribute('href') || ''));
+    if (!links.length) return;
+
+    let overlay = null;
+    function close() {
+        if (!overlay) return;
+        overlay.remove();
+        overlay = null;
+        document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    function open(href, alt) {
+        overlay = document.createElement('div');
+        overlay.className = 'lightbox';
+        overlay.innerHTML = '<img alt="">';
+        overlay.querySelector('img').src = href;
+        overlay.querySelector('img').alt = alt;
+        overlay.addEventListener('click', close);
+        document.addEventListener('keydown', onKey);
+        document.body.appendChild(overlay);
+    }
+    links.forEach((a) => {
+        a.addEventListener('click', (e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey) return; // let modified clicks open new tab
+            e.preventDefault();
+            open(a.href, (a.querySelector('img').alt || ''));
+        });
+    });
+})();

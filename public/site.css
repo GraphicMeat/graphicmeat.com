@@ -1128,3 +1128,25 @@ section { margin-top: 24px; }
     .mp-icon-orbit { animation: none; }
     .mp-shot-card img { transition: none; }
 }
+
+/* ===== Screenshot lightbox ===== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(5, 6, 8, 0.92);
+    cursor: zoom-out;
+}
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border: 1px solid var(--pb-line, rgba(200, 16, 40, 0.35));
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+}
+a[target="_blank"]:has(> img) { cursor: zoom-in; }
