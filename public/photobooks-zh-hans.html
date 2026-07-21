@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/site.css?v=12">
+    <link rel="stylesheet" href="/site.css?v=13">
 
     <script type="application/ld+json">
     {
@@ -57,7 +57,13 @@
           "name": "PhotoBooks",
           "url": "https://graphicmeat.com/zh-hans/photobooks",
           "image": "https://graphicmeat.com/assets/photobooks/images/icon.png",
-          "screenshot": "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+          "screenshot": [
+            "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+            "https://graphicmeat.com/assets/photobooks/images/zh-hans/01-refine-selection.webp",
+            "https://graphicmeat.com/assets/photobooks/images/zh-hans/02-photo-tools.webp",
+            "https://graphicmeat.com/assets/photobooks/images/zh-hans/04-cover.webp",
+            "https://graphicmeat.com/assets/photobooks/images/zh-hans/05-format.webp"
+          ],
           "applicationCategory": "MultimediaApplication",
           "operatingSystem": "macOS 15 or later",
           "description": "一款原生 macOS 应用程序，可从 Apple Photos 或文件导入照片，自动将它们排列到可编辑的跨页相册中，并完全在设备上导出可打印或可共享的 PDF。",
@@ -102,6 +108,7 @@
                 <span class="wm">Graphic<b>Meat</b></span>
             </a>
             <div class="pb-nav-links">
+                <a href="#screenshots">应用截图</a>
                 <a href="#how-it-works">它是如何运作的</a>
                 <a href="#privacy">隐私</a>
                 <div class="pb-language-switcher" role="navigation" aria-label="选择语言">
@@ -131,11 +138,14 @@
                         <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">
                             创作我的第一本书 <span aria-hidden="true">↓</span>
                         </a>
+                        <a class="pb-store-badge" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">
+                            <img src="/assets/photobooks/images/badges/mac-app-store-zh-cn.svg" alt="在 Mac App Store 下载 PhotoBooks" width="156" height="40">
+                        </a>
                         <a class="pb-button pb-button--text" href="#watch-the-film">
                             观看 30 秒影片 <span aria-hidden="true">↘</span>
                         </a>
                     </div>
-                    <p class="pb-download-note">macOS 15+ · 无帐户 · 无水印 · 照片从未上传 · <a class="pb-button--text" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">也可在 Mac App Store 获取 <span aria-hidden="true">↗</span></a></p>
+                    <p class="pb-download-note">macOS 15+ · GitHub 直接提供 .dmg · 无帐户 · 无水印 · 照片从未上传</p>
                 </div>
 
                 <figure class="pb-hero-art">
@@ -175,6 +185,75 @@
                         <span>macOS 上的相册·当前版本</span>
                         <span>页面导航·直接编辑·实时布局替代方案</span>
                     </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-app-proof" id="screenshots" aria-labelledby="tour-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">真实界面，毫无摆拍</p>
+                        <h2 id="tour-heading">从导入到导出。<br>六个真实界面。</h2>
+                    </div>
+                    <p>这就是完整的应用：有引导式的开始、可以真正编辑的画布、可命名的封面、带真实尺寸的可打印格式，以及在导出前检查书籍的流程。</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/photobooks/images/zh-hans/01-refine-selection.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 PhotoBooks 照片选择屏幕截图">
+                        <img src="/assets/photobooks/images/zh-hans/01-refine-selection.webp" alt="PhotoBooks 第二步，优化你的选择，显示已选择的 28 张推荐照片和被排除的一组照片" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>第 2 步（共 5 步）· 优化你的选择</span><span>推荐集合 · 可添加或移除任意照片</span></figcaption>
+                </figure>
+
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>01 / 照片工具</span>
+                            <h3>选中一张照片，工具即刻出现。</h3>
+                            <p>裁剪、旋转、缩放、替换、收藏、锁定或重置——直接在跨页上完成，无需打开单独的编辑窗口。</p>
+                        </div>
+                        <a href="/assets/photobooks/images/zh-hans/02-photo-tools.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/zh-hans/02-photo-tools.webp" alt="PhotoBooks 跨页中选中一张照片，浮动照片工具栏显示裁剪、旋转、缩放、收藏、撤销和锁定控件" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>02 / 取景</span>
+                            <h3>在画框内调整照片位置。</h3>
+                            <p>拖动即可移动，双击或双指捏合即可缩放，精确预览打印画框会保留的部分。</p>
+                        </div>
+                        <a href="/assets/photobooks/images/zh-hans/03-crop.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/zh-hans/03-crop.webp" alt="PhotoBooks 裁剪对话框显示一张沙滩照片正在画框内重新定位，并带有缩放控件" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>03 / 书籍格式</span>
+                            <h3>真实的印刷尺寸，英寸与厘米均可查看。</h3>
+                            <p>方形、横向或纵向。切换形状会重新排列未锁定的页面；已锁定的页面和封面会保留你已完成的内容。</p>
+                        </div>
+                        <a href="/assets/photobooks/images/zh-hans/05-format.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/zh-hans/05-format.webp" alt="PhotoBooks 书籍格式选择器列出方形、横向和纵向尺寸，并显示英寸和厘米的尺寸" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>04 / 导出预检</span>
+                            <h3>书籍在印刷前会先经过检查。</h3>
+                            <p>页数、预设和印刷规则会提前验证，避免印刷服务商退回文件。</p>
+                        </div>
+                        <a href="/assets/photobooks/images/zh-hans/06-export.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/zh-hans/06-export.webp" alt="PhotoBooks 数字 PDF 预检对话框警告书籍只有 10 页，而所选预设要求 20 到 240 页" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/photobooks/images/zh-hans/04-cover.webp" target="_blank" rel="noopener" aria-label="打开全尺寸 PhotoBooks 封面屏幕截图">
+                        <img src="/assets/photobooks/images/zh-hans/04-cover.webp" alt="PhotoBooks 封面编辑器显示一张出血沙滩照片，书名 Summer Stories 横跨封面和书脊" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>封面 · 书名与书脊</span><span>出血照片 · 环绕式布局</span></figcaption>
                 </figure>
             </section>
 
@@ -311,7 +390,7 @@
                     <p class="pb-kicker">建筑私有</p>
                     <h2 id="privacy-heading">你的记忆不是训练数据。</h2>
                     <p>PhotoBooks 在您的 Mac 上运行。没有照片上传、云帐户或远程处理步骤。从导入到导出，您的库始终属于您。</p>
-                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">建在露天。查看源码 <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">建在露天。查看源码和每个版本 <span aria-hidden="true">↗</span></a>
                 </div>
                 <ul class="pb-privacy-list">
                     <li><span aria-hidden="true">✓</span><p><strong>没有账户</strong>无需创建个人资料，也无需移交个人详细信息。</p></li>
@@ -324,9 +403,12 @@
             <section class="pb-final-cta" aria-labelledby="download-heading">
                 <p class="pb-kicker">今晚做一个</p>
                 <h2 id="download-heading">照片准备好了。<br>书正在等待。</h2>
-                <p>下载相册，选择相册，然后在几秒钟内查看您的第一个完整草稿。</p>
+                <p>下载相册，选择相册，然后在几秒钟内查看您的第一个完整草稿。"创作我的第一本书"会直接从我们的 GitHub 版本发布中下载经过公证的 <code>.dmg</code>；Mac App Store 版本则安装沙盒版本。</p>
                 <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">创作我的第一本书 <span aria-hidden="true">↓</span></a>
-                <span class="pb-final-meta">最新 .dmg · macOS 15 Sequoia 或更高版本 · 免费 · 没有帐户 · <a class="pb-button--text" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">也可在 Mac App Store 获取 <span aria-hidden="true">↗</span></a></span>
+                <a class="pb-store-badge" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">
+                    <img src="/assets/photobooks/images/badges/mac-app-store-zh-cn.svg" alt="在 Mac App Store 下载 PhotoBooks" width="156" height="40" loading="lazy">
+                </a>
+                <span class="pb-final-meta">来自 GitHub 的最新 .dmg · macOS 15 Sequoia 或更高版本 · 免费 · 没有帐户 · <a class="pb-button--text" href="https://github.com/GraphicMeat/PhotoBooks/releases" target="_blank" rel="noopener noreferrer">GitHub 上的发行版和源代码 <span aria-hidden="true">↗</span></a></span>
             </section>
         </main>
 

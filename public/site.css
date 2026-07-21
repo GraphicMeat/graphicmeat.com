@@ -762,6 +762,10 @@ section { margin-top: 24px; }
 .pb-button--primary:hover { background: var(--red-bright); box-shadow: 0 18px 44px rgba(204,16,40,.35); }
 .pb-button--text { color: var(--silver); padding-left: 2px; padding-right: 2px; }
 .pb-button--text:hover { color: var(--white); }
+.pb-store-badge { display: inline-flex; border-radius: 9px; transition: transform .25s, box-shadow .25s; }
+.pb-store-badge img { display: block; width: auto; height: 66px; }
+.pb-store-badge:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(0,0,0,.45); }
+.pb-actions .pb-button--primary, .pb-final-cta .pb-button--primary { min-height: 66px; }
 .pb-download-note {
     margin-top: 17px; color: var(--silver-dim); font-family: 'Share Tech Mono', monospace;
     font-size: .62rem; line-height: 1.5; letter-spacing: .09em; text-transform: uppercase;
@@ -928,13 +932,13 @@ section { margin-top: 24px; }
 .pb-privacy-list strong { display: block; margin-bottom: 5px; color: var(--white); font-family: 'Chakra Petch', sans-serif; font-size: 1rem; }
 .pb-privacy-list p { color: var(--silver-dim); font-size: .8rem; line-height: 1.5; }
 
-.pb-final-cta { position: relative; margin-top: clamp(110px,15vw,190px) !important; padding: clamp(70px,9vw,115px) 28px; border-top: 1px solid var(--pb-line); border-bottom: 1px solid var(--pb-line); text-align: center; overflow: hidden; }
+.pb-final-cta { position: relative; margin-top: clamp(110px,15vw,190px) !important; padding: clamp(70px,9vw,115px) 28px clamp(58px,7vw,90px); border-top: 1px solid var(--pb-line); border-bottom: 1px solid var(--pb-line); text-align: center; overflow: hidden; }
 .pb-final-cta::before { content: ''; position: absolute; left: 50%; top: 50%; width: 800px; height: 500px; transform: translate(-50%,-50%); background: radial-gradient(circle,rgba(204,16,40,.14),transparent 67%); pointer-events: none; }
 .pb-final-cta > * { position: relative; }
 .pb-final-cta h2 { margin: 0 auto; }
 .pb-final-cta > p:not(.pb-kicker) { margin: 24px auto 0; max-width: 590px; color: var(--silver); font-size: 1.05rem; line-height: 1.6; }
-.pb-final-cta .pb-button { margin-top: 32px; }
-.pb-final-meta { display: block; margin-top: 18px; color: var(--silver-dim); font-family: 'Share Tech Mono', monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+.pb-final-cta .pb-button, .pb-final-cta .pb-store-badge { margin: 32px 7px 0; vertical-align: middle; }
+.pb-final-meta { display: block; margin-top: 22px; color: var(--silver-dim); font-family: 'Share Tech Mono', monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
 
 .pb-newsletter { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 70px; margin-top: 90px; padding: 38px 0; }
 .pb-newsletter .newsletter-title { font-family: 'Chakra Petch', sans-serif; font-size: 1.25rem; }
@@ -967,6 +971,7 @@ section { margin-top: 24px; }
     .pb-hero { min-height: auto; grid-template-columns: 1fr; gap: 42px; padding: 70px 0 58px; }
     .pb-hero h1 { font-size: clamp(2.75rem, 13vw, 4.5rem); }.pb-hero h1 em { margin-top: 7px; }
     .pb-lede { font-size: 1rem; }.pb-actions .pb-button--primary { display: none; }.pb-button--text { min-height: 42px; }
+    .pb-store-badge img { height: 54px; }
     .pb-hero-art { width: min(100%, 520px); margin: 0 auto; }.pb-proof-tag--private { left: 0; top: 12%; }.pb-proof-tag--print { right: 0; bottom: 9%; }
     .pb-trust-rail { grid-template-columns: 1fr; }.pb-trust-rail p + p { border-left: 0; border-top: 1px solid var(--pb-line); }.pb-trust-rail p { padding-left: 0; padding-right: 0; }
     .pb-app-proof, .pb-transform, .pb-film, .pb-process, .pb-use-cases, .pb-privacy { padding-top: 100px; }
@@ -1036,6 +1041,7 @@ section { margin-top: 24px; }
 .mp-window img { aspect-ratio: 16 / 10; object-fit: cover; }
 
 .mp-dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 58px; }
+.mp-dual-grid + .pb-app-window { display: block; margin-top: 58px; }
 .mp-shot-card { display: flex; min-width: 0; flex-direction: column; border: 1px solid var(--pb-line); border-radius: 15px; overflow: hidden; background: rgba(19,19,23,.84); }
 .mp-shot-copy { min-height: 270px; padding: clamp(28px, 4vw, 48px); }
 .mp-shot-copy > span { color: var(--orange); font: .64rem/1 'Share Tech Mono', monospace; letter-spacing: .14em; text-transform: uppercase; }

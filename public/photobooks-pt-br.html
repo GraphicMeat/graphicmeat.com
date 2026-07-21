@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/site.css?v=12">
+    <link rel="stylesheet" href="/site.css?v=13">
 
     <script type="application/ld+json">
     {
@@ -57,7 +57,13 @@
           "name": "PhotoBooks",
           "url": "https://graphicmeat.com/pt-br/photobooks",
           "image": "https://graphicmeat.com/assets/photobooks/images/icon.png",
-          "screenshot": "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+          "screenshot": [
+            "https://graphicmeat.com/assets/photobooks/images/app-workspace.webp",
+            "https://graphicmeat.com/assets/photobooks/images/pt-br/01-refine-selection.webp",
+            "https://graphicmeat.com/assets/photobooks/images/pt-br/02-photo-tools.webp",
+            "https://graphicmeat.com/assets/photobooks/images/pt-br/04-cover.webp",
+            "https://graphicmeat.com/assets/photobooks/images/pt-br/05-format.webp"
+          ],
           "applicationCategory": "MultimediaApplication",
           "operatingSystem": "macOS 15 or later",
           "description": "Um aplicativo nativo do macOS que importa fotos de fotos ou arquivos da Apple, organiza-as automaticamente em álbuns de fotos editáveis ​​e exporta PDFs prontos para impressão ou compartilháveis ​​inteiramente no dispositivo.",
@@ -102,6 +108,7 @@
                 <span class="wm">Graphic<b>Meat</b></span>
             </a>
             <div class="pb-nav-links">
+                <a href="#screenshots">Capturas</a>
                 <a href="#how-it-works">Como funciona</a>
                 <a href="#privacy">Privacidade</a>
                 <div class="pb-language-switcher" role="navigation" aria-label="Escolher idioma">
@@ -131,11 +138,14 @@
                         <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">
                             Criar meu primeiro livro <span aria-hidden="true">↓</span>
                         </a>
+                        <a class="pb-store-badge" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">
+                            <img src="/assets/photobooks/images/badges/mac-app-store-pt-br.svg" alt="Baixar PhotoBooks na Mac App Store" width="156" height="40">
+                        </a>
                         <a class="pb-button pb-button--text" href="#watch-the-film">
                             Assista ao filme de 30 segundos <span aria-hidden="true">↘</span>
                         </a>
                     </div>
-                    <p class="pb-download-note">macOS 15+ · Sem conta · Sem marca d'água · Fotos nunca enviadas · <a class="pb-button--text" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">Também na Mac App Store <span aria-hidden="true">↗</span></a></p>
+                    <p class="pb-download-note">macOS 15+ · .dmg direto do GitHub · Sem conta · Sem marca d'água · Fotos nunca enviadas</p>
                 </div>
 
                 <figure class="pb-hero-art">
@@ -175,6 +185,75 @@
                         <span>PhotoBooks no macOS · versão atual</span>
                         <span>Navegação na página · edição direta · alternativas de layout ao vivo</span>
                     </figcaption>
+                </figure>
+            </section>
+
+            <section class="pb-app-proof" id="screenshots" aria-labelledby="tour-heading">
+                <div class="pb-app-proof-heading">
+                    <div>
+                        <p class="pb-kicker">Cada tela, nada encenado</p>
+                        <h2 id="tour-heading">Da importação à exportação.<br>Seis telas reais.</h2>
+                    </div>
+                    <p>Este é o aplicativo completo: um início guiado, uma tela que você pode realmente editar, uma capa com título, formatos para impressão com dimensões reais e uma exportação que verifica o livro antes de ele sair.</p>
+                </div>
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/photobooks/images/pt-br/01-refine-selection.webp" target="_blank" rel="noopener" aria-label="Abra a captura de tela em tamanho real da seleção de fotos do PhotoBooks">
+                        <img src="/assets/photobooks/images/pt-br/01-refine-selection.webp" alt="Etapa 2 do PhotoBooks, Refine sua seleção, mostrando 28 fotos recomendadas selecionadas e um conjunto de fotos deixadas de fora" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>Etapa 2 de 5 · refine sua seleção</span><span>Conjunto recomendado · inclua ou remova qualquer foto</span></figcaption>
+                </figure>
+
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>01 / Ferramentas de foto</span>
+                            <h3>Selecione uma foto e as ferramentas vêm até ela.</h3>
+                            <p>Corte, gire, dê zoom, troque, marque como favorita, bloqueie ou redefina — direto na página espelhada, sem uma janela de edição separada.</p>
+                        </div>
+                        <a href="/assets/photobooks/images/pt-br/02-photo-tools.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/pt-br/02-photo-tools.webp" alt="Página espelhada do PhotoBooks com uma foto selecionada e a barra de ferramentas flutuante mostrando controles de corte, rotação, zoom, favoritos, desfazer e bloqueio" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>02 / Enquadramento</span>
+                            <h3>Posicione a foto dentro do quadro.</h3>
+                            <p>Arraste para mover, clique duas vezes ou belisque para dar zoom, e veja exatamente o que o quadro impresso vai manter.</p>
+                        </div>
+                        <a href="/assets/photobooks/images/pt-br/03-crop.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/pt-br/03-crop.webp" alt="Diálogo de corte do PhotoBooks mostrando uma foto de praia sendo reposicionada dentro do quadro com controles de zoom" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+
+                <div class="mp-dual-grid">
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>03 / Formato do livro</span>
+                            <h3>Tamanhos reais de impressão, em polegadas e centímetros.</h3>
+                            <p>Quadrado, paisagem ou retrato. Trocar o formato reorganiza as páginas desbloqueadas; páginas bloqueadas e a capa mantêm o que você construiu.</p>
+                        </div>
+                        <a href="/assets/photobooks/images/pt-br/05-format.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/pt-br/05-format.webp" alt="Seletor de Formato do Livro do PhotoBooks listando tamanhos quadrado, paisagem e retrato com dimensões em polegadas e centímetros" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                    <article class="mp-shot-card">
+                        <div class="mp-shot-copy">
+                            <span>04 / Verificação de exportação</span>
+                            <h3>O livro é verificado antes de ser impresso.</h3>
+                            <p>Contagem de páginas, predefinições e regras de impressão são verificadas antecipadamente, para que um serviço de impressão não devolva o arquivo.</p>
+                        </div>
+                        <a href="/assets/photobooks/images/pt-br/06-export.webp" target="_blank" rel="noopener">
+                            <img src="/assets/photobooks/images/pt-br/06-export.webp" alt="Diálogo de verificação de PDF digital do PhotoBooks avisando que o livro tem 10 páginas enquanto a predefinição imprime de 20 a 240" width="2880" height="1800" loading="lazy">
+                        </a>
+                    </article>
+                </div>
+
+                <figure class="pb-app-window mp-window">
+                    <a href="/assets/photobooks/images/pt-br/04-cover.webp" target="_blank" rel="noopener" aria-label="Abra a captura de tela em tamanho real da capa do PhotoBooks">
+                        <img src="/assets/photobooks/images/pt-br/04-cover.webp" alt="Editor de capa do PhotoBooks mostrando uma fotografia de praia em sangria total com o título do livro Summer Stories na frente e na lombada" width="2880" height="1800" loading="lazy">
+                    </a>
+                    <figcaption><span>Capa · título e lombada</span><span>Fotografia em sangria total · layout envolvente</span></figcaption>
                 </figure>
             </section>
 
@@ -311,7 +390,7 @@
                     <p class="pb-kicker">Privado por arquitetura</p>
                     <h2 id="privacy-heading">Suas memórias não são dados de treinamento.</h2>
                     <p>PhotoBooks é executado no seu Mac. Não há upload de fotos, conta na nuvem ou etapa de processamento remoto. Sua biblioteca permanece sua desde a importação até a exportação.</p>
-                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">Construído ao ar livre. Veja a fonte <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/GraphicMeat/PhotoBooks" target="_blank" rel="noopener noreferrer">Construído ao ar livre. Veja a fonte e cada versão <span aria-hidden="true">↗</span></a>
                 </div>
                 <ul class="pb-privacy-list">
                     <li><span aria-hidden="true">✓</span><p><strong>Nenhuma conta</strong>Nenhum perfil para criar ou dados pessoais para fornecer.</p></li>
@@ -324,9 +403,12 @@
             <section class="pb-final-cta" aria-labelledby="download-heading">
                 <p class="pb-kicker">Faça um hoje à noite</p>
                 <h2 id="download-heading">As fotos estão prontas.<br>O livro está esperando.</h2>
-                <p>Baixe PhotoBooks, escolha um álbum e veja seu primeiro rascunho completo em segundos.</p>
+                <p>Baixe PhotoBooks, escolha um álbum e veja seu primeiro rascunho completo em segundos. "Criar meu primeiro livro" baixa o <code>.dmg</code> notarizado diretamente dos nossos releases no GitHub; a versão da Mac App Store instala a versão em sandbox.</p>
                 <a class="pb-button pb-button--primary" href="/download/photobooks" rel="nofollow">Criar meu primeiro livro <span aria-hidden="true">↓</span></a>
-                <span class="pb-final-meta">.dmg mais recente · macOS 15 Sequoia ou posterior · Grátis · Sem conta · <a class="pb-button--text" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">Também na Mac App Store <span aria-hidden="true">↗</span></a></span>
+                <a class="pb-store-badge" href="https://apps.apple.com/app/photobooks-by-graphicmeat/id6786722053?mt=12">
+                    <img src="/assets/photobooks/images/badges/mac-app-store-pt-br.svg" alt="Baixar PhotoBooks na Mac App Store" width="156" height="40" loading="lazy">
+                </a>
+                <span class="pb-final-meta">.dmg mais recente do GitHub · macOS 15 Sequoia ou posterior · Grátis · Sem conta · <a class="pb-button--text" href="https://github.com/GraphicMeat/PhotoBooks/releases" target="_blank" rel="noopener noreferrer">Lançamentos e código-fonte no GitHub <span aria-hidden="true">↗</span></a></span>
             </section>
         </main>
 
